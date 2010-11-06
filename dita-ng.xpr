@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="12.1">
+    <meta>
+        <filters directoryPatterns="" filePatterns="*.xpr"
+            positiveFilePatterns="" showHiddenFiles="false"/>
+        <options/>
+    </meta>
+    <projectTree name="dita-ng.xpr">
+        <folder name="files">
+            <folder path="."/>
+        </folder>
+        <folder name="validate">
+            <folder name="rnc">
+                <file name="RelaxNG/rnc/base/rnc/basemap.rnc"/>
+                <file name="RelaxNG/rnc/base/rnc/basetopic.rnc"/>
+                <file name="RelaxNG/rnc/bookmap/rnc/bookmap.rnc"/>
+                <file
+                    name="RelaxNG/rnc/subjectScheme/rnc/classifyMap.rnc"/>
+                <file
+                    name="RelaxNG/rnc/technicalContent/rnc/concept.rnc"/>
+                <file
+                    name="RelaxNG/rnc/technicalContent/rnc/ditabase.rnc"/>
+                <file name="RelaxNG/rnc/ditaval/rnc/ditaval.rnc"/>
+                <file
+                    name="RelaxNG/rnc/technicalContent/rnc/generalTask.rnc"/>
+                <file
+                    name="RelaxNG/rnc/technicalContent/rnc/glossary.rnc"/>
+                <file
+                    name="RelaxNG/rnc/technicalContent/rnc/glossentry.rnc"/>
+                <file
+                    name="RelaxNG/rnc/technicalContent/rnc/glossgroup.rnc"/>
+                <file
+                    name="RelaxNG/rnc/learning/rnc/learningAssessment.rnc"/>
+                <file
+                    name="RelaxNG/rnc/learning/rnc/learningBookmap.rnc"/>
+                <file
+                    name="RelaxNG/rnc/learning/rnc/learningContent.rnc"/>
+                <file name="RelaxNG/rnc/learning/rnc/learningMap.rnc"/>
+                <file
+                    name="RelaxNG/rnc/learning/rnc/learningOverview.rnc"/>
+                <file name="RelaxNG/rnc/learning/rnc/learningPlan.rnc"/>
+                <file
+                    name="RelaxNG/rnc/learning/rnc/learningSummary.rnc"/>
+                <file
+                    name="RelaxNG/rnc/machineryIndustry/rnc/machineryTask.rnc"/>
+                <file name="RelaxNG/rnc/technicalContent/rnc/map.rnc"/>
+                <file
+                    name="RelaxNG/rnc/technicalContent/rnc/reference.rnc"/>
+                <file
+                    name="RelaxNG/rnc/subjectScheme/rnc/subjectScheme.rnc"/>
+                <file name="RelaxNG/rnc/technicalContent/rnc/task.rnc"/>
+                <file name="RelaxNG/rnc/technicalContent/rnc/topic.rnc"/>
+                <file
+                    name="RelaxNG/rnc/xhtml/rnc/xhtml1-transitional.rnc"
+                />
+            </folder>
+            <folder name="rng">
+                <file name="RelaxNG/rng/base/rng/basemap.rng"/>
+                <file name="RelaxNG/rng/base/rng/basetopic.rng"/>
+                <file name="RelaxNG/rng/bookmap/rng/bookmap.rng"/>
+                <file
+                    name="RelaxNG/rng/subjectScheme/rng/classifyMap.rng"/>
+                <file
+                    name="RelaxNG/rng/technicalContent/rng/concept.rng"/>
+                <file
+                    name="RelaxNG/rng/technicalContent/rng/ditabase.rng"/>
+                <file name="RelaxNG/rng/ditaval/rng/ditaval.rng"/>
+                <file
+                    name="RelaxNG/rng/technicalContent/rng/generalTask.rng"/>
+                <file
+                    name="RelaxNG/rng/technicalContent/rng/glossary.rng"/>
+                <file
+                    name="RelaxNG/rng/technicalContent/rng/glossentry.rng"/>
+                <file
+                    name="RelaxNG/rng/technicalContent/rng/glossgroup.rng"/>
+                <file
+                    name="RelaxNG/rng/learning/rng/learningAssessment.rng"/>
+                <file
+                    name="RelaxNG/rng/learning/rng/learningBookmap.rng"/>
+                <file
+                    name="RelaxNG/rng/learning/rng/learningContent.rng"/>
+                <file name="RelaxNG/rng/learning/rng/learningMap.rng"/>
+                <file
+                    name="RelaxNG/rng/learning/rng/learningOverview.rng"/>
+                <file name="RelaxNG/rng/learning/rng/learningPlan.rng"/>
+                <file
+                    name="RelaxNG/rng/learning/rng/learningSummary.rng"/>
+                <file
+                    name="RelaxNG/rng/machineryIndustry/rng/machineryTask.rng"/>
+                <file name="RelaxNG/rng/technicalContent/rng/map.rng"/>
+                <file
+                    name="RelaxNG/rng/technicalContent/rng/reference.rng"/>
+                <file
+                    name="RelaxNG/rng/subjectScheme/rng/subjectScheme.rng"/>
+                <file name="RelaxNG/rng/technicalContent/rng/task.rng"/>
+                <file name="RelaxNG/rng/technicalContent/rng/topic.rng"/>
+                <file
+                    name="RelaxNG/rng/xhtml/rng/xhtml1-transitional.rng"
+                />
+            </folder>
+        </folder>
+    </projectTree>
+</project>

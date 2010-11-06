@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <property name="target" value="RelaxNG/rnc"/>
+    <property name="src" value="RelaxNG/rng"/>
+    <property name="tmp" value="tmp"/>
+    <property name="trang" value="lib/trang.jar"/>
+    
+    <target name="copyToTmp">
+        <copy todir="${tmp}/rng">
+            <fileset dir="${src}">
+                <include name="**/*.rng"/>
+            </fileset>
+        </copy>
+    </target>
+        
+    <target name="convertBase" depends="copyToTmp">
+        <mkdir dir="${tmp}/rnc/base/rnc"/>
+        <java fork="true" jar="${trang}" description="convert basemap">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/base/rng/basemap.rng"/>
+            <arg value="${tmp}/rnc/base/rnc/basemap.rnc"/>
+        </java>
+        <java fork="true" jar="${trang}" description="convert basetopic">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/base/rng/basetopic.rng"/>
+            <arg value="${tmp}/rnc/base/rnc/basetopic.rnc"/>
+        </java>
+        <!-- fix comments -->
+        <replaceregexp match="RNG" replace="RNC" flags="g">
+            <fileset dir="${tmp}/rnc/base/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="rng:" replace="rnc:" flags="g">
+            <fileset dir="${tmp}/rnc/base/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match=".rng" replace=".rnc" flags="g">
+            <fileset dir="${tmp}/rnc/base/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        
+    </target>
+    <target name="convertBookmap" depends="copyToTmp, convertBase">
+        <mkdir dir="${tmp}/rnc/bookmap/rnc"/>
+        <java fork="true" jar="${trang}" description="convert bookmap">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/bookmap/rng/bookmap.rng"/>
+            <arg value="${tmp}/rnc/bookmap/rnc/bookmap.rnc"/>
+        </java>
+        <delete dir="${tmp}/rnc/bookmap/rnc">
+            <present targetdir="${tmp}/rnc/base/rnc"/>
+        </delete>
+        <!-- fix comments -->
+        <replaceregexp match="RNG" replace="RNC" flags="g">
+            <fileset dir="${tmp}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="rng:" replace="rnc:" flags="g">
+            <fileset dir="${tmp}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match=".rng" replace=".rnc" flags="g">
+            <fileset dir="${tmp}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <!-- fix includes from base -->
+        <replaceregexp match="topic.mod.rnc" replace="../../base/rnc/topic.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="highlightDomain.mod.rnc" replace="../../base/rnc/highlightDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="utilitiesDomain.mod.rnc" replace="../../base/rnc/utilitiesDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="indexingDomain.mod.rnc" replace="../../base/rnc/indexingDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="hazardstatementDomain.mod.rnc" replace="../../base/rnc/hazardstatementDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="delayResolutionDomain.mod.rnc" replace="../../base/rnc/delayResolutionDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match=" (.)map.mod.rnc" replace=" \1../../base/rnc/map.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="mapGroup.mod.rnc" replace="../../base/rnc/mapGroup.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+    
+        <mkdir dir="${tmp}/rnc/xnal/rnc"/>
+        <move file="${tmp}/rnc/bookmap/rnc/xnalDomain.mod.rnc" tofile="${tmp}/rnc/xnal/rnc/xnalDomain.mod.rnc"/>
+        <replaceregexp match="xnalDomain.mod.rnc" replace="../../xnal/rnc/xnalDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+    </target>
+    <target name="convertTechnicalContent" depends="copyToTmp, convertBase">
+        <mkdir dir="${tmp}/rnc/technicalContent/rnc"/>
+        <java fork="true" jar="${trang}" description="convert map">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/technicalContent/rng/map.rng"/>
+            <arg value="${tmp}/rnc/technicalContent/rnc/map.rnc"/>
+        </java>
+        <java fork="true" jar="${trang}" description="convert topic">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/technicalContent/rng/topic.rng"/>
+            <arg value="${tmp}/rnc/technicalContent/rnc/topic.rnc"/>
+        </java>
+        <java fork="true" jar="${trang}" description="convert concept">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/technicalContent/rng/concept.rng"/>
+            <arg value="${tmp}/rnc/technicalContent/rnc/concept.rnc"/>
+        </java>
+        <java fork="true" jar="${trang}" description="convert ditabase">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/technicalContent/rng/ditabase.rng"/>
+            <arg value="${tmp}/rnc/technicalContent/rnc/ditabase.rnc"/>
+        </java>
+        <java fork="true" jar="${trang}" description="convert general task">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/technicalContent/rng/generalTask.rng"/>
+            <arg value="${tmp}/rnc/technicalContent/rnc/generalTask.rnc"/>
+        </java>
+        <java fork="true" jar="${trang}" description="convert glossary">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/technicalContent/rng/glossary.rng"/>
+            <arg value="${tmp}/rnc/technicalContent/rnc/glossary.rnc"/>
+        </java>
+        <java fork="true" jar="${trang}" description="convert glossentry">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/technicalContent/rng/glossentry.rng"/>
+            <arg value="${tmp}/rnc/technicalContent/rnc/glossentry.rnc"/>
+        </java>
+        <java fork="true" jar="${trang}" description="convert glossgroup">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/technicalContent/rng/glossgroup.rng"/>
+            <arg value="${tmp}/rnc/technicalContent/rnc/glossgroup.rnc"/>
+        </java>
+        <java fork="true" jar="${trang}" description="convert reference">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/technicalContent/rng/reference.rng"/>
+            <arg value="${tmp}/rnc/technicalContent/rnc/reference.rnc"/>
+        </java>
+        <java fork="true" jar="${trang}" description="convert task">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/technicalContent/rng/task.rng"/>
+            <arg value="${tmp}/rnc/technicalContent/rnc/task.rnc"/>
+        </java>
+        
+        <delete dir="${tmp}/rnc/technicalContent/rnc">
+            <present targetdir="${tmp}/rnc/base/rnc"/>
+        </delete>
+        <!-- fix comments -->
+        <replaceregexp match="RNG" replace="RNC" flags="g">
+            <fileset dir="${tmp}/rnc/technicalContent/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="rng:" replace="rnc:" flags="g">
+            <fileset dir="${tmp}/rnc/technicalContent/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match=".rng" replace=".rnc" flags="g">
+            <fileset dir="${tmp}/rnc/technicalContent/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <!-- fix includes from base -->
+        <replaceregexp match="topic.mod.rnc" replace="../../base/rnc/topic.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/technicalContent/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="highlightDomain.mod.rnc" replace="../../base/rnc/highlightDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/technicalContent/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="utilitiesDomain.mod.rnc" replace="../../base/rnc/utilitiesDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/technicalContent/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="indexingDomain.mod.rnc" replace="../../base/rnc/indexingDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/technicalContent/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="hazardstatementDomain.mod.rnc" replace="../../base/rnc/hazardstatementDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/technicalContent/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="delayResolutionDomain.mod.rnc" replace="../../base/rnc/delayResolutionDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/technicalContent/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="map.mod.rnc" replace="../../base/rnc/map.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/technicalContent/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="mapGroup.mod.rnc" replace="../../base/rnc/mapGroup.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/technicalContent/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+    </target>
+    <target name="convertDitaval" depends="copyToTmp">
+        <mkdir dir="${tmp}/rnc/ditaval/rnc"/>
+        <java fork="true" jar="${trang}" description="convert ditaval">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/ditaval/rng/ditaval.rng"/>
+            <arg value="${tmp}/rnc/ditaval/rnc/ditaval.rnc"/>
+        </java>
+        <!-- fix comments -->
+        <replaceregexp match="RNG" replace="RNC" flags="g">
+            <fileset dir="${tmp}/rnc/ditaval/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="rng:" replace="rnc:" flags="g">
+            <fileset dir="${tmp}/rnc/ditaval/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match=".rng" replace=".rnc" flags="g">
+            <fileset dir="${tmp}/rnc/ditaval/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+    </target>
+    <target name="convertLearning" depends="copyToTmp, convertBase, convertBookmap, convertTechnicalContent, convertXnal">
+        <mkdir dir="${tmp}/rnc/learning/rnc"/>
+        <java fork="true" jar="${trang}" description="convert learningAssessment">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/learning/rng/learningAssessment.rng"/>
+            <arg value="${tmp}/rnc/learning/rnc/learningAssessment.rnc"/>
+        </java>
+        <java fork="true" jar="${trang}" description="convert learningBookmap">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/learning/rng/learningBookmap.rng"/>
+            <arg value="${tmp}/rnc/learning/rnc/learningBookmap.rnc"/>
+        </java>
+        <java fork="true" jar="${trang}" description="convert learningContent">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/learning/rng/learningContent.rng"/>
+            <arg value="${tmp}/rnc/learning/rnc/learningContent.rnc"/>
+        </java>
+        <java fork="true" jar="${trang}" description="convert learningMap">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/learning/rng/learningMap.rng"/>
+            <arg value="${tmp}/rnc/learning/rnc/learningMap.rnc"/>
+        </java>
+        <java fork="true" jar="${trang}" description="convert learningOverview">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/learning/rng/learningOverview.rng"/>
+            <arg value="${tmp}/rnc/learning/rnc/learningOverview.rnc"/>
+        </java>
+        <java fork="true" jar="${trang}" description="convert learningPlan">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/learning/rng/learningPlan.rng"/>
+            <arg value="${tmp}/rnc/learning/rnc/learningPlan.rnc"/>
+        </java>
+        <java fork="true" jar="${trang}" description="convert learningSummary">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/learning/rng/learningSummary.rng"/>
+            <arg value="${tmp}/rnc/learning/rnc/learningSummary.rnc"/>
+        </java>
+        <delete dir="${tmp}/rnc/learning/rnc">
+            <present targetdir="${tmp}/rnc/base/rnc"/>
+        </delete>
+        <delete dir="${tmp}/rnc/learning/rnc">
+            <present targetdir="${tmp}/rnc/technicalContent/rnc"/>
+        </delete>
+        <delete dir="${tmp}/rnc/learning/rnc">
+            <present targetdir="${tmp}/rnc/bookmap/rnc"/>
+        </delete>
+        <delete dir="${tmp}/rnc/learning/rnc">
+            <present targetdir="${tmp}/rnc/xnal/rnc"/>
+        </delete>
+        
+        <!-- fix comments -->
+        <replaceregexp match="RNG" replace="RNC" flags="g">
+            <fileset dir="${tmp}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="rng:" replace="rnc:" flags="g">
+            <fileset dir="${tmp}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match=".rng" replace=".rnc" flags="g">
+            <fileset dir="${tmp}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <!-- fix includes from base -->
+        <replaceregexp match="topic.mod.rnc" replace="../../base/rnc/topic.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="highlightDomain.mod.rnc" replace="../../base/rnc/highlightDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="utilitiesDomain.mod.rnc" replace="../../base/rnc/utilitiesDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="indexingDomain.mod.rnc" replace="../../base/rnc/indexingDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="hazardstatementDomain.mod.rnc" replace="../../base/rnc/hazardstatementDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="delayResolutionDomain.mod.rnc" replace="../../base/rnc/delayResolutionDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match=" (.)map.mod.rnc" replace=" \1../../base/rnc/map.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="mapGroup.mod.rnc" replace="../../base/rnc/mapGroup.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <!-- fix includes from bookmap -->
+        <replaceregexp match="bookmap.mod.rnc" replace="../../bookmap/rnc/bookmap.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <!-- fix includes from technical content -->
+        <replaceregexp match="task.mod.rnc" replace="../../technicalContent/rnc/task.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="concept.mod.rnc" replace="../../technicalContent/rnc/concept.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="reference.mod.rnc" replace="../../technicalContent/rnc/reference.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        
+        <!-- fix includes from xnal -->        
+        <replaceregexp match="xnalDomain.mod.rnc" replace="../../xnal/rnc/xnalDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+    </target>
+    <target name="convertMachineryIndustry" depends="copyToTmp, convertBase, convertTechnicalContent">
+        <mkdir dir="${tmp}/rnc/machineryIndustry/rnc"/>
+        <java fork="true" jar="${trang}" description="convert machineryTask">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/machineryIndustry/rng/machineryTask.rng"/>
+            <arg value="${tmp}/rnc/machineryIndustry/rnc/machineryTask.rnc"/>
+        </java>
+        
+        <delete dir="${tmp}/rnc/machineryIndustry/rnc">
+            <present targetdir="${tmp}/rnc/base/rnc"/>
+        </delete>
+        <delete dir="${tmp}/rnc/machineryIndustry/rnc">
+            <include name="task.mod.rnc"/>
+            <include name="uiDomain.mod.rnc"/>
+        </delete>
+        
+        <!-- fix comments -->
+        <replaceregexp match="RNG" replace="RNC" flags="g">
+            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="rng:" replace="rnc:" flags="g">
+            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match=".rng" replace=".rnc" flags="g">
+            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <!-- fix includes from base -->
+        <replaceregexp match="topic.mod.rnc" replace="../../base/rnc/topic.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="highlightDomain.mod.rnc" replace="../../base/rnc/highlightDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="utilitiesDomain.mod.rnc" replace="../../base/rnc/utilitiesDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="indexingDomain.mod.rnc" replace="../../base/rnc/indexingDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="hazardstatementDomain.mod.rnc" replace="../../base/rnc/hazardstatementDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="delayResolutionDomain.mod.rnc" replace="../../base/rnc/delayResolutionDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="map.mod.rnc" replace="../../base/rnc/map.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="mapGroup.mod.rnc" replace="../../base/rnc/mapGroup.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+   
+        <move file="${tmp}/rnc/machineryIndustry/rnc/taskreqDomain.mod.rnc" tofile="${tmp}/rnc/technicalContent/rnc/taskreqDomain.mod.rnc"/>
+        <replaceregexp match="taskreqDomain.mod.rnc" replace="../../technicalContent/rnc/taskreqDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>  
+        <replaceregexp match="uiDomain.mod.rnc" replace="../../technicalContent/rnc/uiDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="task.mod.rnc" replace="../../technicalContent/rnc/task.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+    </target>
+    <target name="convertSubjectScheme" depends="copyToTmp, convertBase">        
+        <mkdir dir="${tmp}/rnc/subjectScheme/rnc"/>
+        <java fork="true" jar="${trang}" description="convert subjectScheme">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/subjectScheme/rng/subjectScheme.rng"/>
+            <arg value="${tmp}/rnc/subjectScheme/rnc/subjectScheme.rnc"/>
+        </java>
+        <java fork="true" jar="${trang}" description="convert classifyMap">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/subjectScheme/rng/classifyMap.rng"/>
+            <arg value="${tmp}/rnc/subjectScheme/rnc/classifyMap.rnc"/>
+        </java>
+        
+        <delete dir="${tmp}/rnc/subjectScheme/rnc">
+            <present targetdir="${tmp}/rnc/base/rnc"/>
+        </delete>
+        <!-- fix comments -->
+        <replaceregexp match="RNG" replace="RNC" flags="g">
+            <fileset dir="${tmp}/rnc/subjectScheme/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="rng:" replace="rnc:" flags="g">
+            <fileset dir="${tmp}/rnc/subjectScheme/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match=".rng" replace=".rnc" flags="g">
+            <fileset dir="${tmp}/rnc/subjectScheme/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <!-- fix includes from base -->
+        <replaceregexp match="topic.mod.rnc" replace="../../base/rnc/topic.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/subjectScheme/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="highlightDomain.mod.rnc" replace="../../base/rnc/highlightDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/subjectScheme/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="utilitiesDomain.mod.rnc" replace="../../base/rnc/utilitiesDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/subjectScheme/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="indexingDomain.mod.rnc" replace="../../base/rnc/indexingDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/subjectScheme/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="hazardstatementDomain.mod.rnc" replace="../../base/rnc/hazardstatementDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/subjectScheme/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="delayResolutionDomain.mod.rnc" replace="../../base/rnc/delayResolutionDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/subjectScheme/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="map.mod.rnc" replace="../../base/rnc/map.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/subjectScheme/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="mapGroup.mod.rnc" replace="../../base/rnc/mapGroup.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/subjectScheme/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+    </target>
+    <target name="convertXhtml" depends="copyToTmp">
+        <mkdir dir="${tmp}/rnc/xhtml/rnc"/>
+        <java fork="true" jar="${trang}" description="convert xhtml">
+            <arg value="-I"/>
+            <arg value="rng"/>
+            <arg value="-O"/>
+            <arg value="rnc"/>
+            <arg value="${tmp}/rng/xhtml/rng/xhtml1-transitional.rng"/>
+            <arg value="${tmp}/rnc/xhtml/rnc/xhtml1-transitional.rnc"/>
+        </java>
+        <!-- fix comments -->
+        <replaceregexp match="RNG" replace="RNC" flags="g">
+            <fileset dir="${tmp}/rnc/xhtml/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="rng:" replace="rnc:" flags="g">
+            <fileset dir="${tmp}/rnc/xhtml/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match=".rng" replace=".rnc" flags="g">
+            <fileset dir="${tmp}/rnc/xhtml/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+    </target>
+    <target name="convertXnal" depends="convertBookmap"/>
+        
+    <target name="convertToTmp" 
+        depends="convertBase, convertBookmap, convertDitaval, 
+        convertLearning, convertMachineryIndustry, convertSubjectScheme, 
+        convertTechnicalContent, convertXhtml, convertXnal">
+    </target>
+    <target name="convert"  depends="convertToTmp">
+        <copy todir="${target}/base/rnc">
+            <fileset dir="${tmp}/rnc/base/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <copy todir="${target}/bookmap/rnc">
+            <fileset dir="${tmp}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <copy todir="${target}/ditaval/rnc">
+            <fileset dir="${tmp}/rnc/ditaval/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <copy todir="${target}/learning/rnc">
+            <fileset dir="${tmp}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <copy todir="${target}/machineryIndustry/rnc">
+            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <copy todir="${target}/subjectScheme/rnc">
+            <fileset dir="${tmp}/rnc/subjectScheme/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <copy todir="${target}/technicalContent/rnc">
+            <fileset dir="${tmp}/rnc/technicalContent/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <copy todir="${target}/xhtml/rnc">
+            <fileset dir="${tmp}/rnc/xhtml/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <copy todir="${target}/xnal/rnc">
+            <fileset dir="${tmp}/rnc/xnal/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <delete dir="${tmp}"/>
+    </target>
+    
+    <target name="clean">
+        <delete dir="${tmp}"/>
+    </target>
+    <target name="test" depends=""/>
+</project>

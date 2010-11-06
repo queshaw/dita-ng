@@ -1,0 +1,121 @@
+# ============================================================= 
+# MODULE:    DITA Learning Assessment - RNC              
+# VERSION:   1.2                                                
+# DATE:      November 2010                                       
+# =============================================================
+
+# Refer to the latest version of this file by the following URI:
+# urn:oXygenxml:dita:rnc:learningAssessment.mod.rnc
+# To refer to this specific version, you may use this value:
+# urn:oXygenxml:dita:rnc:learningAssessment.mod.rnc:1.2
+
+# ============================================================= 
+# SYSTEM:     Darwin Information Typing Architecture (DITA)     
+# PURPOSE:    Define elements and specialization attributes for 
+#             Learning Assessment
+# ORIGINAL CREATION DATE:  
+# September 2010                                                
+# (C) Copyright Syncro Soft 2010                                
+# All Rights Reserved.                                          
+# =============================================================
+
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+
+# Define the domain values of this module
+domains-atts-value |=
+  "(topic learningBase+learningInteractionBase-d learningAssessment)"
+# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
+div {
+  start |= notAllowed
+  global-atts |= notAllowed
+  univ-atts |= notAllowed
+  arch-atts |= notAllowed
+  conref-atts |= notAllowed
+  localization-atts |= notAllowed
+  select-atts |= notAllowed
+  title |= notAllowed
+  related-links |= notAllowed
+  lcSummary |= notAllowed
+  lcDuration |= notAllowed
+  abstract |= notAllowed
+  lcObjectives |= notAllowed
+  lcIntro |= notAllowed
+  shortdesc |= notAllowed
+  section |= notAllowed
+  prolog |= notAllowed
+  titlealts |= notAllowed
+  lcInteraction |= notAllowed
+  learningAssessment-info-types |= notAllowed
+}
+# Define patterns
+learningAssessment = learningAssessment.element
+learningAssessmentbody = learningAssessmentbody.element
+# Define elements content and attributes
+
+# LONG NAME: Learning Assessment
+learningAssessment.content =
+  title,
+  titlealts?,
+  (shortdesc | abstract)?,
+  prolog?,
+  learningAssessmentbody,
+  related-links?,
+  learningAssessment-info-types*
+learningAssessment.attributes =
+  attribute id { xsd:ID },
+  conref-atts,
+  select-atts,
+  localization-atts,
+  attribute outputclass { text }?
+learningAssessment.element =
+  
+  ## A Learning Assessment presents questions or interactions that measure
+  ##         progress, encourage recollection, and stimulate reinforcement of the learning content, and
+  ##         can be presented before the content as a pre-assessment or as a post-assessment test. The
+  ##         interactions use a sub-set of the Question-Test Interoperability (QTI) specification,
+  ##         implemented as a DITA domain specialization.
+  element learningAssessment {
+    learningAssessment.attlist, learningAssessment.content
+  }
+learningAssessment.attlist &=
+  learningAssessment.attributes,
+  arch-atts,
+  [
+    a:defaultValue =
+      "(topic hi-d)                             (topic ut-d)                             (topic indexing-d)                            (topic learningInteractionBase-d)                            (topic learningInteractionBase-d learning-d)                            (topic learningmeta-d)                            (topic learningBase+learningInteractionBase-d)                            (topic learningBase+learningInteractionBase-d learningAssessment)   "
+  ]
+  attribute domains { text }?
+# LONG NAME: Learning Assessment Body
+learningAssessmentbody.content =
+  lcIntro?,
+  lcObjectives?,
+  lcDuration?,
+  lcInteraction*,
+  section*,
+  lcSummary?
+learningAssessmentbody.attributes =
+  univ-atts,
+  attribute outputclass { text }?
+learningAssessmentbody.element =
+  
+  ## The <learningAssessmentbody> element is the main body-level element in a
+  ##         learningAssessment topic.
+  element learningAssessmentbody {
+    learningAssessmentbody.attlist, learningAssessmentbody.content
+  }
+learningAssessmentbody.attlist &= learningAssessmentbody.attributes
+# Specialization attributes. Global attributes and class defaults
+learningAssessment.attlist &=
+  global-atts,
+  [
+    a:defaultValue =
+      "- topic/topic learningBase/learningBase     learningAssessment/learningAssessment "
+  ]
+  attribute class { text }?
+learningAssessmentbody.attlist &=
+  global-atts,
+  [
+    a:defaultValue =
+      "- topic/body  learningBase/learningBasebody learningAssessment/learningAssessmentbody "
+  ]
+  attribute class { text }?
