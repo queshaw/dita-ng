@@ -39,10 +39,9 @@
   </define>
   
   <!--
-    Redefine the infotype entity to exclude 
+    Redefine the infotype to exclude 
     other topic types and disallow nesting
   -->
-  <!-- Redefine the infotype entity to exclude other topic types and disallow nesting -->
   <define name="learningOverview-info-types">
     <ref name="no-topic-nesting.element"/>
   </define>

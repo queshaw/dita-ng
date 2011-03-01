@@ -40,7 +40,7 @@
   <include href="../../base/rng/topic.mod.rng"/>
   <include href="concept.mod.rng">
     <!--
-      Redefine the infotype entity to exclude 
+      Redefine the infotype to exclude 
       other topic types and disallow nesting
     -->
     <define name="concept-info-types">
@@ -48,6 +48,8 @@
     </define>
   </include>
   <include href="../../base/rng/highlightDomain.mod.rng"/>
+    
+  
   <include href="../../base/rng/utilitiesDomain.mod.rng"/>
   <include href="../../base/rng/indexingDomain.mod.rng"/>
   <include href="../../base/rng/hazardstatementDomain.mod.rng"/>
