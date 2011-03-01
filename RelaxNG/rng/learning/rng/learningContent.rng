@@ -43,7 +43,7 @@
   </define>
   
   <!--
-    Redefine the infotype entity to exclude 
+    Redefine the infotype to exclude 
     other topic types and disallow nesting
   -->
   <define name="learningContent-info-types">
