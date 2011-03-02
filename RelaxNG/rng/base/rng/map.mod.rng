@@ -16,7 +16,7 @@
                  specialization attributes for the DITA Maps             
      ORIGINAL CREATION DATE:  
      September 2010                                                
-     (C) Copyright Syncro Soft 2010                                
+     (C) Copyright Syncro Soft 2010-2011                                
      All Rights Reserved.                                          
      ============================================================= -->
 <grammar xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" 
@@ -774,7 +774,10 @@
   <!-- LONG NAME: Link Text -->
   <define name="linktext.content">
     <zeroOrMore>
-      <ref name="words.cnt"/>
+      <choice>
+        <ref name="words.cnt"/>
+        <ref name="ph"/>
+      </choice>
     </zeroOrMore>
   </define>
   <define name="linktext.attributes">

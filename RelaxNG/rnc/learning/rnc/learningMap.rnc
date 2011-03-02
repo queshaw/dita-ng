@@ -14,7 +14,7 @@
 # PURPOSE:    RNC to describe DITA Learning Map
 # ORIGINAL CREATION DATE:  
 # September 2010                                                
-# (C) Copyright Syncro Soft 2010                                
+# (C) Copyright Syncro Soft 2010-2011                                
 # All Rights Reserved.                                          
 # =============================================================
 
@@ -26,7 +26,7 @@ start = learningGroup.element
 domains-atts &=
   [
     a:defaultValue =
-      "(map mapgroup-d)         (topic learningmeta-d) (map learningmap-d)         (topic indexing-d) (topic delay-d)"
+      "(map mapgroup-d)         (topic learningmeta-d) (map learningmap-d)         (topic indexing-d) (topic delay-d)         (topic hi-d) (topic ut-d) (topic hazard-d)"
   ]
   attribute domains { text }?
 # Include modules
@@ -36,6 +36,9 @@ include "../../base/rnc/indexingDomain.mod.rnc"
 include "../../base/rnc/delayResolutionDomain.mod.rnc"
 include "learningMapdomain.mod.rnc"
 include "learningMetadataDomain.mod.rnc"
+include "../../base/rnc/highlightDomain.mod.rnc"
+include "../../base/rnc/utilitiesDomain.mod.rnc"
+include "../../base/rnc/hazardstatementDomain.mod.rnc"
 # Define the any pattern to exclude elements with ID attributes
 # from the wildcard and refer them expliceitely
 any =

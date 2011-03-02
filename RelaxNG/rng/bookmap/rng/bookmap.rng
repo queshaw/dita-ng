@@ -16,7 +16,7 @@
   PURPOSE:    Relax NG schema to describe DITA Book Maps
   ORIGINAL CREATION DATE:
   September 2010
-  (C) Copyright Syncro Soft 2010
+  (C) Copyright Syncro Soft 2010-2011
   All Rights Reserved.
   ============================================================= -->
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
@@ -30,7 +30,8 @@
   <define name="domains-atts" combine="interleave">
     <optional>
       <attribute name="domains" 
-        a:defaultValue="(map bookmap) (topic delay-d) (topic indexing-d) (map mapgroup-d) (topic xnal-d)"/>
+        a:defaultValue="(map bookmap) (topic delay-d) (topic indexing-d) (map mapgroup-d) (topic xnal-d)
+        (topic hi-d) (topic ut-d) (topic hazard-d) (topic abbrev-d) (topic ui-d) (topic pr-d) (topic sw-d)"/>
     </optional>
   </define>
   
@@ -41,6 +42,13 @@
   <include href="../../base/rng/indexingDomain.mod.rng"/>
   <include href="../../base/rng/mapGroup.mod.rng"/>
   <include href="../../xnal/rng/xnalDomain.mod.rng"/>
+  <include href="../../base/rng/highlightDomain.mod.rng"/>
+  <include href="../../base/rng/utilitiesDomain.mod.rng"/>
+  <include href="../../base/rng/hazardstatementDomain.mod.rng"/>
+  <include href="../../technicalContent/rng/abbreviateDomain.mod.rng"/>
+  <include href="../../technicalContent/rng/uiDomain.mod.rng"/>
+  <include href="../../technicalContent/rng/programmingDomain.mod.rng"/>
+  <include href="../../technicalContent/rng/softwareDomain.mod.rng"/>
   
   <!-- Define the any pattern to exclude elements with ID attributes
     from the wildcard and refer them expliceitely  -->

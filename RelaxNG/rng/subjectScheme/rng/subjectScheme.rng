@@ -16,7 +16,7 @@
   PURPOSE:    Relax NG schema to describe DITA Subject Scheme maps
   ORIGINAL CREATION DATE:
   September 2010
-  (C) Copyright Syncro Soft 2010
+  (C) Copyright Syncro Soft 2010-2011
   All Rights Reserved.
   ============================================================= -->
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
@@ -30,7 +30,8 @@
   <define name="domains-atts" combine="interleave">
     <optional>
       <attribute name="domains" 
-        a:defaultValue="(map subjectScheme) (map mapgroup-d)"/>
+        a:defaultValue="(map subjectScheme) (map mapgroup-d)
+                        (topic hi-d) (topic ut-d) (topic hazard-d)"/>
     </optional>    
   </define>
   
@@ -38,6 +39,9 @@
   <include href="../../base/rng/map.mod.rng"/>
   <include href="subjectScheme.mod.rng"/>
   <include href="../../base/rng/mapGroup.mod.rng"/>
+  <include href="../../base/rng/highlightDomain.mod.rng"/>
+  <include href="../../base/rng/utilitiesDomain.mod.rng"/>
+  <include href="../../base/rng/hazardstatementDomain.mod.rng"/>
   
   <!-- Define the any pattern to exclude elements with ID attributes
     from the wildcard and refer them expliceitely  -->

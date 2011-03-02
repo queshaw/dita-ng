@@ -14,7 +14,7 @@
 # PURPOSE:    RNC to describe Learning Content
 # ORIGINAL CREATION DATE:  
 # September 2010                                                
-# (C) Copyright Syncro Soft 2010                                
+# (C) Copyright Syncro Soft 2010-2011                                
 # All Rights Reserved.                                          
 # =============================================================
 
@@ -29,7 +29,7 @@ domains-atts &=
       "(topic learningBase+learningInteractionBase-d)         (topic task) (topic concept) (topic reference)                (topic learningBase+learningInteractionBase-d learningAssessment)         (topic learningInteractionBase-d) (topic learningInteractionBase-d learning-d)         (topic learningmeta-d)         (topic learningBase learningSummary)         (topic learningBase+learningInteractionBase-d learningAssessment)         (topic learningBase+learningInteractionBase-d learningContent)                 (topic hi-d) (topic ut-d) (topic indexing-d)"
   ]
   attribute domains { text }?
-# Redefine the infotype entity to exclude 
+# Redefine the infotype to exclude 
 # other topic types and disallow nesting
 learningContent-info-types =
   (concept.element | task.element | reference.element | topic.element)*,

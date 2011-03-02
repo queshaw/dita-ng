@@ -16,7 +16,7 @@
   PURPOSE:    RNG to describe Learning Bookmap
   ORIGINAL CREATION DATE:  
   September 2010                                                
-  (C) Copyright Syncro Soft 2010                                
+  (C) Copyright Syncro Soft 2010-2011                                
   All Rights Reserved.                                          
   ============================================================= -->
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
@@ -32,7 +32,8 @@
       <attribute name="domains" 
         a:defaultValue="(map bookmap) (map mapgroup-d)
         (topic learningmeta-d) (map learningmap-d)
-        (topic indexing-d) (topic delay-d) (topic xnal-d)"/>
+        (topic indexing-d) (topic delay-d) (topic xnal-d)
+        (topic hi-d) (topic ut-d) (topic hazard-d)"/>
     </optional>
   </define>
   
@@ -45,6 +46,9 @@
   <include href="../../xnal/rng/xnalDomain.mod.rng"/>
   <include href="learningMapdomain.mod.rng"/>
   <include href="learningMetadataDomain.mod.rng"/>
+  <include href="../../base/rng/highlightDomain.mod.rng"/>
+  <include href="../../base/rng/utilitiesDomain.mod.rng"/>
+  <include href="../../base/rng/hazardstatementDomain.mod.rng"/>
   
   <!-- Define the any pattern to exclude elements with ID attributes
     from the wildcard and refer them expliceitely  -->

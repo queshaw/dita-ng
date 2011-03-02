@@ -16,7 +16,7 @@
   PURPOSE:    Relax NG schema to describe DITA Classification maps
   ORIGINAL CREATION DATE:
   September 2010
-  (C) Copyright Syncro Soft 2010
+  (C) Copyright Syncro Soft 2010-2011
   All Rights Reserved.
   ============================================================= -->
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
@@ -30,7 +30,8 @@
   <define name="domains-atts" combine="interleave">
     <optional>
       <attribute name="domains" 
-        a:defaultValue="(map mapgroup-d) (topic indexing-d) (topic delay-d) (map classify-d)"/>
+        a:defaultValue="(map mapgroup-d) (topic indexing-d) (topic delay-d) (map classify-d)
+                        (topic hi-d) (topic ut-d) (topic hazard-d)"/>
     </optional>    
   </define>
   
@@ -40,6 +41,9 @@
   <include href="../../base/rng/indexingDomain.mod.rng"/>
   <include href="../../base/rng/delayResolutionDomain.mod.rng"/>
   <include href="classifyDomain.mod.rng"/>
+  <include href="../../base/rng/highlightDomain.mod.rng"/>
+  <include href="../../base/rng/utilitiesDomain.mod.rng"/>
+  <include href="../../base/rng/hazardstatementDomain.mod.rng"/>
   
   <!-- Define the any pattern to exclude elements with ID attributes
     from the wildcard and refer them expliceitely  -->
