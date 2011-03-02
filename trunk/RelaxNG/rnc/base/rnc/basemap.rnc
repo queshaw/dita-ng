@@ -14,7 +14,7 @@
 # PURPOSE:    Relax NG schema to describe DITA maps
 # ORIGINAL CREATION DATE:
 # September 2010
-# (C) Copyright Syncro Soft 2010
+# (C) Copyright Syncro Soft 2010-2011
 # All Rights Reserved.
 # =============================================================
 
@@ -26,7 +26,7 @@ start = map.element
 domains-atts &=
   [
     a:defaultValue =
-      "(topic delay-d) (topic indexing-d) (map mapgroup-d)"
+      "(topic delay-d) (topic indexing-d) (map mapgroup-d)         (topic hi-d) (topic ut-d) (topic hazard-d)"
   ]
   attribute domains { text }?
 # Include modules
@@ -34,6 +34,9 @@ include "map.mod.rnc"
 include "delayResolutionDomain.mod.rnc"
 include "indexingDomain.mod.rnc"
 include "mapGroup.mod.rnc"
+include "highlightDomain.mod.rnc"
+include "utilitiesDomain.mod.rnc"
+include "hazardstatementDomain.mod.rnc"
 # Define the any pattern to exclude elements with ID attributes
 # from the wildcard and refer them expliceitely
 any =

@@ -16,7 +16,7 @@
                  for Map Group Domain             
      ORIGINAL CREATION DATE:  
      September 2010                                                
-     (C) Copyright Syncro Soft 2010                                
+     (C) Copyright Syncro Soft 2010-2011                                
      All Rights Reserved.                                          
      ============================================================= -->
 
@@ -86,6 +86,9 @@
     </optional>
     <optional>
       <attribute name="keys"/>
+    </optional>
+    <optional>
+      <attribute name="copy-to"/>
     </optional>
     <ref name="topicref-atts"/>
     <ref name="univ-atts"/>

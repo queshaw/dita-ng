@@ -14,7 +14,7 @@
 # PURPOSE:    RNC for Learning Overview
 # ORIGINAL CREATION DATE:  
 # September 2010                                                
-# (C) Copyright Syncro Soft 2010                                
+# (C) Copyright Syncro Soft 2010-2011                                
 # All Rights Reserved.                                          
 # =============================================================
 
@@ -29,10 +29,8 @@ domains-atts &=
       "(topic learningBase+learningInteractionBase-d)          (topic learningInteractionBase-d) (topic learningInteractionBase-d learning-d)         (topic learningmeta-d)         (topic learningBase learningOverview)         (topic hi-d) (topic ut-d) (topic indexing-d)"
   ]
   attribute domains { text }?
-# Redefine the infotype entity to exclude 
+# Redefine the infotype to exclude 
 # other topic types and disallow nesting
-
-# Redefine the infotype entity to exclude other topic types and disallow nesting
 learningOverview-info-types = no-topic-nesting.element
 # Include modules
 include "../../base/rnc/topic.mod.rnc"

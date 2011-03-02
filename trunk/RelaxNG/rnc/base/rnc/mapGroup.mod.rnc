@@ -15,7 +15,7 @@
 #             for Map Group Domain             
 # ORIGINAL CREATION DATE:  
 # September 2010                                                
-# (C) Copyright Syncro Soft 2010                                
+# (C) Copyright Syncro Soft 2010-2011                                
 # All Rights Reserved.                                          
 # =============================================================
 
@@ -56,6 +56,7 @@ topichead.attributes =
   attribute navtitle { text }?,
   attribute outputclass { text }?,
   attribute keys { text }?,
+  attribute copy-to { text }?,
   topicref-atts,
   univ-atts
 topichead.element =

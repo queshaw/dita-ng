@@ -51,7 +51,7 @@
         </replaceregexp>
         
     </target>
-    <target name="convertBookmap" depends="copyToTmp, convertBase">
+    <target name="convertBookmap" depends="copyToTmp, convertBase, convertTechnicalContent">
         <mkdir dir="${tmp}/rnc/bookmap/rnc"/>
         <java fork="true" jar="${trang}" description="convert bookmap">
             <arg value="-I"/>
@@ -63,6 +63,9 @@
         </java>
         <delete dir="${tmp}/rnc/bookmap/rnc">
             <present targetdir="${tmp}/rnc/base/rnc"/>
+        </delete>
+        <delete dir="${tmp}/rnc/bookmap/rnc">
+            <present targetdir="${tmp}/rnc/technicalContent/rnc"/>
         </delete>
         <!-- fix comments -->
         <replaceregexp match="RNG" replace="RNC" flags="g">
@@ -121,7 +124,27 @@
                 <include name="*.rnc"/>
             </fileset>
         </replaceregexp>
-    
+        <!-- fix includes from technical content -->
+        <replaceregexp match="abbreviateDomain.mod.rnc" replace="../../technicalContent/rnc/abbreviateDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="uiDomain.mod.rnc" replace="../../technicalContent/rnc/uiDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="programmingDomain.mod.rnc" replace="../../technicalContent/rnc/programmingDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
+        <replaceregexp match="softwareDomain.mod.rnc" replace="../../technicalContent/rnc/softwareDomain.mod.rnc" flags="g">
+            <fileset dir="${tmp}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </replaceregexp>
         <mkdir dir="${tmp}/rnc/xnal/rnc"/>
         <move file="${tmp}/rnc/bookmap/rnc/xnalDomain.mod.rnc" tofile="${tmp}/rnc/xnal/rnc/xnalDomain.mod.rnc"/>
         <replaceregexp match="xnalDomain.mod.rnc" replace="../../xnal/rnc/xnalDomain.mod.rnc" flags="g">

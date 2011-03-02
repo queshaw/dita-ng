@@ -14,7 +14,7 @@
 # PURPOSE:    Relax NG schema to describe DITA Concepts
 # ORIGINAL CREATION DATE:
 # September 2010
-# (C) Copyright Syncro Soft 2010
+# (C) Copyright Syncro Soft 2010-2011
 # All Rights Reserved.
 # =============================================================
 
@@ -32,7 +32,7 @@ domains-atts &=
 # Include modules
 include "../../base/rnc/topic.mod.rnc"
 include "concept.mod.rnc" {
-  # Redefine the infotype entity to exclude 
+  # Redefine the infotype to exclude 
   # other topic types and disallow nesting
   concept-info-types = concept.element
 }
