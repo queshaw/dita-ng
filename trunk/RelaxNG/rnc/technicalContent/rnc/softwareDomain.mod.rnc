@@ -41,7 +41,7 @@ sw-d-ph =
   | systemoutput.element
   | userinput.element
 sw-d-keyword = cmdname.element | msgnum.element | varname.element
-# Extend the patterns with the domain contriution
+# Extend the patterns with the domain contribution
 pre |= sw-d-pre
 ph |= sw-d-ph
 keyword |= sw-d-keyword

@@ -36,7 +36,7 @@
     <ref name="glossref.element"/>
   </define>
   
-  <!-- Extend the patterns with the domain contriution -->
+  <!-- Extend the patterns with the domain contribution -->
   <define name="topicref" combine="choice">
     <ref name="glossref-d-topicref"/>
   </define>

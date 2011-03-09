@@ -41,7 +41,7 @@ div {
 ui-d-keyword = wintitle.element
 ui-d-ph = menucascade.element | uicontrol.element
 ui-d-pre = screen.element
-# Extend the patterns with the domain contriution
+# Extend the patterns with the domain contribution
 keyword |= ui-d-keyword
 ph |= ui-d-ph
 pre |= ui-d-pre

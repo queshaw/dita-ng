@@ -51,7 +51,7 @@ pr-d-pre = codeblock.element
 pr-d-keyword = apiname.element | option.element | parmname.element
 pr-d-fig = syntaxdiagram.element
 pr-d-dl = parml.element
-# Extend the patterns with the domain contriution
+# Extend the patterns with the domain contribution
 ph |= pr-d-ph
 pre |= pr-d-pre
 keyword |= pr-d-keyword

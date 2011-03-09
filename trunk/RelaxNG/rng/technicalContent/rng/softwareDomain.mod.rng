@@ -56,7 +56,7 @@
     </choice>
   </define>
   
-  <!-- Extend the patterns with the domain contriution -->
+  <!-- Extend the patterns with the domain contribution -->
   <define name="pre" combine="choice">
     <ref name="sw-d-pre"/>
   </define>

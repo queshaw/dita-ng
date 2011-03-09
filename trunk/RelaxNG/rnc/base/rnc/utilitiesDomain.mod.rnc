@@ -35,7 +35,7 @@ words.cnt |= notAllowed
 xref |= notAllowed
 # Define domain extension patterns
 ut-d-fig = imagemap.element
-# Extend the patterns with the domain contriution
+# Extend the patterns with the domain contribution
 fig |= ut-d-fig
 # Define patterns
 imagemap = imagemap.element

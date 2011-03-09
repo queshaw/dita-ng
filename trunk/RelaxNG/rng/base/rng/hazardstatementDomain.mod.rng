@@ -46,7 +46,7 @@
   <define name="hazard-d-note">
     <ref name="hazardstatement.element"/>
   </define>
-  <!-- Extend the patterns with the domain contriution -->
+  <!-- Extend the patterns with the domain contribution -->
   <define name="note" combine="choice">
     <ref name="hazard-d-note"/>
   </define>

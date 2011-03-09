@@ -40,7 +40,7 @@
   <define name="delay-d-keywords">
     <ref name="exportanchors.element"/>
   </define>
-  <!-- Extend the patterns with the domain contriution -->
+  <!-- Extend the patterns with the domain contribution -->
   <define name="keywords" combine="choice">
     <ref name="delay-d-keywords"/>
   </define>
