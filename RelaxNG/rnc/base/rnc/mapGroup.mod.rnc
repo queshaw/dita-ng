@@ -45,7 +45,7 @@ mapgroup-d-topicref =
   | topichead.element
   | topicset.element
   | topicsetref.element
-# Extend the patterns with the domain contriution
+# Extend the patterns with the domain contribution
 topicref |= mapgroup-d-topicref
 # Define elements content and attributes
 

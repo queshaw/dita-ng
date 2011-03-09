@@ -31,7 +31,7 @@ div {
 }
 # Define domain extension patterns
 abbrev-d-term = abbreviated-form.element
-# Extend the patterns with the domain contriution
+# Extend the patterns with the domain contribution
 term |= abbrev-d-term
 # Define patterns
 abbreviated-form = abbreviated-form.element

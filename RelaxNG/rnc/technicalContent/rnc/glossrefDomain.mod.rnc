@@ -30,7 +30,7 @@ univ-atts |= notAllowed
 topicmeta |= notAllowed
 # Define domain extension patterns
 glossref-d-topicref = glossref.element
-# Extend the patterns with the domain contriution
+# Extend the patterns with the domain contribution
 topicref |= glossref-d-topicref
 # Define patterns
 glossref = glossref.element

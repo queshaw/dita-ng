@@ -34,7 +34,7 @@ div {
 # Define domain extension patterns
 taskreq-d-prereq = prelreqs.element
 taskreq-d-postreq = closereqs.element
-# Extend the patterns with the domain contriution
+# Extend the patterns with the domain contribution
 prereq |= taskreq-d-prereq
 postreq |= taskreq-d-postreq
 # Define patterns

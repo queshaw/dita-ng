@@ -37,7 +37,7 @@ univ-atts |= notAllowed
 words.cnt |= notAllowed
 # Define domain extension patterns
 hazard-d-note = hazardstatement.element
-# Extend the patterns with the domain contriution
+# Extend the patterns with the domain contribution
 note |= hazard-d-note
 # Define patterns
 hazardstatement = hazardstatement.element

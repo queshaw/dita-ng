@@ -32,7 +32,7 @@ words.cnt |= notAllowed
 # Define domain extension patterns
 indexing-d-index-base =
   index-see.element | index-see-also.element | index-sort-as.element
-# Extend the patterns with the domain contriution
+# Extend the patterns with the domain contribution
 index-base |= indexing-d-index-base
 # Define elements content and attributes
 

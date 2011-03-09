@@ -55,7 +55,7 @@
       <ref name="topicsetref.element"/>
     </choice>
   </define>
-  <!-- Extend the patterns with the domain contriution -->
+  <!-- Extend the patterns with the domain contribution -->
   <define name="topicref" combine="choice">
     <ref name="mapgroup-d-topicref"/>
   </define>

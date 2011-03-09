@@ -32,7 +32,7 @@ select-atts |= notAllowed
 univ-atts |= notAllowed
 # Define domain extension patterns
 delay-d-keywords = exportanchors.element
-# Extend the patterns with the domain contriution
+# Extend the patterns with the domain contribution
 keywords |= delay-d-keywords
 # Define patterns
 exportanchors = exportanchors.element

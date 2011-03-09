@@ -38,7 +38,7 @@ hi-d-ph =
   | sub.element
   | tt.element
   | u.element
-# Extend the patterns with the domain contriution
+# Extend the patterns with the domain contribution
 ph |= hi-d-ph
 # Define elements content and attributes
 

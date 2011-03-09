@@ -42,7 +42,7 @@
   <define name="ut-d-fig">
     <ref name="imagemap.element"/>
   </define>
-  <!-- Extend the patterns with the domain contriution -->
+  <!-- Extend the patterns with the domain contribution -->
   <define name="fig" combine="choice">
     <ref name="ut-d-fig"/>
   </define>

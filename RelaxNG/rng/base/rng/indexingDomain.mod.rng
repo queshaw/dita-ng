@@ -41,7 +41,7 @@
       <ref name="index-sort-as.element"/>
     </choice>
   </define>
-  <!-- Extend the patterns with the domain contriution -->
+  <!-- Extend the patterns with the domain contribution -->
   <define name="index-base" combine="choice">
     <ref name="indexing-d-index-base"/>
   </define>
