@@ -32,8 +32,7 @@ public class SchemaPatternBuilder extends PatternBuilder {
     Pattern p = new AttributePattern(nameClass, value, loc, defaultValue);
     return schemaInterner.intern(p);
   }
-  
-  
+
   Pattern makeData(Datatype dt, Name dtName, List<String> params) {
     noteDatatype(dt);
     Pattern p = new DataPattern(dt, dtName, params);
