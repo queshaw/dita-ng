@@ -52,12 +52,10 @@
   <!-- default for use in entry content -->
   <define name="tbl.table-titles.mdl">
     <optional>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <optional>
-        <ref name="desc"/>
-      </optional>
+      <ref name="title"/>
+    </optional>
+    <optional>
+      <ref name="desc"/>
     </optional>
   </define>
   <define name="tbl.table-main.mdl">
@@ -66,10 +64,8 @@
     </oneOrMore>
   </define>
   <define name="tbl.table.mdl">
-    <choice>
-      <ref name="tbl.table-titles.mdl"/>
-      <ref name="tbl.table-main.mdl"/>
-    </choice>
+    <ref name="tbl.table-titles.mdl"/>
+    <ref name="tbl.table-main.mdl"/>
   </define>
   <define name="tbl.table.att">
     <optional>

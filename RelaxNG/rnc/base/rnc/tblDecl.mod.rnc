@@ -41,9 +41,9 @@ yesorno = xsd:NMTOKEN
 # no if zero(s), yes if any other value
 paracon = tblcell.cnt
 # default for use in entry content
-tbl.table-titles.mdl = (title?, desc?)?
+tbl.table-titles.mdl = title?, desc?
 tbl.table-main.mdl = tgroup+
-tbl.table.mdl = tbl.table-titles.mdl | tbl.table-main.mdl
+tbl.table.mdl = tbl.table-titles.mdl, tbl.table-main.mdl
 tbl.table.att = attribute pgwide { yesorno }?
 bodyatt = empty
 tbl.tgroup.mdl = colspec*, thead?, tbody
