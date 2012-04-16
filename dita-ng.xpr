@@ -1,103 +1,517 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project version="12.1">
+<project version="14.0">
     <meta>
-        <filters directoryPatterns="" filePatterns="*.xpr"
-            positiveFilePatterns="" showHiddenFiles="false"/>
-        <options/>
+        <filters directoryPatterns="" filePatterns="*.xpr" positiveFilePatterns="" showHiddenFiles="false"/>
+        <options>
+            <serialized version="14.0" xml:space="preserve">
+                <map>
+                    <entry>
+                        <String>catalogs.v5</String>
+                        <String-array>
+                            <String>file:/Users/george/Documents/workspace/dita-ng/RelaxNG/catalog.xml</String>
+                        </String-array>
+                    </entry>
+                    <entry>
+                        <String>key.xml.catalog.option.pane</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>validation.scenario.associations</String>
+                        <scenarioAssociation-array>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/technicalContent/rng/topic.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/technicalContent/rng/task.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/subjectScheme/rng/subjectScheme.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/technicalContent/rng/reference.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/technicalContent/rng/map.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/machineryIndustry/rng/machineryTask.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/learning/rng/learningSummary.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/learning/rng/learningPlan.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/learning/rng/learningOverview.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/learning/rng/learningMap.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/learning/rng/learningContent.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/learning/rng/learningBookmap.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/learning/rng/learningAssessment.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/technicalContent/rng/glossgroup.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/technicalContent/rng/glossentry.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/technicalContent/rng/generalTask.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/technicalContent/rng/ditabase.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/technicalContent/rng/concept.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/subjectScheme/rng/classifyMap.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/bookmap/rng/bookmap.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/base/rng/basetopic.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>RelaxNG/rng/base/rng/basemap.rng</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>validateDITA-NG</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                        </scenarioAssociation-array>
+                    </entry>
+                    <entry>
+                        <String>validation.scenarios</String>
+                        <validationScenario-array>
+                            <validationScenario>
+                                <field name="pairs">
+                                    <list/>
+                                </field>
+                                <field name="type">
+                                    <String>Default_engine_scenario_type_1254902349626</String>
+                                </field>
+                                <field name="name">
+                                    <String>Default_engine_scenario_name_1254902349626</String>
+                                </field>
+                            </validationScenario>
+                            <validationScenario>
+                                <field name="pairs">
+                                    <list>
+                                        <validationUnit>
+                                            <field name="validationType">
+                                                <validationUnitType>
+                                                    <field name="validationInputType">
+                                                        <String>text/rng</String>
+                                                    </field>
+                                                </validationUnitType>
+                                            </field>
+                                            <field name="url">
+                                                <String>${currentFileURL}</String>
+                                            </field>
+                                            <field name="validationEngine">
+                                                <validationEngine>
+                                                    <field name="engineType">
+                                                        <String>&lt;Default engine></String>
+                                                    </field>
+                                                    <field name="allowsAutomaticValidation">
+                                                        <Boolean>true</Boolean>
+                                                    </field>
+                                                </validationEngine>
+                                            </field>
+                                            <field name="allowAutomaticValidation">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                            <field name="extensions">
+                                                <null/>
+                                            </field>
+                                            <field name="validationSchema">
+                                                <null/>
+                                            </field>
+                                        </validationUnit>
+                                        <validationUnit>
+                                            <field name="validationType">
+                                                <validationUnitType>
+                                                    <field name="validationInputType">
+                                                        <String>text/xml</String>
+                                                    </field>
+                                                </validationUnitType>
+                                            </field>
+                                            <field name="url">
+                                                <String>${currentFileURL}</String>
+                                            </field>
+                                            <field name="validationEngine">
+                                                <validationEngine>
+                                                    <field name="engineType">
+                                                        <String>&lt;Default engine></String>
+                                                    </field>
+                                                    <field name="allowsAutomaticValidation">
+                                                        <Boolean>true</Boolean>
+                                                    </field>
+                                                </validationEngine>
+                                            </field>
+                                            <field name="allowAutomaticValidation">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                            <field name="extensions">
+                                                <null/>
+                                            </field>
+                                            <field name="validationSchema">
+                                                <null/>
+                                            </field>
+                                        </validationUnit>
+                                    </list>
+                                </field>
+                                <field name="type">
+                                    <String>Validation_scenario</String>
+                                </field>
+                                <field name="name">
+                                    <String>validateDITA-NG</String>
+                                </field>
+                            </validationScenario>
+                        </validationScenario-array>
+                    </entry>
+                    <entry>
+                        <String>validation.scenarios.load.from.project</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                </map>
+            </serialized>
+        </options>
     </meta>
     <projectTree name="dita-ng.xpr">
-        <folder name="files">
-            <folder path="."/>
+        <folder masterFiles="true" name="Relax NG Main schemas">
+            <folder name="validate">
+                <folder name="rnc">
+                    <file name="RelaxNG/rnc/base/rnc/basemap.rnc"/>
+                    <file name="RelaxNG/rnc/base/rnc/basetopic.rnc"/>
+                    <file name="RelaxNG/rnc/bookmap/rnc/bookmap.rnc"/>
+                    <file name="RelaxNG/rnc/subjectScheme/rnc/classifyMap.rnc"/>
+                    <file name="RelaxNG/rnc/technicalContent/rnc/concept.rnc"/>
+                    <file name="RelaxNG/rnc/technicalContent/rnc/ditabase.rnc"/>
+                    <file name="RelaxNG/rnc/ditaval/rnc/ditaval.rnc"/>
+                    <file name="RelaxNG/rnc/technicalContent/rnc/generalTask.rnc"/>
+                    <file name="RelaxNG/rnc/technicalContent/rnc/glossary.rnc"/>
+                    <file name="RelaxNG/rnc/technicalContent/rnc/glossentry.rnc"/>
+                    <file name="RelaxNG/rnc/technicalContent/rnc/glossgroup.rnc"/>
+                    <file name="RelaxNG/rnc/learning/rnc/learningAssessment.rnc"/>
+                    <file name="RelaxNG/rnc/learning/rnc/learningBookmap.rnc"/>
+                    <file name="RelaxNG/rnc/learning/rnc/learningContent.rnc"/>
+                    <file name="RelaxNG/rnc/learning/rnc/learningMap.rnc"/>
+                    <file name="RelaxNG/rnc/learning/rnc/learningOverview.rnc"/>
+                    <file name="RelaxNG/rnc/learning/rnc/learningPlan.rnc"/>
+                    <file name="RelaxNG/rnc/learning/rnc/learningSummary.rnc"/>
+                    <file name="RelaxNG/rnc/machineryIndustry/rnc/machineryTask.rnc"/>
+                    <file name="RelaxNG/rnc/technicalContent/rnc/map.rnc"/>
+                    <file name="RelaxNG/rnc/technicalContent/rnc/reference.rnc"/>
+                    <file name="RelaxNG/rnc/subjectScheme/rnc/subjectScheme.rnc"/>
+                    <file name="RelaxNG/rnc/technicalContent/rnc/task.rnc"/>
+                    <file name="RelaxNG/rnc/technicalContent/rnc/topic.rnc"/>
+                    <file name="RelaxNG/rnc/xhtml/rnc/xhtml1-transitional.rnc"/>
+                </folder>
+                <folder name="rng">
+                    <file name="RelaxNG/rng/base/rng/basemap.rng"/>
+                    <file name="RelaxNG/rng/base/rng/basetopic.rng"/>
+                    <file name="RelaxNG/rng/bookmap/rng/bookmap.rng"/>
+                    <file name="RelaxNG/rng/subjectScheme/rng/classifyMap.rng"/>
+                    <file name="RelaxNG/rng/technicalContent/rng/concept.rng"/>
+                    <file name="RelaxNG/rng/technicalContent/rng/ditabase.rng"/>
+                    <file name="RelaxNG/rng/ditaval/rng/ditaval.rng"/>
+                    <file name="RelaxNG/rng/technicalContent/rng/generalTask.rng"/>
+                    <file name="RelaxNG/rng/technicalContent/rng/glossary.rng"/>
+                    <file name="RelaxNG/rng/technicalContent/rng/glossentry.rng"/>
+                    <file name="RelaxNG/rng/technicalContent/rng/glossgroup.rng"/>
+                    <file name="RelaxNG/rng/learning/rng/learningAssessment.rng"/>
+                    <file name="RelaxNG/rng/learning/rng/learningBookmap.rng"/>
+                    <file name="RelaxNG/rng/learning/rng/learningContent.rng"/>
+                    <file name="RelaxNG/rng/learning/rng/learningMap.rng"/>
+                    <file name="RelaxNG/rng/learning/rng/learningOverview.rng"/>
+                    <file name="RelaxNG/rng/learning/rng/learningPlan.rng"/>
+                    <file name="RelaxNG/rng/learning/rng/learningSummary.rng"/>
+                    <file name="RelaxNG/rng/machineryIndustry/rng/machineryTask.rng"/>
+                    <file name="RelaxNG/rng/technicalContent/rng/map.rng"/>
+                    <file name="RelaxNG/rng/technicalContent/rng/reference.rng"/>
+                    <file name="RelaxNG/rng/subjectScheme/rng/subjectScheme.rng"/>
+                    <file name="RelaxNG/rng/technicalContent/rng/task.rng"/>
+                    <file name="RelaxNG/rng/technicalContent/rng/topic.rng"/>
+                    <file name="RelaxNG/rng/xhtml/rng/xhtml1-transitional.rng"/>
+                </folder>
+            </folder>
         </folder>
-        <folder name="validate">
-            <folder name="rnc">
-                <file name="RelaxNG/rnc/base/rnc/basemap.rnc"/>
-                <file name="RelaxNG/rnc/base/rnc/basetopic.rnc"/>
-                <file name="RelaxNG/rnc/bookmap/rnc/bookmap.rnc"/>
-                <file
-                    name="RelaxNG/rnc/subjectScheme/rnc/classifyMap.rnc"/>
-                <file
-                    name="RelaxNG/rnc/technicalContent/rnc/concept.rnc"/>
-                <file
-                    name="RelaxNG/rnc/technicalContent/rnc/ditabase.rnc"/>
-                <file name="RelaxNG/rnc/ditaval/rnc/ditaval.rnc"/>
-                <file
-                    name="RelaxNG/rnc/technicalContent/rnc/generalTask.rnc"/>
-                <file
-                    name="RelaxNG/rnc/technicalContent/rnc/glossary.rnc"/>
-                <file
-                    name="RelaxNG/rnc/technicalContent/rnc/glossentry.rnc"/>
-                <file
-                    name="RelaxNG/rnc/technicalContent/rnc/glossgroup.rnc"/>
-                <file
-                    name="RelaxNG/rnc/learning/rnc/learningAssessment.rnc"/>
-                <file
-                    name="RelaxNG/rnc/learning/rnc/learningBookmap.rnc"/>
-                <file
-                    name="RelaxNG/rnc/learning/rnc/learningContent.rnc"/>
-                <file name="RelaxNG/rnc/learning/rnc/learningMap.rnc"/>
-                <file
-                    name="RelaxNG/rnc/learning/rnc/learningOverview.rnc"/>
-                <file name="RelaxNG/rnc/learning/rnc/learningPlan.rnc"/>
-                <file
-                    name="RelaxNG/rnc/learning/rnc/learningSummary.rnc"/>
-                <file
-                    name="RelaxNG/rnc/machineryIndustry/rnc/machineryTask.rnc"/>
-                <file name="RelaxNG/rnc/technicalContent/rnc/map.rnc"/>
-                <file
-                    name="RelaxNG/rnc/technicalContent/rnc/reference.rnc"/>
-                <file
-                    name="RelaxNG/rnc/subjectScheme/rnc/subjectScheme.rnc"/>
-                <file name="RelaxNG/rnc/technicalContent/rnc/task.rnc"/>
-                <file name="RelaxNG/rnc/technicalContent/rnc/topic.rnc"/>
-                <file
-                    name="RelaxNG/rnc/xhtml/rnc/xhtml1-transitional.rnc"
-                />
-            </folder>
-            <folder name="rng">
-                <file name="RelaxNG/rng/base/rng/basemap.rng"/>
-                <file name="RelaxNG/rng/base/rng/basetopic.rng"/>
-                <file name="RelaxNG/rng/bookmap/rng/bookmap.rng"/>
-                <file
-                    name="RelaxNG/rng/subjectScheme/rng/classifyMap.rng"/>
-                <file
-                    name="RelaxNG/rng/technicalContent/rng/concept.rng"/>
-                <file
-                    name="RelaxNG/rng/technicalContent/rng/ditabase.rng"/>
-                <file name="RelaxNG/rng/ditaval/rng/ditaval.rng"/>
-                <file
-                    name="RelaxNG/rng/technicalContent/rng/generalTask.rng"/>
-                <file
-                    name="RelaxNG/rng/technicalContent/rng/glossary.rng"/>
-                <file
-                    name="RelaxNG/rng/technicalContent/rng/glossentry.rng"/>
-                <file
-                    name="RelaxNG/rng/technicalContent/rng/glossgroup.rng"/>
-                <file
-                    name="RelaxNG/rng/learning/rng/learningAssessment.rng"/>
-                <file
-                    name="RelaxNG/rng/learning/rng/learningBookmap.rng"/>
-                <file
-                    name="RelaxNG/rng/learning/rng/learningContent.rng"/>
-                <file name="RelaxNG/rng/learning/rng/learningMap.rng"/>
-                <file
-                    name="RelaxNG/rng/learning/rng/learningOverview.rng"/>
-                <file name="RelaxNG/rng/learning/rng/learningPlan.rng"/>
-                <file
-                    name="RelaxNG/rng/learning/rng/learningSummary.rng"/>
-                <file
-                    name="RelaxNG/rng/machineryIndustry/rng/machineryTask.rng"/>
-                <file name="RelaxNG/rng/technicalContent/rng/map.rng"/>
-                <file
-                    name="RelaxNG/rng/technicalContent/rng/reference.rng"/>
-                <file
-                    name="RelaxNG/rng/subjectScheme/rng/subjectScheme.rng"/>
-                <file name="RelaxNG/rng/technicalContent/rng/task.rng"/>
-                <file name="RelaxNG/rng/technicalContent/rng/topic.rng"/>
-                <file
-                    name="RelaxNG/rng/xhtml/rng/xhtml1-transitional.rng"
-                />
-            </folder>
+        <folder name="files">
+            <folder path="../../demo/DITA-OT1.6.M3/"/>
+            <folder path="."/>
+            <folder path="../ditaot-relax/"/>
+            <folder path="../eXml/samples/dita/"/>
         </folder>
     </projectTree>
 </project>
