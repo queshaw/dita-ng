@@ -2,7 +2,10 @@ package com.oxygenxml.relaxng.defaults;
 
 import org.apache.xerces.parsers.XIncludeAwareParserConfiguration;
 import org.apache.xerces.util.SymbolTable;
+import org.apache.xerces.xni.XMLDocumentHandler;
 import org.apache.xerces.xni.grammars.XMLGrammarPool;
+import org.apache.xerces.xni.parser.XMLComponentManager;
+import org.apache.xerces.xni.parser.XMLDocumentSource;
 
 /**
  * @author george@oxygenxml.com
@@ -14,40 +17,63 @@ public class RelaxDefaultsParserConfiguration extends XIncludeAwareParserConfigu
    * that includes a:defaultValue annotations.
    * See the Relax NG DTD compatibility specification.
    */
-  RelaxNGDefaultsComponent relaxDefaults = null;
-  
+  RelaxNGDefaultsComponent fRelaxDefaults = null;
+
   /**
-   * 
+   * Default constructor.
    */
   public RelaxDefaultsParserConfiguration() {
-    super();
-    relaxDefaults = new RelaxNGDefaultsComponent(fSymbolTable);
-    addComponent(relaxDefaults);
+    this(null, null);
   }
-  
-  /**
-   * 
-   * @param st
-   * @param xgp
+
+  /** 
+   * Constructs a parser configuration using the specified symbol table. 
+   *
+   * @param symbolTable The symbol table to use.
    */
-  public RelaxDefaultsParserConfiguration(SymbolTable st, XMLGrammarPool xgp) {
-    super(st, xgp);
-    relaxDefaults = new RelaxNGDefaultsComponent(fSymbolTable);
-    addComponent(relaxDefaults);
+  public RelaxDefaultsParserConfiguration(SymbolTable symbolTable) {
+    this(symbolTable, null, null);
   }
-  
+
+  /**
+   * Constructs a parser configuration using the specified symbol table and
+   * grammar pool.
+   * <p>
+   *
+   * @param symbolTable The symbol table to use.
+   * @param grammarPool The grammar pool to use.
+   */
+  public RelaxDefaultsParserConfiguration(
+      SymbolTable symbolTable,
+      XMLGrammarPool grammarPool) {
+    this(symbolTable, grammarPool, null);
+  }
+
+  /**
+   * Constructs a parser configuration using the specified symbol table,
+   * grammar pool, and parent settings.
+   * <p>
+   *
+   * @param symbolTable    The symbol table to use.
+   * @param grammarPool    The grammar pool to use.
+   * @param parentSettings The parent settings.
+   */
+  public RelaxDefaultsParserConfiguration(
+      SymbolTable symbolTable,
+      XMLGrammarPool grammarPool,
+      XMLComponentManager parentSettings) {
+
+    super(symbolTable, grammarPool, parentSettings);
+    
+  }
+
   /** 
    * Configures the pipeline. 
    */
   @Override
   protected void configurePipeline() {
     super.configurePipeline();
-    if (fLastComponent != null) {
-      relaxDefaults.setDocumentHandler(fLastComponent.getDocumentHandler());
-      fLastComponent.setDocumentHandler(relaxDefaults);
-      relaxDefaults.setDocumentSource(fLastComponent);
-      fLastComponent = relaxDefaults;
-    }
+    insertRelaxDefaultsComponent();
   }
   
   /**
@@ -56,11 +82,24 @@ public class RelaxDefaultsParserConfiguration extends XIncludeAwareParserConfigu
   @Override
   protected void configureXML11Pipeline() {
     super.configureXML11Pipeline();
-    if (fLastComponent != null) {
-      relaxDefaults.setDocumentHandler(fLastComponent.getDocumentHandler());
-      fLastComponent.setDocumentHandler(relaxDefaults);
-      relaxDefaults.setDocumentSource(fLastComponent);
-      fLastComponent = relaxDefaults;
+    insertRelaxDefaultsComponent();
+  }
+
+  protected void insertRelaxDefaultsComponent() {
+    if (fRelaxDefaults == null) {
+      fRelaxDefaults = new RelaxNGDefaultsComponent();
+      addCommonComponent(fRelaxDefaults);
+      fRelaxDefaults.reset(this);
+    }
+    XMLDocumentSource prev = fLastComponent;
+    fLastComponent = fRelaxDefaults;
+      
+    XMLDocumentHandler next = prev.getDocumentHandler();
+    prev.setDocumentHandler(fRelaxDefaults);
+    fRelaxDefaults.setDocumentSource(prev);
+    if (next != null) {
+        fRelaxDefaults.setDocumentHandler(next);
+        next.setDocumentSource(fRelaxDefaults);
     }
   }
 }
