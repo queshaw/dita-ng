@@ -1,11 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="dist">
+    <!-- Jars location -->
+    <property name="lib" location="lib"/>
+    
     <property name="target" value="RelaxNG/rnc"/>
     <property name="src" value="RelaxNG/rng"/>
     <property name="tmp" value="tmp"/>
     <property name="trang" value="lib/trang.jar"/>
     <property name="dist" value="dist"/>
-    <property name="version" value="20101107"/>
+    <property name="version" value="20120415"/>
+    
+    <!-- Java code -->
+    
+    <!-- Compile java sources. -->
+    <target name="compile">
+        <delete dir="classes" />
+        <mkdir dir="classes"/>
+        <javac srcdir="src" destdir="classes">
+            <classpath>
+                <fileset dir="${lib}">
+                    <include name="*.jar" />
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+    
+    <!-- Build the classes in a jar and put it inside the tei folder -->
+    <target name="jar" depends="compile">
+        <jar basedir="classes" jarfile="dita-ng.jar">
+            <!--We may want to add a reference to jing directly in the jar classpath -->
+            <!--<manifest>
+                <attribute name="Class-Path" value="jing.jar"/>
+            </manifest>-->
+            <service type="org.apache.xerces.xni.parser.XMLParserConfiguration">
+                <provider classname="com.oxygenxml.relaxng.defaults.RelaxDefaultsParserConfiguration"/>
+            </service>
+            <include name="**/*"/>
+            <exclude name="**/*Test*"/>
+        </jar>
+    </target>
+    
+    <!-- Relax NG Schemas -->
     
     <target name="copyToTmp">
         <copy todir="${tmp}/rng">
@@ -14,7 +49,7 @@
             </fileset>
         </copy>
     </target>
-        
+    
     <target name="convertBase" depends="copyToTmp">
         <mkdir dir="${tmp}/rnc/base/rnc"/>
         <java fork="true" jar="${trang}" description="convert basemap">
@@ -558,7 +593,7 @@
                 <include name="*.rnc"/>
             </fileset>
         </replaceregexp>
-   
+        
         <move file="${tmp}/rnc/machineryIndustry/rnc/taskreqDomain.mod.rnc" tofile="${tmp}/rnc/technicalContent/rnc/taskreqDomain.mod.rnc"/>
         <replaceregexp match="taskreqDomain.mod.rnc" replace="../../technicalContent/rnc/taskreqDomain.mod.rnc" flags="g">
             <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
@@ -684,7 +719,7 @@
         </replaceregexp>
     </target>
     <target name="convertXnal" depends="convertBookmap"/>
-        
+    
     <target name="convertToTmp" 
         depends="convertBase, convertBookmap, convertDitaval, 
         convertLearning, convertMachineryIndustry, convertSubjectScheme, 
@@ -739,16 +774,30 @@
         <delete dir="${tmp}"/>
     </target>
     
-    <target name="dist" depends="convert">
+    <target name="dist" depends="convert, jar">
         <mkdir dir="${dist}/dita-ng"/>
         <copy todir="${dist}/dita-ng">
             <fileset dir="." >
                 <include name="RelaxNG/**/*"/>
-                <include name="LICENSE.txt"/>
             </fileset>
         </copy>
-        <zip basedir="${dist}" zipfile="${dist}/dita-ng${version}.zip">
-            <include name="dita-ng/**/*"/>
+        <copy todir="${dist}/dita-ng/RelaxNG">
+            <fileset dir=".">
+                <include name="LICENSE.txt"/>
+                <include name="README.txt"/>
+                <include name="demo/**/*"/>
+            </fileset>
+        </copy>
+        <copy todir="${dist}/dita-ng/RelaxNG/lib">
+            <fileset dir=".">
+                <include name="dita-ng.jar"/>
+            </fileset>
+            <fileset dir="lib">
+                <include name="jing.jar"/>
+            </fileset>
+        </copy>
+        <zip basedir="${dist}/dita-ng" zipfile="${dist}/dita-ng${version}.zip">
+            <include name="**/*"/>
         </zip>
         <delete dir="${dist}/dita-ng"/>
     </target>
@@ -756,6 +805,8 @@
     <target name="clean">
         <delete dir="${tmp}"/>
         <delete dir="${dist}"/>
+        <delete dir="classes"/>
+        <delete file="dita-ng.jar"/>
     </target>
     <target name="test" depends="dist"/>
 </project>
