@@ -21,7 +21,7 @@
 namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
 # Define the root elements
-start = learningGroup.element
+start = map.element
 # The DITA domains attribute
 domains-atts &=
   [
@@ -42,8 +42,10 @@ include "../../base/rnc/hazardstatementDomain.mod.rnc"
 # Define the any pattern to exclude elements with ID attributes
 # from the wildcard and refer them expliceitely
 any =
-  (element * {
-     attribute * { text }*,
-     any
-   }
+  (map.element
+   | anchor.element
+   | element * - (map | anchor) {
+       attribute * { text }*,
+       any
+     }
    | text)*
