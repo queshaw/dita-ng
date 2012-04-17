@@ -20,7 +20,7 @@
 
 namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
-start = section.element
+start = task.element
 # The DITA domains attribute
 domains-atts &=
   [
@@ -42,8 +42,9 @@ include "../../base/rnc/utilitiesDomain.mod.rnc"
 include "../../base/rnc/indexingDomain.mod.rnc"
 include "../../technicalContent/rnc/uiDomain.mod.rnc"
 any =
-  (element * {
-     attribute * { text }*,
-     any
-   }
+  (task.element
+   | element * - task {
+       attribute * { text }*,
+       any
+     }
    | text)*

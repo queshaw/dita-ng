@@ -23,7 +23,7 @@
   xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
   
   <start>
-    <ref name="section.element"/>
+    <ref name="task.element"/>
   </start>
   
   <!-- The DITA domains attribute -->
@@ -60,8 +60,13 @@
   <define name="any">
     <zeroOrMore>
       <choice>
+        <ref name="task.element"/>
         <element>
-          <anyName/>
+          <anyName>
+            <except>
+              <name>task</name>
+            </except>
+          </anyName>
           <zeroOrMore>
             <attribute>
               <anyName/>

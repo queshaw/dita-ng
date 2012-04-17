@@ -23,7 +23,7 @@
   xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
   <!-- Define the root elements -->
   <start>
-    <ref name="learningGroup.element"/>
+    <ref name="map.element"/>
   </start>
   
   <!-- The DITA domains attribute -->
@@ -55,8 +55,15 @@
   <define name="any">
     <zeroOrMore>
       <choice>
+        <ref name="map.element"/>
+        <ref name="anchor.element"/>
         <element>
-          <anyName/>
+          <anyName>
+            <except>
+              <name>map</name>
+              <name>anchor</name>
+            </except>
+          </anyName>
           <zeroOrMore>
             <attribute>
               <anyName/>
