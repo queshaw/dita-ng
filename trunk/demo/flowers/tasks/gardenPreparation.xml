@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="urn:oXygenxml:dita:rng:task.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<!--<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "http://docs.oasis-open.org/dita/v1.1/OS/dtd/task.dtd">-->
 <task id="taskId">
     <title>Garden Preparation</title>
     <taskbody>
