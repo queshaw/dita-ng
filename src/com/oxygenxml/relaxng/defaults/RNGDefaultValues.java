@@ -68,8 +68,8 @@ public class RNGDefaultValues extends RelaxNGDefaultValues {
 
   }
 
-  public RNGDefaultValues(EntityResolver resolver) {
-    super(resolver);
+  public RNGDefaultValues(EntityResolver resolver, ErrorHandler eh) {
+    super(resolver, eh);    
   }
 
   /**

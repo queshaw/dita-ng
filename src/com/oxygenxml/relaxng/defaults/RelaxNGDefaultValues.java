@@ -5,7 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.xml.sax.EntityResolver;
+import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 import com.oxygenxml.relaxng.defaults.OxygenRelaxNGSchemaReader.SchemaWrapper;
 import com.thaiopensource.relaxng.pattern.DefaultValuesExtractor;
@@ -21,9 +24,12 @@ import com.thaiopensource.validate.ValidateProperty;
  */
 public abstract class RelaxNGDefaultValues {
   private EntityResolver resolver;
+  private ErrorHandler eh;
+  
 
-  public RelaxNGDefaultValues(EntityResolver resolver) {
+  public RelaxNGDefaultValues(EntityResolver resolver, ErrorHandler eh) {
     this.resolver = resolver;
+    this.eh = eh;
   }
 
   /**
@@ -130,22 +136,23 @@ public abstract class RelaxNGDefaultValues {
    * 
    * @param uri
    *          The schema uri.
+   * @throws SAXException 
    */
-  public void update(String uri) {
+  public void update(InputSource in) throws SAXException {
     defaultValuesCollector = null;
     PropertyMapBuilder builder = new PropertyMapBuilder();
     builder.put(ValidateProperty.ENTITY_RESOLVER, resolver);
+    builder.put(ValidateProperty.ERROR_HANDLER, eh);
     PropertyMap properties = builder.toPropertyMap();
     try {
-      InputSource in = new InputSource(uri);
       SchemaWrapper sw = (SchemaWrapper) getSchemaReader().createSchema(in,
           properties);
       Pattern start = sw.getStart();
       defaultValuesCollector = new DefaultValuesCollector(start);
     } catch (IncorrectSchemaException e) {
-      e.printStackTrace();
+      eh.warning(new SAXParseException("Error loading defaults: " + e.getMessage(), null, e));
     } catch (Exception e) {
-      e.printStackTrace();
+      eh.warning(new SAXParseException("Error loading defaults: " + e.getMessage(), null, e));
     }
   }
 

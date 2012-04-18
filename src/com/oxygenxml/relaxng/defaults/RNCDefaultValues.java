@@ -23,8 +23,8 @@ import com.thaiopensource.validate.SchemaReader;
  * 
  */
 public class RNCDefaultValues extends RelaxNGDefaultValues {
-  public RNCDefaultValues(EntityResolver resolver) {
-    super(resolver);
+  public RNCDefaultValues(EntityResolver resolver, ErrorHandler eh) {
+    super(resolver, eh);
   }
 
   /**
