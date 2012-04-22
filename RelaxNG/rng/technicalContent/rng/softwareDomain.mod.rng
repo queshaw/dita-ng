@@ -25,17 +25,6 @@
     <value>(topic sw-d)</value>
   </define>
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <div>
-    <start combine="choice"><notAllowed/></start>
-    <define name="global-atts" combine="choice"><notAllowed/></define>
-    <define name="univ-atts" combine="choice"><notAllowed/></define>
-    <define name="words.cnt" combine="choice"><notAllowed/></define>
-    <define name="display-atts" combine="choice"><notAllowed/></define>
-    <define name="basic.ph" combine="choice"><notAllowed/></define>
-    <define name="text" combine="choice"><notAllowed/></define>
-  </div>
-  
   <!-- Define domain extension patterns -->
   <define name="sw-d-pre">
     <ref name="msgblock.element"/>

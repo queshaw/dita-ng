@@ -25,13 +25,6 @@
     <value>(topic abbrev-d)</value>
   </define>
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <div>
-    <start combine="choice"><notAllowed/></start>
-    <define name="global-atts" combine="choice"><notAllowed/></define>
-    <define name="univ-atts" combine="choice"><notAllowed/></define>
-  </div>
-  
   <!-- Define domain extension patterns -->
   <define name="abbrev-d-term">
     <ref name="abbreviated-form.element"/>

@@ -27,29 +27,6 @@
     <value>(topic concept)</value>
   </define>
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <div>
-    <start combine="choice"><notAllowed/></start>
-    <define name="global-atts" combine="choice"><notAllowed/></define>
-    <define name="univ-atts" combine="choice"><notAllowed/></define>
-    <define name="related-links" combine="choice"><notAllowed/></define>
-    <define name="id-atts" combine="choice"><notAllowed/></define>
-    <define name="conref-atts" combine="choice"><notAllowed/></define>
-    <define name="arch-atts" combine="choice"><notAllowed/></define>
-    <define name="info-types" combine="choice"><notAllowed/></define>
-    <define name="localization-atts" combine="choice"><notAllowed/></define>
-    <define name="base-attribute-extensions" combine="choice"><notAllowed/></define>
-    <define name="abstract" combine="choice"><notAllowed/></define>
-    <define name="select-atts" combine="choice"><notAllowed/></define>
-    <define name="title" combine="choice"><notAllowed/></define>
-    <define name="body.cnt" combine="choice"><notAllowed/></define>
-    <define name="shortdesc" combine="choice"><notAllowed/></define>
-    <define name="section" combine="choice"><notAllowed/></define>
-    <define name="prolog" combine="choice"><notAllowed/></define>
-    <define name="titlealts" combine="choice"><notAllowed/></define>
-    <define name="example" combine="choice"><notAllowed/></define>
-  </div>
-  
   <!-- XXX -->
   <define name="concept-info-types">
     <ref name="info-types"/>

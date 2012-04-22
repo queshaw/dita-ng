@@ -22,23 +22,6 @@
   xmlns="http://relaxng.org/ns/structure/1.0" 
   datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <start combine="choice"><notAllowed/></start>
-  <define name="base-attribute-extensions" combine="choice"><notAllowed/></define>
-  <define name="colspec" combine="choice"><notAllowed/></define>
-  <define name="desc" combine="choice"><notAllowed/></define>
-  <define name="entry" combine="choice"><notAllowed/></define>
-  <define name="global-atts" combine="choice"><notAllowed/></define>
-  <define name="id-atts" combine="choice"><notAllowed/></define>
-  <define name="localization-atts" combine="choice"><notAllowed/></define>
-  <define name="row" combine="choice"><notAllowed/></define>
-  <define name="tblcell.cnt" combine="choice"><notAllowed/></define>
-  <define name="tbody" combine="choice"><notAllowed/></define>
-  <define name="tgroup" combine="choice"><notAllowed/></define>
-  <define name="thead" combine="choice"><notAllowed/></define>
-  <define name="title" combine="choice"><notAllowed/></define>
-  <define name="univ-atts" combine="choice"><notAllowed/></define>
-  
   <!-- Define type patterns -->
   <define name="yesorno">
     <data type="NMTOKEN"/>

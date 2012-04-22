@@ -24,10 +24,6 @@ namespace ditaarch = "http://dita.oasis-open.org/architecture/2005/"
 
 # Define the domain values of this module
 domains-atts-value |= ""
-# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
-start |= notAllowed
-domains-atts &= empty
-any |= notAllowed
 # Content elements common to map and topic
 include "commonElements.mod.rnc"
 # MetaData Elements

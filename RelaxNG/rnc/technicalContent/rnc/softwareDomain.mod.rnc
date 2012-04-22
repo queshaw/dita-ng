@@ -23,16 +23,6 @@ namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
 # Define the domain values of this module
 domains-atts-value |= "(topic sw-d)"
-# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
-div {
-  start |= notAllowed
-  global-atts |= notAllowed
-  univ-atts |= notAllowed
-  words.cnt |= notAllowed
-  display-atts |= notAllowed
-  basic.ph |= notAllowed
-  \text |= notAllowed
-}
 # Define domain extension patterns
 sw-d-pre = msgblock.element
 sw-d-ph =

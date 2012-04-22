@@ -23,32 +23,6 @@ namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
 # Define the domain values of this module
 domains-atts-value |= "(topic concept glossentry)"
-# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
-div {
-  start |= notAllowed
-  global-atts |= notAllowed
-  univ-atts |= notAllowed
-  related-links |= notAllowed
-  id-atts |= notAllowed
-  conref-atts |= notAllowed
-  arch-atts |= notAllowed
-  localization-atts |= notAllowed
-  base-attribute-extensions |= notAllowed
-  select-atts |= notAllowed
-  prolog |= notAllowed
-  note.cnt |= notAllowed
-  note |= notAllowed
-  data-element-atts |= notAllowed
-  glossentry-info-types |= notAllowed
-  tm |= notAllowed
-  data.cnt |= notAllowed
-  title.cnt |= notAllowed
-  longdescref |= notAllowed
-  alt |= notAllowed
-  keyword |= notAllowed
-  term |= notAllowed
-  abstract.cnt |= notAllowed
-}
 # Define patterns
 glossAbbreviation = glossAbbreviation.element
 glossAcronym = glossAcronym.element

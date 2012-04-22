@@ -25,19 +25,6 @@
     <value>(topic concept glossgroup)</value>
   </define>
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <div>
-    <start combine="choice"><notAllowed/></start>
-    <define name="arch-atts" combine="choice"><notAllowed/></define>
-    <define name="conref-atts" combine="choice"><notAllowed/></define>
-    <define name="global-atts" combine="choice"><notAllowed/></define>
-    <define name="localization-atts" combine="choice"><notAllowed/></define>
-    <define name="select-atts" combine="choice"><notAllowed/></define>
-    <define name="prolog" combine="choice"><notAllowed/></define>
-    <define name="title" combine="choice"><notAllowed/></define>
-    <define name="glossentry.element" combine="choice"><notAllowed/></define>
-  </div>
-  
   <!-- XXX -->
   <define name="glossgroup-info-types">
     <choice>

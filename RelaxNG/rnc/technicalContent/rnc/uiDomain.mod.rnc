@@ -23,20 +23,6 @@ namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
 # Define the domain values of this module
 domains-atts-value |= "(topic ui-d)"
-# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
-div {
-  start |= notAllowed
-  global-atts |= notAllowed
-  univ-atts |= notAllowed
-  display-atts |= notAllowed
-  data.elements.incl |= notAllowed
-  foreign.unknown.incl |= notAllowed
-  basic.ph.notm |= notAllowed
-  words.cnt |= notAllowed
-  txt.incl |= notAllowed
-  image |= notAllowed
-  \text |= notAllowed
-}
 # Define domain extension patterns
 ui-d-keyword = wintitle.element
 ui-d-ph = menucascade.element | uicontrol.element

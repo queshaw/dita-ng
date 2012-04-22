@@ -27,21 +27,7 @@
   <define name="domains-atts-value" combine="choice">
     <value>(topic hazard-d)</value>
   </define>
-  
-  
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <start combine="choice"><notAllowed/></start>
-  <define name="alt" combine="choice"><notAllowed/></define>
-  <define name="basic.ph" combine="choice"><notAllowed/></define>
-  <define name="global-atts" combine="choice"><notAllowed/></define>
-  <define name="longdescref" combine="choice"><notAllowed/></define>
-  <define name="ph" combine="choice"><notAllowed/></define>
-  <define name="simpletable" combine="choice"><notAllowed/></define>
-  <define name="sl" combine="choice"><notAllowed/></define>
-  <define name="tm" combine="choice"><notAllowed/></define>
-  <define name="univ-atts" combine="choice"><notAllowed/></define>
-  <define name="words.cnt" combine="choice"><notAllowed/></define>
-  
+
   <!-- Define domain extension patterns -->
   <define name="hazard-d-note">
     <ref name="hazardstatement.element"/>

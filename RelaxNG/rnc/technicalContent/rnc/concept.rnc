@@ -33,7 +33,7 @@ domains-atts &=
 include "../../base/rnc/topic.mod.rnc"
 include "concept.mod.rnc" {
   # Redefine the infotype to exclude 
-  # other topic types and disallow nesting
+  # other topic types
   concept-info-types = concept.element
 }
 include "../../base/rnc/highlightDomain.mod.rnc"

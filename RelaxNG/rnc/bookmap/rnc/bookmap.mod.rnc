@@ -23,42 +23,6 @@ namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
 # Define the domain values of this module
 domains-atts-value |= "(map bookmap)"
-# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
-start |= notAllowed
-arch-atts |= notAllowed
-audience |= notAllowed
-author |= notAllowed
-base-attribute-extensions |= notAllowed
-basic.ph.noxref |= notAllowed
-category |= notAllowed
-conref-atts |= notAllowed
-critdates |= notAllowed
-data |= notAllowed
-data-element-atts |= notAllowed
-domains-atts &= empty
-global-atts |= notAllowed
-id-atts |= notAllowed
-image |= notAllowed
-keyword |= notAllowed
-keywords |= notAllowed
-linktext |= notAllowed
-localization-atts |= notAllowed
-metadata |= notAllowed
-othermeta |= notAllowed
-permissions |= notAllowed
-prodinfo |= notAllowed
-reltable |= notAllowed
-resourceid |= notAllowed
-searchtitle |= notAllowed
-select-atts |= notAllowed
-shortdesc |= notAllowed
-source |= notAllowed
-title |= notAllowed
-topicmeta |= notAllowed
-topicref |= notAllowed
-topicref-atts |= notAllowed
-univ-atts |= notAllowed
-words.cnt |= notAllowed
 # Define patterns
 abbrevlist = abbrevlist.element
 bookabstract = bookabstract.element

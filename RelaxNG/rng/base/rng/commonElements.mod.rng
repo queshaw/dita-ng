@@ -24,36 +24,6 @@
   xmlns="http://relaxng.org/ns/structure/1.0" 
   datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <start combine="choice"><notAllowed/></start>
-  <define name="any" combine="choice"><notAllowed/></define>
-  <define name="audience.element" combine="choice"><notAllowed/></define>
-  <define name="author.element" combine="choice"><notAllowed/></define>
-  <define name="brand.element" combine="choice"><notAllowed/></define>
-  <define name="category.element" combine="choice"><notAllowed/></define>
-  <define name="component.element" combine="choice"><notAllowed/></define>
-  <define name="copyrholder.element" combine="choice"><notAllowed/></define>
-  <define name="copyright.element" combine="choice"><notAllowed/></define>
-  <define name="copyryear.element" combine="choice"><notAllowed/></define>
-  <define name="created.element" combine="choice"><notAllowed/></define>
-  <define name="critdates.element" combine="choice"><notAllowed/></define>
-  <define name="featnum.element" combine="choice"><notAllowed/></define>
-  <define name="keywords.element" combine="choice"><notAllowed/></define>
-  <define name="metadata.element" combine="choice"><notAllowed/></define>
-  <define name="othermeta.element" combine="choice"><notAllowed/></define>
-  <define name="permissions.element" combine="choice"><notAllowed/></define>
-  <define name="platform.element" combine="choice"><notAllowed/></define>
-  <define name="prodinfo.element" combine="choice"><notAllowed/></define>
-  <define name="prodname.element" combine="choice"><notAllowed/></define>
-  <define name="prognum.element" combine="choice"><notAllowed/></define>
-  <define name="publisher.element" combine="choice"><notAllowed/></define>
-  <define name="resourceid.element" combine="choice"><notAllowed/></define>
-  <define name="revised.element" combine="choice"><notAllowed/></define>
-  <define name="series.element" combine="choice"><notAllowed/></define>
-  <define name="source.element" combine="choice"><notAllowed/></define>
-  <define name="vrm.element" combine="choice"><notAllowed/></define>
-  <define name="vrmlist.element" combine="choice"><notAllowed/></define>
-  
   <!-- Define patterns -->
   
   <define name="alt">
@@ -816,12 +786,18 @@
     </optional>
     <optional>
       <attribute name="conaction">
+        <a:documentation>This attribute enables users to push content into a new location.</a:documentation>
         <choice>
           <value>mark</value>
+          <a:documentation>Marks the reference position.</a:documentation>
           <value>pushafter</value>
+          <a:documentation>Push after the marked position.</a:documentation>
           <value>pushbefore</value>
+          <a:documentation>Push before the marked position.</a:documentation>
           <value>pushreplace</value>
+          <a:documentation>Push and replace content.</a:documentation>
           <value>-dita-use-conref-target</value>
+          <a:documentation>Use the value from the conref target.</a:documentation>
         </choice>
       </attribute>
     </optional>

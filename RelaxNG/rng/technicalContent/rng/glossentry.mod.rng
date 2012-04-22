@@ -25,33 +25,6 @@
     <value>(topic concept glossentry)</value>
   </define>
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <div>
-    <start combine="choice"><notAllowed/></start>
-    <define name="global-atts" combine="choice"><notAllowed/></define>
-    <define name="univ-atts" combine="choice"><notAllowed/></define>
-    <define name="related-links" combine="choice"><notAllowed/></define>
-    <define name="id-atts" combine="choice"><notAllowed/></define>
-    <define name="conref-atts" combine="choice"><notAllowed/></define>
-    <define name="arch-atts" combine="choice"><notAllowed/></define>
-    <define name="localization-atts" combine="choice"><notAllowed/></define>
-    <define name="base-attribute-extensions" combine="choice"><notAllowed/></define>
-    <define name="select-atts" combine="choice"><notAllowed/></define>
-    <define name="prolog" combine="choice"><notAllowed/></define>
-    <define name="note.cnt" combine="choice"><notAllowed/></define>
-    <define name="note" combine="choice"><notAllowed/></define>
-    <define name="data-element-atts" combine="choice"><notAllowed/></define>
-    <define name="glossentry-info-types" combine="choice"><notAllowed/></define>
-    <define name="tm" combine="choice"><notAllowed/></define>
-    <define name="data.cnt" combine="choice"><notAllowed/></define>
-    <define name="title.cnt" combine="choice"><notAllowed/></define>
-    <define name="longdescref" combine="choice"><notAllowed/></define>
-    <define name="alt" combine="choice"><notAllowed/></define>
-    <define name="keyword" combine="choice"><notAllowed/></define>
-    <define name="term" combine="choice"><notAllowed/></define>
-    <define name="abstract.cnt" combine="choice"><notAllowed/></define>
-  </div>
-  
   <!-- Define patterns -->
   <define name="glossAbbreviation">
     <ref name="glossAbbreviation.element"/>

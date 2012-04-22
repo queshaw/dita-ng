@@ -27,17 +27,6 @@
     <value>(topic ut-d)</value>
   </define>
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <start combine="choice"><notAllowed/></start>
-  <define name="display-atts" combine="choice"><notAllowed/></define>
-  <define name="global-atts" combine="choice"><notAllowed/></define>
-  <define name="image" combine="choice"><notAllowed/></define>
-  <define name="text" combine="choice"><notAllowed/></define>
-  <define name="univ-atts" combine="choice"><notAllowed/></define>
-  <define name="univ-atts-translate-no" combine="choice"><notAllowed/></define>
-  <define name="words.cnt" combine="choice"><notAllowed/></define>
-  <define name="xref" combine="choice"><notAllowed/></define>
-  
   <!-- Define domain extension patterns -->
   <define name="ut-d-fig">
     <ref name="imagemap.element"/>

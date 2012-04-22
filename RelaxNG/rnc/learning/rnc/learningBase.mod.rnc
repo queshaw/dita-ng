@@ -23,27 +23,6 @@ namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
 # Define the domain values of this module
 domains-atts-value |= "(topic learningBase+learningInteractionBase-d)"
-# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
-div {
-  start |= notAllowed
-  global-atts |= notAllowed
-  univ-atts |= notAllowed
-  arch-atts |= notAllowed
-  conref-atts |= notAllowed
-  localization-atts |= notAllowed
-  select-atts |= notAllowed
-  title |= notAllowed
-  related-links |= notAllowed
-  abstract |= notAllowed
-  shortdesc |= notAllowed
-  section |= notAllowed
-  prolog |= notAllowed
-  titlealts |= notAllowed
-  info-types |= notAllowed
-  section.cnt |= notAllowed
-  ph.cnt |= notAllowed
-  lcInteractionBase |= notAllowed
-}
 learningBasebody = learningBasebody.element
 lcIntro = lcIntro.element
 lcObjectives = lcObjectives.element

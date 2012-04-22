@@ -20,22 +20,6 @@
 
 namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
-# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
-start |= notAllowed
-base-attribute-extensions |= notAllowed
-colspec |= notAllowed
-desc |= notAllowed
-entry |= notAllowed
-global-atts |= notAllowed
-id-atts |= notAllowed
-localization-atts |= notAllowed
-row |= notAllowed
-tblcell.cnt |= notAllowed
-tbody |= notAllowed
-tgroup |= notAllowed
-thead |= notAllowed
-title |= notAllowed
-univ-atts |= notAllowed
 # Define type patterns
 yesorno = xsd:NMTOKEN
 # no if zero(s), yes if any other value

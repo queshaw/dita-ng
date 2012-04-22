@@ -23,13 +23,6 @@ namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
 # Define the domain values of this module
 domains-atts-value |= "(topic delay-d)"
-# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
-start |= notAllowed
-conref-atts |= notAllowed
-global-atts |= notAllowed
-localization-atts |= notAllowed
-select-atts |= notAllowed
-univ-atts |= notAllowed
 # Define domain extension patterns
 delay-d-keywords = exportanchors.element
 # Extend the patterns with the domain contribution

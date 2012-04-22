@@ -28,26 +28,6 @@
     <value>(topic learningInteractionBase-d learning-d)</value>
   </define>
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <div>
-    <start combine="choice"><notAllowed/></start>
-    <define name="global-atts" combine="choice"><notAllowed/></define>
-    <define name="univ-atts" combine="choice"><notAllowed/></define>
-    <define name="conref-atts" combine="choice"><notAllowed/></define>
-    <define name="localization-atts" combine="choice"><notAllowed/></define>
-    <define name="select-atts" combine="choice"><notAllowed/></define>
-    <define name="title" combine="choice"><notAllowed/></define>
-    <define name="words.cnt" combine="choice"><notAllowed/></define>
-    <define name="image" combine="choice"><notAllowed/></define>
-    <define name="data" combine="choice"><notAllowed/></define>
-    <define name="note.cnt" combine="choice"><notAllowed/></define>
-    <define name="xref" combine="choice"><notAllowed/></define>
-    <define name="imagemap" combine="choice"><notAllowed/></define>
-    <define name="text" combine="choice"><notAllowed/></define>
-    <define name="ph.cnt" combine="choice"><notAllowed/></define>
-    <define name="object" combine="choice"><notAllowed/></define>
-    <define name="univ-atts-translate-no" combine="choice"><notAllowed/></define>
-  </div>
   
   <define name="learning-d-note">
     <ref name="lcInstructornote.element"/>

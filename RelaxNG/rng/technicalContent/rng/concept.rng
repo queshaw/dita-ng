@@ -41,15 +41,13 @@
   <include href="concept.mod.rng">
     <!--
       Redefine the infotype to exclude 
-      other topic types and disallow nesting
+      other topic types
     -->
     <define name="concept-info-types">
       <ref name="concept.element"/>
     </define>
   </include>
   <include href="../../base/rng/highlightDomain.mod.rng"/>
-    
-  
   <include href="../../base/rng/utilitiesDomain.mod.rng"/>
   <include href="../../base/rng/indexingDomain.mod.rng"/>
   <include href="../../base/rng/hazardstatementDomain.mod.rng"/>
