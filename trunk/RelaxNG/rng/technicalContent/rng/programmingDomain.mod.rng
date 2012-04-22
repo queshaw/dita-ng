@@ -25,29 +25,6 @@
     <value>(topic pr-d)</value>
   </define>
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <div>
-    <start combine="choice"><notAllowed/></start>
-    <define name="global-atts" combine="choice"><notAllowed/></define>
-    <define name="univ-atts" combine="choice"><notAllowed/></define>
-    <define name="words.cnt" combine="choice"><notAllowed/></define>
-    <define name="title" combine="choice"><notAllowed/></define>
-    <define name="data.elements.incl" combine="choice"><notAllowed/></define>    
-    <define name="foreign.unknown.incl" combine="choice"><notAllowed/></define>
-    <define name="filter-atts" combine="choice"><notAllowed/></define>
-    <define name="xrefph.cnt" combine="choice"><notAllowed/></define>
-    <define name="display-atts" combine="choice"><notAllowed/></define>
-    <define name="defn.cnt" combine="choice"><notAllowed/></define>
-    <define name="basic.ph" combine="choice"><notAllowed/></define>
-    <define name="id-atts" combine="choice"><notAllowed/></define>
-    <define name="basic.ph.notm" combine="choice"><notAllowed/></define>
-    <define name="text" combine="choice"><notAllowed/></define>
-    <define name="txt.incl" combine="choice"><notAllowed/></define>
-    <define name="localization-atts" combine="choice"><notAllowed/></define>
-    <define name="base-attribute-extensions" combine="choice"><notAllowed/></define>
-    <define name="term.cnt" combine="choice"><notAllowed/></define>
-  </div>
-  
   <!-- Define domain extension patterns -->
   <define name="pr-d-ph">
     <choice>

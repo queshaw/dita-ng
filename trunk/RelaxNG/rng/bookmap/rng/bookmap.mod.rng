@@ -26,42 +26,6 @@
     <value>(map bookmap)</value>
   </define>
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <start combine="choice"><notAllowed/></start>
-  <define name="arch-atts" combine="choice"><notAllowed/></define>
-  <define name="audience" combine="choice"><notAllowed/></define>
-  <define name="author" combine="choice"><notAllowed/></define>
-  <define name="base-attribute-extensions" combine="choice"><notAllowed/></define>
-  <define name="basic.ph.noxref" combine="choice"><notAllowed/></define>
-  <define name="category" combine="choice"><notAllowed/></define>
-  <define name="conref-atts" combine="choice"><notAllowed/></define>
-  <define name="critdates" combine="choice"><notAllowed/></define>
-  <define name="data" combine="choice"><notAllowed/></define>
-  <define name="data-element-atts" combine="choice"><notAllowed/></define>
-  <define name="domains-atts" combine="interleave"><empty/></define>
-  <define name="global-atts" combine="choice"><notAllowed/></define>
-  <define name="id-atts" combine="choice"><notAllowed/></define>
-  <define name="image" combine="choice"><notAllowed/></define>
-  <define name="keyword" combine="choice"><notAllowed/></define>
-  <define name="keywords" combine="choice"><notAllowed/></define>
-  <define name="linktext" combine="choice"><notAllowed/></define>
-  <define name="localization-atts" combine="choice"><notAllowed/></define>
-  <define name="metadata" combine="choice"><notAllowed/></define>
-  <define name="othermeta" combine="choice"><notAllowed/></define>
-  <define name="permissions" combine="choice"><notAllowed/></define>
-  <define name="prodinfo" combine="choice"><notAllowed/></define>
-  <define name="reltable" combine="choice"><notAllowed/></define>
-  <define name="resourceid" combine="choice"><notAllowed/></define>
-  <define name="searchtitle" combine="choice"><notAllowed/></define>
-  <define name="select-atts" combine="choice"><notAllowed/></define>
-  <define name="shortdesc" combine="choice"><notAllowed/></define>
-  <define name="source" combine="choice"><notAllowed/></define>
-  <define name="title" combine="choice"><notAllowed/></define>
-  <define name="topicmeta" combine="choice"><notAllowed/></define>
-  <define name="topicref" combine="choice"><notAllowed/></define>
-  <define name="topicref-atts" combine="choice"><notAllowed/></define>
-  <define name="univ-atts" combine="choice"><notAllowed/></define>
-  <define name="words.cnt" combine="choice"><notAllowed/></define>
   
   <!-- Define patterns -->
   <define name="abbrevlist">

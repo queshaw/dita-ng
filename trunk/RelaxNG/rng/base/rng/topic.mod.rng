@@ -29,10 +29,6 @@
     <value></value>
   </define>
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <start combine="choice"><notAllowed/></start>
-  <define name="domains-atts" combine="interleave"><empty/></define>
-  
   <define name="arch-atts">
     <optional>
       <attribute name="ditaarch:DITAArchVersion" a:defaultValue="1.2"/>

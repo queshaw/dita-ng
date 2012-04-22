@@ -25,15 +25,6 @@
     <value>(topic task taskreq-d)</value>
   </define>
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <div>
-    <start combine="choice"><notAllowed/></start>
-    <define name="global-atts" combine="choice"><notAllowed/></define>
-    <define name="univ-atts" combine="choice"><notAllowed/></define>
-    <define name="data-element-atts" combine="choice"><notAllowed/></define>
-    <define name="listitem.cnt" combine="choice"><notAllowed/></define>
-  </div>
-  
   <!-- Define domain extension patterns -->
   <define name="taskreq-d-prereq">
     <ref name="prelreqs.element"/>

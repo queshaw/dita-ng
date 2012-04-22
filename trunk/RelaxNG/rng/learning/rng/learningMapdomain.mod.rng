@@ -27,14 +27,6 @@
     <value>(map learningmap-d)</value>
   </define>
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <div>
-    <start combine="choice"><notAllowed/></start>
-    <define name="global-atts" combine="choice"><notAllowed/></define>
-    <define name="univ-atts" combine="choice"><notAllowed/></define>
-    <define name="topicmeta" combine="choice"><notAllowed/></define>
-  </div>
-  
   <define name="learningmap-d-topicref">
     <choice>
       <ref name="learningObject.element"/>

@@ -24,9 +24,6 @@ namespace ditaarch = "http://dita.oasis-open.org/architecture/2005/"
 
 # Define the domain values of this module
 domains-atts-value |= ""
-# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
-start |= notAllowed
-domains-atts &= empty
 arch-atts =
   [ a:defaultValue = "1.2" ]
   attribute ditaarch:DITAArchVersion { text }?

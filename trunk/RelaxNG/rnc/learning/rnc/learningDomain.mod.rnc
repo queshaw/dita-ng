@@ -23,26 +23,6 @@ namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
 # Define the domain values of this module
 domains-atts-value |= "(topic learningInteractionBase-d learning-d)"
-# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
-div {
-  start |= notAllowed
-  global-atts |= notAllowed
-  univ-atts |= notAllowed
-  conref-atts |= notAllowed
-  localization-atts |= notAllowed
-  select-atts |= notAllowed
-  title |= notAllowed
-  words.cnt |= notAllowed
-  image |= notAllowed
-  data |= notAllowed
-  note.cnt |= notAllowed
-  xref |= notAllowed
-  imagemap |= notAllowed
-  \text |= notAllowed
-  ph.cnt |= notAllowed
-  object |= notAllowed
-  univ-atts-translate-no |= notAllowed
-}
 learning-d-note = lcInstructornote.element
 note |= learning-d-note
 # The following elements are specializations of lcInteractionBase, 

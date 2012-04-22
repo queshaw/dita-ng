@@ -29,20 +29,6 @@
     <value>(map mapgroup-d)</value>
   </define>
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <start combine="choice"><notAllowed/></start>
-  <define name="anchor" combine="choice"><notAllowed/></define>
-  <define name="conref-atts" combine="choice"><notAllowed/></define>
-  <define name="data.elements.incl" combine="choice"><notAllowed/></define>
-  <define name="global-atts" combine="choice"><notAllowed/></define>
-  <define name="localization-atts" combine="choice"><notAllowed/></define>
-  <define name="navref" combine="choice"><notAllowed/></define>
-  <define name="select-atts" combine="choice"><notAllowed/></define>
-  <define name="topicmeta" combine="choice"><notAllowed/></define>
-  <define name="topicref-atts" combine="choice"><notAllowed/></define>
-  <define name="topicref-atts-without-format" combine="choice"><notAllowed/></define>
-  <define name="univ-atts" combine="choice"><notAllowed/></define>
-  
   <!-- Define domain extension patterns -->
   <define name="mapgroup-d-topicref">
     <choice>

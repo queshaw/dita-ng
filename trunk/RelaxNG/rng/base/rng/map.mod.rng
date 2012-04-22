@@ -29,11 +29,6 @@
     <value></value>
   </define>
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <start combine="choice"><notAllowed/></start>
-  <define name="domains-atts" combine="interleave"><empty/></define>
-  <define name="any" combine="choice"><notAllowed/></define>
-  
   <!-- Content elements common to map and topic -->
   <include href="commonElements.mod.rng"/>
   <!-- MetaData Elements -->

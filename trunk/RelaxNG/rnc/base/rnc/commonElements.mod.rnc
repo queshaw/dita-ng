@@ -22,35 +22,6 @@
 
 namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
-# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
-start |= notAllowed
-any |= notAllowed
-audience.element |= notAllowed
-author.element |= notAllowed
-brand.element |= notAllowed
-category.element |= notAllowed
-component.element |= notAllowed
-copyrholder.element |= notAllowed
-copyright.element |= notAllowed
-copyryear.element |= notAllowed
-created.element |= notAllowed
-critdates.element |= notAllowed
-featnum.element |= notAllowed
-keywords.element |= notAllowed
-metadata.element |= notAllowed
-othermeta.element |= notAllowed
-permissions.element |= notAllowed
-platform.element |= notAllowed
-prodinfo.element |= notAllowed
-prodname.element |= notAllowed
-prognum.element |= notAllowed
-publisher.element |= notAllowed
-resourceid.element |= notAllowed
-revised.element |= notAllowed
-series.element |= notAllowed
-source.element |= notAllowed
-vrm.element |= notAllowed
-vrmlist.element |= notAllowed
 # Define patterns
 alt = alt.element
 boolean = boolean.element
@@ -400,12 +371,24 @@ select-atts =
 conref-atts =
   attribute conref { text }?,
   attribute conrefend { text }?,
+  
+  ## This attribute enables users to push content into a new location.
   attribute conaction {
+    
+    ## Marks the reference position.
     "mark"
-    | "pushafter"
-    | "pushbefore"
-    | "pushreplace"
-    | "-dita-use-conref-target"
+    | 
+      ## Push after the marked position.
+      "pushafter"
+    | 
+      ## Push before the marked position.
+      "pushbefore"
+    | 
+      ## Push and replace content.
+      "pushreplace"
+    | 
+      ## Use the value from the conref target.
+      "-dita-use-conref-target"
   }?,
   attribute conkeyref { text }?
 id-atts =

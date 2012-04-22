@@ -23,18 +23,6 @@ namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
 # Define the domain values of this module
 domains-atts-value |= "(topic hazard-d)"
-# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
-start |= notAllowed
-alt |= notAllowed
-basic.ph |= notAllowed
-global-atts |= notAllowed
-longdescref |= notAllowed
-ph |= notAllowed
-simpletable |= notAllowed
-sl |= notAllowed
-tm |= notAllowed
-univ-atts |= notAllowed
-words.cnt |= notAllowed
 # Define domain extension patterns
 hazard-d-note = hazardstatement.element
 # Extend the patterns with the domain contribution

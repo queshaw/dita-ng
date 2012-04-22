@@ -23,36 +23,6 @@ namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
 # Define the domain values of this module
 domains-atts-value |= "(topic reference)"
-# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
-div {
-  start |= notAllowed
-  global-atts |= notAllowed
-  univ-atts |= notAllowed
-  title |= notAllowed
-  data.elements.incl |= notAllowed
-  foreign.unknown.incl |= notAllowed
-  display-atts |= notAllowed
-  id-atts |= notAllowed
-  localization-atts |= notAllowed
-  base-attribute-extensions |= notAllowed
-  info-types |= notAllowed
-  desc.cnt |= notAllowed
-  conref-atts |= notAllowed
-  prolog |= notAllowed
-  titlealts |= notAllowed
-  example |= notAllowed
-  section.cnt |= notAllowed
-  related-links |= notAllowed
-  ph.cnt |= notAllowed
-  arch-atts |= notAllowed
-  abstract |= notAllowed
-  simpletable |= notAllowed
-  select-atts |= notAllowed
-  shortdesc |= notAllowed
-  section |= notAllowed
-  tblcell.cnt |= notAllowed
-  table |= notAllowed
-}
 reference-info-types = info-types
 # Define patterns
 refbody = refbody.element

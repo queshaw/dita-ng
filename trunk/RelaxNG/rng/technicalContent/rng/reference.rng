@@ -41,7 +41,7 @@
   <include href="reference.mod.rng">
     <!--
       Redefine the infotype entity to exclude 
-      other topic types and disallow nesting
+      other topic types
     -->
     <define name="reference-info-types">
       <ref name="reference.element"/>

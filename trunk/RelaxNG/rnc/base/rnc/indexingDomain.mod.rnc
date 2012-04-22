@@ -23,12 +23,6 @@ namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
 # Define the domain values of this module
 domains-atts-value |= "(topic indexing-d)"
-# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
-start |= notAllowed
-global-atts |= notAllowed
-indexterm |= notAllowed
-univ-atts |= notAllowed
-words.cnt |= notAllowed
 # Define domain extension patterns
 indexing-d-index-base =
   index-see.element | index-see-also.element | index-sort-as.element

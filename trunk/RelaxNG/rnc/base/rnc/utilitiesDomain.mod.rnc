@@ -23,16 +23,6 @@ namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
 # Define the domain values of this module
 domains-atts-value |= "(topic ut-d)"
-# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
-start |= notAllowed
-display-atts |= notAllowed
-global-atts |= notAllowed
-image |= notAllowed
-\text |= notAllowed
-univ-atts |= notAllowed
-univ-atts-translate-no |= notAllowed
-words.cnt |= notAllowed
-xref |= notAllowed
 # Define domain extension patterns
 ut-d-fig = imagemap.element
 # Extend the patterns with the domain contribution

@@ -28,30 +28,6 @@
     <value>(topic learningBase+learningInteractionBase-d learningContent)</value>
   </define>
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <div>
-    <start combine="choice"><notAllowed/></start>
-    <define name="global-atts" combine="choice"><notAllowed/></define>
-    <define name="univ-atts" combine="choice"><notAllowed/></define>
-    <define name="arch-atts" combine="choice"><notAllowed/></define>
-    <define name="conref-atts" combine="choice"><notAllowed/></define>
-    <define name="localization-atts" combine="choice"><notAllowed/></define>
-    <define name="select-atts" combine="choice"><notAllowed/></define>
-    <define name="title" combine="choice"><notAllowed/></define>
-    <define name="related-links" combine="choice"><notAllowed/></define>
-    <define name="lcDuration" combine="choice"><notAllowed/></define>
-    <define name="abstract" combine="choice"><notAllowed/></define>
-    <define name="lcObjectives" combine="choice"><notAllowed/></define>
-    <define name="lcIntro" combine="choice"><notAllowed/></define>
-    <define name="shortdesc" combine="choice"><notAllowed/></define>
-    <define name="section" combine="choice"><notAllowed/></define>
-    <define name="prolog" combine="choice"><notAllowed/></define>
-    <define name="titlealts" combine="choice"><notAllowed/></define>
-    <define name="lcInstruction" combine="choice"><notAllowed/></define>
-    <define name="lcChallenge" combine="choice"><notAllowed/></define>
-    <define name="learningContent-info-types" combine="choice"><notAllowed/></define>
-  </div>
-  
   <!-- Define patterns -->
   <define name="learningContent">
     <ref name="learningContent.element"/>

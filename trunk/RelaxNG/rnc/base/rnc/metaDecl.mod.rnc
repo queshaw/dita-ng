@@ -21,37 +21,6 @@
 
 namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
-# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
-start |= notAllowed
-audience |= notAllowed
-brand |= notAllowed
-category |= notAllowed
-component |= notAllowed
-conref-atts |= notAllowed
-copyrholder |= notAllowed
-copyryear |= notAllowed
-created |= notAllowed
-data.elements.incl |= notAllowed
-featnum |= notAllowed
-foreign.unknown.incl |= notAllowed
-global-atts |= notAllowed
-indexterm |= notAllowed
-keyword |= notAllowed
-keywords |= notAllowed
-localization-atts |= notAllowed
-othermeta |= notAllowed
-ph |= notAllowed
-platform |= notAllowed
-prodinfo |= notAllowed
-prodname |= notAllowed
-prognum |= notAllowed
-revised |= notAllowed
-select-atts |= notAllowed
-series |= notAllowed
-univ-atts |= notAllowed
-vrm |= notAllowed
-vrmlist |= notAllowed
-words.cnt |= notAllowed
 # Define type patterns
 date-format = xsd:string
 # Define elements content and attributes

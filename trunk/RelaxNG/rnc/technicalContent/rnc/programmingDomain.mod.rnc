@@ -23,28 +23,6 @@ namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
 # Define the domain values of this module
 domains-atts-value |= "(topic pr-d)"
-# Define start and referred patterns to have the schema valid as a standalone Relax NG schema
-div {
-  start |= notAllowed
-  global-atts |= notAllowed
-  univ-atts |= notAllowed
-  words.cnt |= notAllowed
-  title |= notAllowed
-  data.elements.incl |= notAllowed
-  foreign.unknown.incl |= notAllowed
-  filter-atts |= notAllowed
-  xrefph.cnt |= notAllowed
-  display-atts |= notAllowed
-  defn.cnt |= notAllowed
-  basic.ph |= notAllowed
-  id-atts |= notAllowed
-  basic.ph.notm |= notAllowed
-  \text |= notAllowed
-  txt.incl |= notAllowed
-  localization-atts |= notAllowed
-  base-attribute-extensions |= notAllowed
-  term.cnt |= notAllowed
-}
 # Define domain extension patterns
 pr-d-ph = codeph.element | synph.element
 pr-d-pre = codeblock.element

@@ -28,20 +28,6 @@
     <value>(topic learningInteractionBase-d)</value>
   </define>
   
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <div>
-    <start combine="choice"><notAllowed/></start>
-    <define name="global-atts" combine="choice"><notAllowed/></define>
-    <define name="univ-atts" combine="choice"><notAllowed/></define>
-    <define name="conref-atts" combine="choice"><notAllowed/></define>
-    <define name="localization-atts" combine="choice"><notAllowed/></define>
-    <define name="select-atts" combine="choice"><notAllowed/></define>
-    <define name="title" combine="choice"><notAllowed/></define>
-    <define name="ph.cnt" combine="choice"><notAllowed/></define>
-    <define name="fig.cnt" combine="choice"><notAllowed/></define>
-  </div>
-  
-  
   <define name="learningInteractionBase-d-fig">
     <ref name="lcInteractionBase.element"/>
   </define>

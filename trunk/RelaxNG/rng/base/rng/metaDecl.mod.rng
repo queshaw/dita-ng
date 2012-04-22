@@ -22,38 +22,6 @@
 <grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" 
   xmlns="http://relaxng.org/ns/structure/1.0" 
   datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
-  
-  <!-- Define start and referred patterns to have the schema valid as a standalone Relax NG schema -->
-  <start combine="choice"><notAllowed/></start>
-  <define name="audience" combine="choice"><notAllowed/></define>
-  <define name="brand" combine="choice"><notAllowed/></define>
-  <define name="category" combine="choice"><notAllowed/></define>
-  <define name="component" combine="choice"><notAllowed/></define>
-  <define name="conref-atts" combine="choice"><notAllowed/></define>
-  <define name="copyrholder" combine="choice"><notAllowed/></define>
-  <define name="copyryear" combine="choice"><notAllowed/></define>
-  <define name="created" combine="choice"><notAllowed/></define>
-  <define name="data.elements.incl" combine="choice"><notAllowed/></define>
-  <define name="featnum" combine="choice"><notAllowed/></define>
-  <define name="foreign.unknown.incl" combine="choice"><notAllowed/></define>
-  <define name="global-atts" combine="choice"><notAllowed/></define>
-  <define name="indexterm" combine="choice"><notAllowed/></define>
-  <define name="keyword" combine="choice"><notAllowed/></define>
-  <define name="keywords" combine="choice"><notAllowed/></define>  
-  <define name="localization-atts" combine="choice"><notAllowed/></define>
-  <define name="othermeta" combine="choice"><notAllowed/></define>
-  <define name="ph" combine="choice"><notAllowed/></define>
-  <define name="platform" combine="choice"><notAllowed/></define>
-  <define name="prodinfo" combine="choice"><notAllowed/></define>
-  <define name="prodname" combine="choice"><notAllowed/></define>
-  <define name="prognum" combine="choice"><notAllowed/></define>
-  <define name="revised" combine="choice"><notAllowed/></define>
-  <define name="select-atts" combine="choice"><notAllowed/></define>
-  <define name="series" combine="choice"><notAllowed/></define>
-  <define name="univ-atts" combine="choice"><notAllowed/></define>
-  <define name="vrm" combine="choice"><notAllowed/></define>
-  <define name="vrmlist" combine="choice"><notAllowed/></define>
-  <define name="words.cnt" combine="choice"><notAllowed/></define>
 
   <!-- Define type patterns -->
   <define name="date-format">
