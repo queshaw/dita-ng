@@ -26,21 +26,6 @@
   </define>
   
   <include href="../../technicalContent/rng/task.mod.rng">
-    <define name="steps-informal">
-      <ref name="steps-informal.element"/>
-    </define>
-    <define name="result">
-      <ref name="result.element"/>
-    </define>
-    <define name="steps">
-      <ref name="steps.element"/>
-    </define>
-    <define name="steps-unordered">
-      <ref name="steps-unordered.element"/>
-    </define>
-    <define name="context">
-      <ref name="context.element"/>
-    </define>  
     <define name="taskbody.content">
       <zeroOrMore>
         <choice>
@@ -67,15 +52,8 @@
       </optional>
     </define>
   </include>
-  <include href="../../base/rng/topic.mod.rng">
-    <define name="section">
-      <ref name="section.element"/>
-    </define>
-    <define name="example">
-      <ref name="example.element"/>
-    </define>
-  </include>
-
+  <include href="../../base/rng/topic.mod.rng"/>
+  
   <define name="prelreqs">
     <ref name="prelreqs.element"/>
   </define>
