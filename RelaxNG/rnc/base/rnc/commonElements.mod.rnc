@@ -21,6 +21,7 @@
 # =============================================================
 
 namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace sch = "http://purl.oclc.org/dsdl/schematron"
 
 # Define patterns
 alt = alt.element
@@ -712,6 +713,29 @@ ul.element =
   ##         significant. List items are typically styled on output with a "bullet" character, depending
   ##         on nesting level. 
   ##         Category: Body elements
+  [
+    sch:pattern [
+      name = "atLeastTwoChildren"
+      "\x{a}" ~
+      "        "
+      sch:rule [
+        context = "ul"
+        "\x{a}" ~
+        "          "
+        sch:assert [
+          test = "count(*) > 1"
+          role = "warning"
+          "\x{a}" ~
+          "            Please make sure you have at least 2 items for this list!\x{a}" ~
+          "          "
+        ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+  ]
   element ul { ul.attlist, ul.content }
 ul.attlist &= ul.attributes
 # LONG NAME: Ordered List
