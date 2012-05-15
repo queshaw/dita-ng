@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="urn:oXygenxml:dita:rng:map.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="urn:oXygenxml:dita:rng:map.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <map title="Growing Flowers">
   <topicref href="topics/introduction.xml"/>
   <topicref href="topics/care.xml">
