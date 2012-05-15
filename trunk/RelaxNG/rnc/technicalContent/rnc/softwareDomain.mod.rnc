@@ -20,6 +20,7 @@
 # =============================================================
 
 namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace sch = "http://purl.oclc.org/dsdl/schematron"
 
 # Define the domain values of this module
 domains-atts-value |= "(topic sw-d)"
@@ -106,6 +107,29 @@ filepath.attributes =
 # doc:The <filepath> element indicates the name and optionally the location of a referenced file by specifying the directory containing the file, and other directories that may precede it in the system hierarchy. This element is part of the DITA software domain, a special set of DITA elements designed to document software tasks, concepts and reference information.
 # Category: Software elements
 filepath.element =
+  [
+    sch:pattern [
+      name = "checkEmptyFilepath"
+      "\x{a}" ~
+      "        "
+      sch:rule [
+        context = "filepath"
+        "\x{a}" ~
+        "          "
+        sch:assert [
+          test = "string-length() > 0"
+          role = "warning"
+          "\x{a}" ~
+          "            The filepath should not be empty!\x{a}" ~
+          "          "
+        ]
+        "\x{a}" ~
+        "        "
+      ]
+      "\x{a}" ~
+      "      "
+    ]
+  ]
   element filepath { filepath.attlist, filepath.content }
 filepath.attlist &= filepath.attributes
 # LONG NAME: User Input

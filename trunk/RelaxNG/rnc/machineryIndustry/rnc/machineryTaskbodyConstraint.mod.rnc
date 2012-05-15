@@ -22,11 +22,6 @@
 # Define the domain values of this module
 domains-atts-value |= "(topic task)"
 include "../../technicalContent/rnc/task.mod.rnc" {
-  steps-informal = steps-informal.element
-  result = result.element
-  steps = steps.element
-  steps-unordered = steps-unordered.element
-  context = context.element
   taskbody.content =
     (prelreqs | context | section)*,
     (steps | steps-unordered | steps-informal)?,
@@ -34,9 +29,6 @@ include "../../technicalContent/rnc/task.mod.rnc" {
     example*,
     closereqs?
 }
-include "../../base/rnc/topic.mod.rnc" {
-  section = section.element
-  example = example.element
-}
+include "../../base/rnc/topic.mod.rnc"
 prelreqs = prelreqs.element
 closereqs = closereqs.element
