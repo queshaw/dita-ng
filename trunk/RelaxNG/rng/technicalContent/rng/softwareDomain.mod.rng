@@ -19,7 +19,9 @@
   (C) Copyright Syncro Soft 2010-2011                                
   All Rights Reserved.                                          
   ============================================================= -->
-<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" 
+  xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">
   <!-- Define the domain values of this module -->
   <define name="domains-atts-value" combine="choice">
     <value>(topic sw-d)</value>
@@ -259,6 +261,13 @@
   -->
   <define name="filepath.element">
     <element name="filepath">
+      <sch:pattern name="checkEmptyFilepath">
+        <sch:rule context="filepath">
+          <sch:assert test="string-length() > 0" role="warning">
+            The filepath should not be empty!
+          </sch:assert>
+        </sch:rule>
+      </sch:pattern>
       <ref name="filepath.attlist"/>
       <ref name="filepath.content"/>
     </element>
