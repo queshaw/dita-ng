@@ -262,7 +262,18 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
         name.localpart, name.uri);
     if (def != null) {
       for (RelaxNGDefaultValues.Attribute a : def) {
-        if (atts.getIndex(a.namespace, a.localName) < 0) {
+        //EXM-24143 it is possible that the namespace of the default attribute is empty
+        //and the namespace of the attribute declared in the XMLAttributes is NULL.
+        boolean alreadyDeclared = false;
+        alreadyDeclared = atts.getIndex(a.namespace, a.localName) >= 0;
+        if(! alreadyDeclared) {
+          if("".equals(a.namespace)) {
+            //Extra check with NULL Namespace
+            alreadyDeclared = atts.getIndex(null, a.localName) >= 0;    
+          }
+        }
+        
+        if (! alreadyDeclared) {
           String prefix = null;
           String rawname = a.localName;
           if (a.namespace != null && a.namespace.length() > 0) {
