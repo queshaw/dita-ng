@@ -23,7 +23,7 @@
   xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
   <!-- Define the root elements -->
   <start>
-    <ref name="map.element"/>
+    <ref name="bookmap.element"/>
   </start>
   
   <!-- The DITA domains attribute -->
@@ -56,11 +56,13 @@
     <zeroOrMore>
       <choice>
         <ref name="map.element"/>
+        <ref name="bookmap.element"/>
         <ref name="anchor.element"/>
         <element>
           <anyName>
             <except>
               <name>map</name>
+              <name>bookmap</name>
               <name>anchor</name>
             </except>
           </anyName>
