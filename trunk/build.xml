@@ -35,7 +35,7 @@
                 <attribute name="Class-Path" value="jing.jar"/>
             </manifest>-->
             <service type="org.apache.xerces.xni.parser.XMLParserConfiguration">
-                <provider classname="com.oxygenxml.relaxng.defaults.RelaxDefaultsParserConfiguration"/>
+                <provider classname="org.ditang.relaxng.defaults.RelaxDefaultsParserConfiguration"/>
             </service>
             <include name="**/*"/>
             <exclude name="**/*Test*"/>
