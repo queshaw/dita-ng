@@ -17,6 +17,8 @@
     
     <xsl:template name="main">
         <xsl:result-document href="catalog-rng.xml">
+            <xsl:text xml:space="preserve">
+</xsl:text>
             <xsl:comment>XML Catalog for DITA-NG Relax NG XML schemas</xsl:comment>
             <xsl:text>&#10;</xsl:text>
             <catalog>
@@ -24,6 +26,8 @@
             </catalog>
         </xsl:result-document>
         <xsl:result-document href="catalog-rnc.xml">
+            <xsl:text xml:space="preserve">
+</xsl:text>
             <xsl:comment>XML Catalog for DITA-NG Relax NG compact schemas</xsl:comment>
             <xsl:text>&#10;</xsl:text>
             <catalog>
