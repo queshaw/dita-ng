@@ -5,8 +5,8 @@
 
     <!-- Jars location -->
     <property name="lib" location="lib"/>
-    <property name="target" value="RelaxNG/rnc"/>
-    <property name="src" value="RelaxNG/rng"/>
+    <property name="target" value="org.dita-ng.doctypes/rnc"/>
+    <property name="src" value="org.dita-ng.doctypes/rng"/>
     <property name="tmp" value="tmp"/>
     <property name="trang" value="lib/trang.jar"/>
     <property name="dist" value="dist"/>
@@ -299,17 +299,17 @@
         <mkdir dir="${dist}/dita-ng"/>
         <copy todir="${dist}/dita-ng">
             <fileset dir="." >
-                <include name="RelaxNG/**/*"/>
+                <include name="org.dita-ng.doctypes/**/*"/>
                 </fileset>
         </copy>
-        <copy todir="${dist}/dita-ng/RelaxNG">
+        <copy todir="${dist}/dita-ng/org.dita-ng.doctypes">
             <fileset dir=".">
                 <include name="LICENSE.txt"/>
                 <include name="README.txt"/>
                 <include name="demo/**/*"/>
             </fileset>
         </copy>
-        <copy todir="${dist}/dita-ng/RelaxNG/lib">
+        <copy todir="${dist}/dita-ng/org.dita-ng.doctypes/lib">
             <fileset dir=".">
                 <include name="dita-ng.jar"/>
             </fileset>
