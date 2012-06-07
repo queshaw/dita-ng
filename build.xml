@@ -10,7 +10,7 @@
     <property name="tmp" value="tmp"/>
     <property name="trang" value="lib/trang.jar"/>
     <property name="dist" value="dist"/>
-    <property name="version" value="20120524"/>
+    <property name="version" value="20120607"/>
     
     <!-- Java code -->
     
