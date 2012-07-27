@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project version="14.0">
+<project version="14.1">
     <meta>
         <filters directoryPatterns="" filePatterns="*.xpr" positiveFilePatterns="" showHiddenFiles="false"/>
         <options>
-            <serialized version="14.0" xml:space="preserve">
+            <serialized version="14.1" xml:space="preserve">
                 <map>
                     <entry>
                         <String>catalogs.v5</String>
                         <String-array>
                             <String>file:/Users/george/Documents/workspace/dita-ng/RelaxNG/catalog.xml</String>
                         </String-array>
+                    </entry>
+                    <entry>
+                        <String>enable.project.master.files.support</String>
+                        <Boolean>true</Boolean>
                     </entry>
                     <entry>
                         <String>key.xml.catalog.option.pane</String>
@@ -508,7 +512,6 @@
             </folder>
         </folder>
         <folder name="files">
-            <folder path="../../demo/DITA-OT1.6.M3/"/>
             <folder path="."/>
             <folder path="../ditaot-relax/"/>
             <folder path="../eXml/samples/dita/"/>
