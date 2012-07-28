@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.ditang.relaxng.defaults.OxygenRelaxNGSchemaReader.SchemaWrapper;
-import org.xml.sax.EntityResolver;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -13,6 +12,7 @@ import org.xml.sax.SAXParseException;
 
 import com.thaiopensource.relaxng.pattern.DefaultValuesExtractor;
 import com.thaiopensource.relaxng.pattern.Pattern;
+import com.thaiopensource.resolver.Resolver;
 import com.thaiopensource.util.PropertyMap;
 import com.thaiopensource.util.PropertyMapBuilder;
 import com.thaiopensource.validate.IncorrectSchemaException;
@@ -20,14 +20,27 @@ import com.thaiopensource.validate.SchemaReader;
 import com.thaiopensource.validate.ValidateProperty;
 
 /**
+ * Relax NG default values gatherer.
+ * 
  * @author george@oxygenxml.com
  */
 public abstract class RelaxNGDefaultValues {
-  private EntityResolver resolver;
+  /**
+   * Error handler
+   */
   private ErrorHandler eh;
+  /**
+   * Resolver
+   */
+  private final Resolver resolver;
   
 
-  public RelaxNGDefaultValues(EntityResolver resolver, ErrorHandler eh) {
+  /**
+   * Constructor.
+   * @param resolver The resolver
+   * @param eh The error handler
+   */
+  public RelaxNGDefaultValues(Resolver resolver, ErrorHandler eh) {
     this.resolver = resolver;
     this.eh = eh;
   }
@@ -134,14 +147,15 @@ public abstract class RelaxNGDefaultValues {
   /**
    * Updates the annotation model.
    * 
-   * @param uri
-   *          The schema uri.
+   * @param in
+   *          The schema input source.
    * @throws SAXException 
    */
   public void update(InputSource in) throws SAXException {
     defaultValuesCollector = null;
     PropertyMapBuilder builder = new PropertyMapBuilder();
-    builder.put(ValidateProperty.ENTITY_RESOLVER, resolver);
+    //Set the resolver
+    builder.put(ValidateProperty.RESOLVER, resolver);  
     builder.put(ValidateProperty.ERROR_HANDLER, eh);
     PropertyMap properties = builder.toPropertyMap();
     try {
@@ -153,6 +167,9 @@ public abstract class RelaxNGDefaultValues {
       eh.warning(new SAXParseException("Error loading defaults: " + e.getMessage(), null, e));
     } catch (Exception e) {
       eh.warning(new SAXParseException("Error loading defaults: " + e.getMessage(), null, e));
+    } catch (StackOverflowError e) {
+      //EXM-24759 Also catch stackoverflow
+      eh.warning(new SAXParseException("Error loading defaults: " + e.getMessage(), null, null));
     }
   }
 

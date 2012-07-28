@@ -12,6 +12,7 @@ import com.thaiopensource.relaxng.pattern.AnnotationsImpl;
 import com.thaiopensource.relaxng.pattern.CommentListImpl;
 import com.thaiopensource.relaxng.pattern.NameClass;
 import com.thaiopensource.relaxng.pattern.Pattern;
+import com.thaiopensource.resolver.Resolver;
 import com.thaiopensource.resolver.xml.sax.SAX;
 import com.thaiopensource.resolver.xml.sax.SAXResolver;
 import com.thaiopensource.util.PropertyMap;
@@ -19,11 +20,18 @@ import com.thaiopensource.util.VoidValue;
 import com.thaiopensource.validate.SchemaReader;
 
 /**
- * @author george@oxygenxml.com
+ * RNC default values gatherer
  * 
+ * 
+ * @author george@oxygenxml.com
  */
 public class RNCDefaultValues extends RelaxNGDefaultValues {
-  public RNCDefaultValues(EntityResolver resolver, ErrorHandler eh) {
+  /**
+   * Constructor
+   * @param resolver The resolver
+   * @param eh The error handler
+   */
+  public RNCDefaultValues(Resolver resolver, ErrorHandler eh) {
     super(resolver, eh);
   }
 

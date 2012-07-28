@@ -1,12 +1,10 @@
 package org.ditang.relaxng.defaults;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
 import org.apache.xerces.impl.Constants;
-import org.apache.xerces.impl.XMLErrorReporter;
 import org.apache.xerces.util.SymbolTable;
 import org.apache.xerces.util.XMLResourceIdentifierImpl;
 import org.apache.xerces.xni.Augmentations;
@@ -23,13 +21,17 @@ import org.apache.xerces.xni.parser.XMLComponentManager;
 import org.apache.xerces.xni.parser.XMLConfigurationException;
 import org.apache.xerces.xni.parser.XMLDocumentSource;
 import org.apache.xerces.xni.parser.XMLEntityResolver;
-import org.apache.xerces.xni.parser.XMLErrorHandler;
 import org.apache.xerces.xni.parser.XMLInputSource;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
+import com.thaiopensource.resolver.BasicResolver;
+import com.thaiopensource.resolver.Identifier;
+import com.thaiopensource.resolver.Input;
+import com.thaiopensource.resolver.Resolver;
+import com.thaiopensource.resolver.ResolverException;
 
 /**
  * XNI component that adds Relax NG default values.
@@ -96,13 +98,61 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
   
   private SymbolTable fSymbolTable;
   private XMLEntityResolver fResolver;
-  private XMLErrorReporter fErrorReporter;
-  private XMLErrorHandler fErrorHandler;
+
+  /**
+   * Debug this clas
+   */
+  public static boolean DEBUG = false;
+
+  /**
+   * The resolver
+   */
+  private Resolver resolver;
 
   /**
    * Constructor.
+   * @param resolver The resolver
    */
-  public RelaxNGDefaultsComponent() {
+  public RelaxNGDefaultsComponent(Resolver resolver) {
+    this.resolver = resolver;
+    if(this.resolver == null) {
+      //Wrap a resolver over an XMLEntityResolver
+      this.resolver = new Resolver() {
+        @Override
+        public void resolve(Identifier id, Input input) throws IOException, ResolverException {
+          if(fResolver != null) {
+            String expanded = id.getUriReference();
+            //Compute the expanded system ID
+            try {
+              expanded  = new URL(new URL(id.getBase()), id.getUriReference()).toString();
+            } catch (Exception e) {
+            }
+            
+            XMLResourceIdentifier identifier = new XMLResourceIdentifierImpl(
+                null, id.getUriReference(), id.getBase(), expanded);
+            XMLInputSource resolved = fResolver.resolveEntity(identifier);
+            if(resolved != null) {
+              input.setUri(resolved.getSystemId());
+              input.setByteStream(resolved.getByteStream());
+              input.setCharacterStream(resolved.getCharacterStream());
+              input.setEncoding(resolved.getEncoding());
+            } else {
+              //Just set the URI
+              input.setUri(expanded);
+            }
+          }
+        }
+        /**
+         * Delegate to usual open mechanism.
+         * 
+         * @see com.thaiopensource.resolver.Resolver#open(com.thaiopensource.resolver.Input)
+         */
+        @Override
+        public void open(Input input) throws IOException, ResolverException {
+          BasicResolver.getInstance().open(input);
+        }
+      };
+    }
   }
 
 
@@ -116,11 +166,9 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
     schema = null;
     type = null;
     context = null;
-
+    defaults = null;
     fSymbolTable = (SymbolTable) componentManager.getProperty(SYMBOL_TABLE);
-    fErrorReporter = (XMLErrorReporter) componentManager.getProperty(ERROR_REPORTER);
     fResolver = (XMLEntityResolver) componentManager.getProperty(ENTITY_RESOLVER);
-    fErrorHandler = (XMLErrorHandler) componentManager.getProperty(ERROR_HANDLER);
   }
 
   /**
@@ -147,6 +195,9 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
    */
   public void startElement(QName name, XMLAttributes atts, Augmentations aug)
       throws XNIException {
+    if (defaults != null) {
+      context.pushContext();
+    }
     onStartElement(name, atts);
     if (documentHandler != null) {
       documentHandler.startElement(name, atts, aug);
@@ -154,8 +205,10 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
   }
 
   /**
-   * @param name
-   * @param atts
+   * On start element
+   * 
+   * @param name The element name
+   * @param atts The attributes
    */
   private void onStartElement(QName name, XMLAttributes atts) {
     if (detecting) {
@@ -175,87 +228,79 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
     ErrorHandler eh = new ErrorHandler() {
       @Override
       public void warning(SAXParseException exception) throws SAXException {
-        // TODO Auto-generated method stub
+        if (DEBUG) {
+          exception.printStackTrace();
+        }
       }
 
       @Override
       public void error(SAXParseException exception) throws SAXException {
-        // TODO Auto-generated method stub
+        if (DEBUG) {
+          exception.printStackTrace();
+        }
       }
 
       @Override
       public void fatalError(SAXParseException exception) throws SAXException {
-        // TODO Auto-generated method stub
+        if (DEBUG) {
+          exception.printStackTrace();
+        }
       }
     };
     
-    if (schema != null && "xml".equals(type)) {
-      defaults = new RNGDefaultValues(null, eh);
-      // TODO: Pass a resolver.
+    if(schema != null) {
+      if ("xml".equals(type)) {
+        defaults = new RNGDefaultValues(resolver, eh);
     }
-    if (schema != null && "compact".equals(type)) {
-      // TODO: Pass a resolver
-      defaults = new RNCDefaultValues(null, eh);
+      if ("compact".equals(type)) {
+        defaults = new RNCDefaultValues(resolver, eh);
     }
     if (defaults != null) {
-        // Tries to obtain an expanded system ID.
+        Identifier id = new Identifier(schema, baseSystemId);
+        Input input = new Input();
+        try {
+          resolver.resolve(id, input);
+        } catch (IOException e1) {
+          if (DEBUG) {
+            e1.printStackTrace();
+          }
+        } catch (ResolverException e1) {
+          if (DEBUG) {
+            e1.printStackTrace();
+          }
+        }
+        
+        
+        InputSource in = null;
+        if(input.isResolved()) {
+          in = new InputSource(input.getUri());
+          in.setByteStream(input.getByteStream());
+          in.setCharacterStream(input.getCharacterStream());
+          in.setEncoding(input.getEncoding());
+        } else {
         String expanded = schema;
         try {
           expanded  = new URL(new URL(baseSystemId), schema).toString();
         } catch (Exception e) {
-        };
-        XMLInputSource r = resolveSchema(new XMLResourceIdentifierImpl(null, schema, baseSystemId, expanded));
-        if (r == null) {
-          r = resolveSchema(new XMLResourceIdentifierImpl(null, schema, baseSystemId, schema));
         }        
-        if (r!=null) {
-          InputSource in = new InputSource(r.getSystemId());
-          in.setByteStream(r.getByteStream());
-          in.setCharacterStream(r.getCharacterStream());
-          in.setEncoding(r.getEncoding());
-          in.setPublicId(r.getPublicId());
+          in = new InputSource(expanded);
+        }
           try {
             defaults.update(in);
           } catch (Exception e) {
+          if (DEBUG) {
+            e.printStackTrace();
           }
-        } else {          
-          InputSource in = new InputSource(expanded);
-          try {
-            defaults.update(in);
-          } catch (Exception e) {
           }
         }
     }
   }
 
   /**
-   * Try to resolve the specified schema location with the entity resolver.
+   * Check and add defaults
    * 
-   * @param schemaLocation
-   *          The specified schema location.
-   * 
-   * @return The new schema location if the specified location can be resolved
-   *         with the entity or <code>null</code> otherwise.
-   * 
-   * @throws MalformedURLException
-   *           if the location specified by the entity resolver is not a valid
-   *           URL.
-   */
-  private XMLInputSource resolveSchema(XMLResourceIdentifier resource) {
-    XMLInputSource is = null;
-    if (fResolver != null) {      
-      try {
-        is = fResolver.resolveEntity(resource);
-      } catch (XNIException e) {
-      } catch (IOException e) {
-      }
-    }
-    return is;
-  }
-
-  /**
-   * @param name
-   * @param atts
+   * @param name The element name
+   * @param atts The attributes
    */
   private void checkAndAddDefaults(QName name, XMLAttributes atts) {
     List<RelaxNGDefaultValues.Attribute> def = defaults.getDefaultAttributes(
@@ -304,7 +349,15 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
               }
             } else {
               int k = 1;
-              prefix = "ns" + k;
+              if(
+                  //EXM-24494 Prefer this prefix
+                  //See the implementation in: org.dita.dost.reader.MergeTopicParser.startElement(String, String, String, Attributes)
+                  //If the file is a composite no attributes are copied from the root element.
+                  "http://dita.oasis-open.org/architecture/2005/".equals(a.namespace)) {
+                prefix = "ditaarch";
+              } else {
+              	prefix = "ns" + k;
+              }
               while (context.getURI(prefix) != null
                   || atts.getValue("xmlns:" + prefix) != null) {
                 k++;
@@ -316,6 +369,7 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
                   fSymbolTable.addSymbol(prefix), fSymbolTable.addSymbol("xmlns:" + prefix),
                   fSymbolTable.addSymbol("http://www.w3.org/2000/xmlns/"));
               atts.addAttribute(attNs, "CDATA", a.namespace);
+              context.declarePrefix(prefix, a.namespace);
 
               QName attName = new QName(fSymbolTable.addSymbol(prefix),
                   fSymbolTable.addSymbol(a.localName), fSymbolTable.addSymbol(rawname),
@@ -423,7 +477,13 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
     }
   }
 
-  boolean nullOrValue(String test, String value) {
+  /**
+   * Test if a string is either null or equal to a certain value
+   * @param test The string to test
+   * @param value The value to compare to 
+   * @return <code>true</code> if a string is either null or equal to a certain value
+   */
+  private boolean nullOrValue(String test, String value) {
     if (test == null)
       return true;
     if (test.equals(value))
@@ -572,9 +632,15 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
    */
   public void emptyElement(QName name, XMLAttributes atts, Augmentations arg2)
       throws XNIException {
+    if (defaults != null) {
+      context.pushContext();
+    }
     onStartElement(name, atts);
     if (documentHandler != null) {
       documentHandler.emptyElement(name, atts, arg2);
+    }
+    if (defaults != null) {
+      context.popContext();
     }
   }
 
@@ -642,6 +708,9 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
     if (documentHandler != null) {
       documentHandler.endElement(arg0, arg1);
     }
+    if(defaults != null) {
+      context.popContext();
+    }
   }
 
   /**
@@ -689,7 +758,7 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
    * @see org.apache.xerces.xni.parser.XMLComponent#getRecognizedFeatures()
    */
   public String[] getRecognizedFeatures() {
-    return (String[])(RECOGNIZED_FEATURES.clone());
+    return (RECOGNIZED_FEATURES.clone());
   }
 
   /**
@@ -705,7 +774,7 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
    * @see org.apache.xerces.xni.parser.XMLComponent#getRecognizedProperties()
    */
   public String[] getRecognizedProperties() {
-    return (String[])(RECOGNIZED_PROPERTIES.clone());
+    return (RECOGNIZED_PROPERTIES.clone());
   }
 
   /**
@@ -725,12 +794,6 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
       if (suffixLength == Constants.SYMBOL_TABLE_PROPERTY.length()
           && propertyId.endsWith(Constants.SYMBOL_TABLE_PROPERTY)) {
         fSymbolTable = (SymbolTable) value;
-      } else if (suffixLength == Constants.ERROR_REPORTER_PROPERTY.length()
-          && propertyId.endsWith(Constants.ERROR_REPORTER_PROPERTY)) {
-        fErrorReporter = (XMLErrorReporter) value;
-      } else if (suffixLength == Constants.ERROR_HANDLER_PROPERTY.length()
-          && propertyId.endsWith(Constants.ERROR_HANDLER_PROPERTY)) {
-        fErrorHandler = (XMLErrorHandler) value;
       } else if (suffixLength == Constants.ENTITY_RESOLVER_PROPERTY.length()
           && propertyId.endsWith(Constants.ENTITY_RESOLVER_PROPERTY)) {
         fResolver = (XMLEntityResolver) value;

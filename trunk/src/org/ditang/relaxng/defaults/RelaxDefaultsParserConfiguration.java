@@ -11,6 +11,8 @@ import org.apache.xerces.xni.grammars.XMLGrammarPool;
 import org.apache.xerces.xni.parser.XMLComponentManager;
 import org.apache.xerces.xni.parser.XMLDocumentSource;
 
+import com.thaiopensource.resolver.Resolver;
+
 /**
  * @author george@oxygenxml.com
  * A parser configuration that adds in a module to add Relax NG specified default values.
@@ -29,13 +31,18 @@ public class RelaxDefaultsParserConfiguration extends XIncludeAwareParserConfigu
    * that includes a:defaultValue annotations.
    * See the Relax NG DTD compatibility specification.
    */
-  RelaxNGDefaultsComponent fRelaxDefaults = null;
+  protected RelaxNGDefaultsComponent fRelaxDefaults = null;
+
+  /**
+   * The special RNG resolver 
+   */
+  protected Resolver resolver;
 
   /**
    * Default constructor.
    */
   public RelaxDefaultsParserConfiguration() {
-    this(null, null);
+    this(null, null, null);
   }
 
   /** 
@@ -54,11 +61,12 @@ public class RelaxDefaultsParserConfiguration extends XIncludeAwareParserConfigu
    *
    * @param symbolTable The symbol table to use.
    * @param grammarPool The grammar pool to use.
+   * @param resolver The JING resolver
    */
   public RelaxDefaultsParserConfiguration(
       SymbolTable symbolTable,
-      XMLGrammarPool grammarPool) {
-    this(symbolTable, grammarPool, null);
+      XMLGrammarPool grammarPool, Resolver resolver) {
+    this(symbolTable, grammarPool, null, resolver);
   }
 
   /**
@@ -69,14 +77,14 @@ public class RelaxDefaultsParserConfiguration extends XIncludeAwareParserConfigu
    * @param symbolTable    The symbol table to use.
    * @param grammarPool    The grammar pool to use.
    * @param parentSettings The parent settings.
+   * @param resolver The resolver
    */
   public RelaxDefaultsParserConfiguration(
       SymbolTable symbolTable,
       XMLGrammarPool grammarPool,
-      XMLComponentManager parentSettings) {
-
+      XMLComponentManager parentSettings, Resolver resolver) {
     super(symbolTable, grammarPool, parentSettings);
-
+    this.resolver = resolver;
   }
 
   @Override
@@ -105,9 +113,12 @@ public class RelaxDefaultsParserConfiguration extends XIncludeAwareParserConfigu
     insertRelaxDefaultsComponent();
   }
 
+  /**
+   * Insert the Relax NG defaults component
+   */
   protected void insertRelaxDefaultsComponent() {
     if (fRelaxDefaults == null) {
-      fRelaxDefaults = new RelaxNGDefaultsComponent();
+      fRelaxDefaults = new RelaxNGDefaultsComponent(resolver);
       addCommonComponent(fRelaxDefaults);
       fRelaxDefaults.reset(this);
     }
