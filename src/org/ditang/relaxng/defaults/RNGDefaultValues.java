@@ -2,7 +2,6 @@ package org.ditang.relaxng.defaults;
 
 import javax.xml.transform.sax.SAXSource;
 
-import org.xml.sax.EntityResolver;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
@@ -13,6 +12,7 @@ import com.thaiopensource.relaxng.pattern.AnnotationsImpl;
 import com.thaiopensource.relaxng.pattern.CommentListImpl;
 import com.thaiopensource.relaxng.pattern.NameClass;
 import com.thaiopensource.relaxng.pattern.Pattern;
+import com.thaiopensource.resolver.Resolver;
 import com.thaiopensource.resolver.xml.sax.SAXResolver;
 import com.thaiopensource.util.PropertyMap;
 import com.thaiopensource.util.VoidValue;
@@ -68,14 +68,17 @@ public class RNGDefaultValues extends RelaxNGDefaultValues {
 
   }
 
-  public RNGDefaultValues(EntityResolver resolver, ErrorHandler eh) {
+  /**
+   * Constructor
+   * @param resolver The resolver
+   * @param eh The error handler
+   */
+  public RNGDefaultValues(Resolver resolver, ErrorHandler eh) {
     super(resolver, eh);    
   }
 
   /**
    * Return the <code>OxygenXMLSchemaReader</code> instance.
-   * 
-   * @see ro.sync.contentcompletion.xml.relaxng.RelaxNGSchemaManager#getSchemaReader()
    */
   @Override
   protected SchemaReader getSchemaReader() {
