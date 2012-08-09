@@ -2,7 +2,7 @@
 <project default="dist">
 
     <import file="./buildmacros.xml"/>
-
+    <tstamp/>
     <!-- Jars location -->
     <property name="lib" location="lib"/>
     <property name="target" value="org.dita-ng.doctypes/rnc"/>
@@ -10,7 +10,7 @@
     <property name="tmp" value="tmp"/>
     <property name="trang" value="lib/trang.jar"/>
     <property name="dist" value="dist"/>
-    <property name="version" value="20120607"/>
+    <property name="version" value="${DSTAMP}"/>
     
     <!-- Java code -->
     
