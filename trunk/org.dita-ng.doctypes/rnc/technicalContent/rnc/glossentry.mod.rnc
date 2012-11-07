@@ -68,14 +68,7 @@ glossentry.element =
   ##         senses can be reused independently of one another. 
   ##         Category: Glossentry elements
   element glossentry { glossentry.attlist, glossentry.content }
-glossentry.attlist &=
-  glossentry.attributes,
-  arch-atts,
-  [
-    a:defaultValue =
-      "(topic concept)                            (topic concept glossentry)                            (topic hi-d)                             (topic ut-d)                             (topic indexing-d)                            (topic hazard-d)                            (topic abbrev-d)                            (topic pr-d)                             (topic sw-d)                            (topic ui-d)    "
-  ]
-  attribute domains { text }?
+glossentry.attlist &= glossentry.attributes, arch-atts, domains-atts
 # LONG NAME: Glossary Term
 glossterm.content = title.cnt*
 glossterm.attributes =

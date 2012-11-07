@@ -42,14 +42,7 @@ glossgroup.element =
   ## The <glossgroup> element may be used to contain multiple <glossentry>
   ##         topics within a single collection.
   element glossgroup { glossgroup.attlist, glossgroup.content }
-glossgroup.attlist &=
-  glossgroup.attributes,
-  arch-atts,
-  [
-    a:defaultValue =
-      "(topic concept)                            (topic concept glossentry)                            (topic concept glossgroup)                            (topic hi-d)                             (topic ut-d)                             (topic indexing-d)                            (topic hazard-d)                            (topic abbrev-d)                            (topic pr-d)                             (topic sw-d)                            (topic ui-d)    "
-  ]
-  attribute domains { text }?
+glossgroup.attlist &= glossgroup.attributes, arch-atts, domains-atts
 # Specialization attributes. Global attributes and class defaults
 glossgroup.attlist &=
   global-atts,

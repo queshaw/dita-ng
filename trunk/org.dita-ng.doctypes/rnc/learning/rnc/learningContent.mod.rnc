@@ -54,13 +54,7 @@ learningContent.element =
     learningContent.attlist, learningContent.content
   }
 learningContent.attlist &=
-  learningContent.attributes,
-  arch-atts,
-  [
-    a:defaultValue =
-      "(topic hi-d)                             (topic ut-d)                             (topic indexing-d)                            (topic concept)                             (topic reference)                             (topic task)                             (topic learningInteractionBase-d)                            (topic learningInteractionBase-d learning-d)                            (topic learningmeta-d)                             (topic learningBase+learningInteractionBase-d)                            (topic learningBase+learningInteractionBase-d learningContent)                            (topic learningBase learningSummary)                             (topic learningBase+learningInteractionBase-d learningAssessment)   "
-  ]
-  attribute domains { text }?
+  learningContent.attributes, arch-atts, domains-atts
 learningContentbody.content =
   (lcIntro | lcDuration | lcObjectives)*,
   lcChallenge?,

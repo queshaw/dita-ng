@@ -109,10 +109,7 @@ subjectScheme.attributes =
 subjectScheme.element =
   element subjectScheme { subjectScheme.attlist, subjectScheme.content }
 subjectScheme.attlist &=
-  subjectScheme.attributes,
-  arch-atts,
-  [ a:defaultValue = "(map mapgroup-d)                          " ]
-  attribute domains { text }?
+  subjectScheme.attributes, arch-atts, domains-atts
 # LONG NAME: Scheme reference
 schemeref.content = topicmeta?, data.elements.incl*
 schemeref.attributes =

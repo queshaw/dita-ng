@@ -49,13 +49,7 @@ learningSummary.element =
     learningSummary.attlist, learningSummary.content
   }
 learningSummary.attlist &=
-  learningSummary.attributes,
-  arch-atts,
-  [
-    a:defaultValue =
-      "(topic hi-d)                             (topic ut-d)                             (topic indexing-d)                            (topic learningInteractionBase-d)                            (topic learningInteractionBase-d learning-d)                            (topic learningmeta-d)                             (topic learningBase+learningInteractionBase-d)                            (topic learningBase learningSummary)    "
-  ]
-  attribute domains { text }?
+  learningSummary.attributes, arch-atts, domains-atts
 learningSummarybody.content =
   (lcSummary
    | lcObjectives
