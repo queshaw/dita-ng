@@ -46,10 +46,10 @@
   status (changed|deleted|new|unchanged
           |-dita-use-conref-target) #IMPLIED
   ditaarch:DITAArchVersion CDATA '1.2'
-  domains CDATA #IMPLIED
+
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT title (#PCDATA|boolean|keyword|ph|b|i|sup|sub|tt|u|q|term|tm
                  |state|data|data-about|foreign|unknown|image)*>
@@ -68,7 +68,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT topicmeta (navtitle?,linktext?,searchtitle?,shortdesc?,
                      author*,source?,publisher?,copyright*,critdates?,
@@ -101,7 +101,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT anchor EMPTY>
 <!ATTLIST anchor
@@ -130,7 +130,7 @@
           |-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT data (#PCDATA|data|data-about|foreign|unknown|keyword|term
                 |image|object|ph|b|i|sup|sub|tt|u|title)*>
@@ -168,7 +168,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT data-about (data,(data|data-about)*)>
 <!ATTLIST data-about
@@ -202,7 +202,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT navref EMPTY>
 <!ATTLIST navref
@@ -233,7 +233,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT reltable (title?,topicmeta?,relheader?,relrow+)>
 <!ATTLIST reltable
@@ -277,7 +277,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT topicref (topicmeta?,
                     (anchor|data|data-about|navref|topicref|anchorref
@@ -329,7 +329,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT anchorref (topicmeta?,
                      (data|data-about|topicref|anchorref|keydef|mapref
@@ -381,7 +381,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT keydef (topicmeta?,
                   (anchor|data|data-about|navref|topicref|anchorref
@@ -433,7 +433,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT mapref (topicmeta?,(data|data-about)*)>
 <!ATTLIST mapref
@@ -482,7 +482,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT topicgroup (topicmeta?,
                       (anchor|data|data-about|navref|topicref|anchorref
@@ -528,7 +528,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT topichead (topicmeta?,
                      (anchor|data|data-about|navref|topicref|anchorref
@@ -577,7 +577,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT topicset (topicmeta?,
                     (anchor|data|data-about|navref|topicref|anchorref
@@ -629,7 +629,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT topicsetref (topicmeta?,
                        (data|data-about|topicref|anchorref|keydef|mapref
@@ -681,7 +681,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT learningObject (topicmeta?,learningPlanRef?,
                           (learningOverviewRef
@@ -735,7 +735,7 @@
   format CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT learningGroup (topicmeta?,learningPlanRef?,
                          (learningOverviewRef
@@ -789,7 +789,7 @@
   format CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT boolean EMPTY>
 <!ATTLIST boolean
@@ -819,7 +819,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT keyword (#PCDATA|text|tm)*>
 <!ATTLIST keyword
@@ -849,7 +849,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT ph (#PCDATA|boolean|cite|keyword|ph|b|i|sup|sub|tt|u|q|term|tm
               |xref|state|data|data-about|foreign|unknown|image
@@ -882,7 +882,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT b (#PCDATA|boolean|cite|keyword|ph|b|i|sup|sub|tt|u|q|term|tm
              |xref|state|data|data-about|foreign|unknown)*>
@@ -912,7 +912,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT i (#PCDATA|boolean|cite|keyword|ph|b|i|sup|sub|tt|u|q|term|tm
              |xref|state|data|data-about|foreign|unknown)*>
@@ -942,7 +942,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT sup (#PCDATA|boolean|cite|keyword|ph|b|i|sup|sub|tt|u|q|term
                |tm|xref|state|data|data-about|foreign|unknown)*>
@@ -972,7 +972,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT sub (#PCDATA|boolean|cite|keyword|ph|b|i|sup|sub|tt|u|q|term
                |tm|xref|state|data|data-about|foreign|unknown)*>
@@ -1002,7 +1002,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT tt (#PCDATA|boolean|cite|keyword|ph|b|i|sup|sub|tt|u|q|term|tm
               |xref|state|data|data-about|foreign|unknown)*>
@@ -1032,7 +1032,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT u (#PCDATA|boolean|cite|keyword|ph|b|i|sup|sub|tt|u|q|term|tm
              |xref|state|data|data-about|foreign|unknown)*>
@@ -1062,7 +1062,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT q (#PCDATA|boolean|cite|keyword|ph|b|i|sup|sub|tt|u|q|term|tm
              |xref|state|data|data-about|foreign|unknown)*>
@@ -1092,7 +1092,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT term (#PCDATA|text|tm)*>
 <!ATTLIST term
@@ -1122,7 +1122,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT tm (#PCDATA|text|tm)*>
 <!ATTLIST tm
@@ -1154,7 +1154,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT state EMPTY>
 <!ATTLIST state
@@ -1185,7 +1185,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT foreign ANY>
 <!ATTLIST foreign
@@ -1214,7 +1214,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT unknown ANY>
 <!ATTLIST unknown
@@ -1243,7 +1243,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT image (alt?,longdescref?)>
 <!ATTLIST image
@@ -1283,7 +1283,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT navtitle (#PCDATA|data|data-about|foreign|unknown|keyword|term
                     |ph|b|i|sup|sub|tt|u)*>
@@ -1312,7 +1312,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT linktext (#PCDATA|data|data-about|foreign|unknown|keyword|term
                     |ph|b|i|sup|sub|tt|u)*>
@@ -1342,7 +1342,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT searchtitle (#PCDATA|data|data-about|foreign|unknown|keyword
                        |term)*>
@@ -1372,7 +1372,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT shortdesc (#PCDATA|boolean|keyword|ph|b|i|sup|sub|tt|u|q|term
                      |tm|state|data|data-about|foreign|unknown|image
@@ -1403,7 +1403,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT author (#PCDATA|data|data-about|foreign|unknown|keyword
                   |term)*>
@@ -1437,7 +1437,7 @@
   type CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT source (#PCDATA|data|data-about|foreign|unknown|keyword|term
                   |ph|b|i|sup|sub|tt|u)*>
@@ -1471,7 +1471,7 @@
   keyref CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT publisher (#PCDATA|data|data-about|foreign|unknown|keyword
                      |term)*>
@@ -1505,7 +1505,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT copyright (copyryear+,copyrholder)>
 <!ATTLIST copyright
@@ -1534,7 +1534,7 @@
   type CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT critdates (created?,revised*)>
 <!ATTLIST critdates
@@ -1562,7 +1562,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT permissions EMPTY>
 <!ATTLIST permissions
@@ -1591,7 +1591,7 @@
   view CDATA #REQUIRED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT metadata (audience*,category*,(keywords|exportanchors)*,
                     prodinfo*,othermeta*,
@@ -1622,7 +1622,7 @@
   mapkeyref CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lcLom (lomStructure?,lomCoverage?,lomAggregationLevel?,
                  lomTechRequirement?,lomInstallationRemarks?,
@@ -1657,7 +1657,7 @@
   mapkeyref CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT audience EMPTY>
 <!ATTLIST audience
@@ -1691,7 +1691,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT category (#PCDATA|data|data-about|foreign|unknown|keyword
                     |term)*>
@@ -1720,7 +1720,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT keywords (indexterm|keyword)*>
 <!ATTLIST keywords
@@ -1748,7 +1748,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT exportanchors (anchorid|anchorkey)*>
 <!ATTLIST exportanchors
@@ -1776,7 +1776,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT prodinfo (prodname,vrmlist,
                     (brand|component|featnum|platform|prognum|series)*)>
@@ -1805,7 +1805,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT othermeta EMPTY>
 <!ATTLIST othermeta
@@ -1836,7 +1836,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT resourceid EMPTY>
 <!ATTLIST resourceid
@@ -1865,7 +1865,7 @@
   appname CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT object (desc?,longdescref?,param*,(foreign|unknown)*)>
 <!ATTLIST object
@@ -1909,7 +1909,7 @@
   longdescre CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT relheader (relcolspec)+>
 <!ATTLIST relheader
@@ -1937,7 +1937,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT relrow (relcell)*>
 <!ATTLIST relrow
@@ -1966,7 +1966,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT learningPlanRef (topicmeta)?>
 <!ATTLIST learningPlanRef
@@ -2013,7 +2013,7 @@
   format CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT learningOverviewRef (topicmeta)?>
 <!ATTLIST learningOverviewRef
@@ -2060,7 +2060,7 @@
   format CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT learningPreAssessmentRef (topicmeta)?>
 <!ATTLIST learningPreAssessmentRef
@@ -2107,7 +2107,7 @@
   format CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT learningContentRef (topicmeta?,learningContentComponentRef*)>
 <!ATTLIST learningContentRef
@@ -2154,7 +2154,7 @@
   chunk CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT learningPostAssessmentRef (topicmeta)?>
 <!ATTLIST learningPostAssessmentRef
@@ -2201,7 +2201,7 @@
   format CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT learningSummaryRef (topicmeta)?>
 <!ATTLIST learningSummaryRef
@@ -2248,7 +2248,7 @@
   format CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT text (#PCDATA|text)*>
 <!ATTLIST text
@@ -2276,7 +2276,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT cite (#PCDATA|boolean|keyword|ph|b|i|sup|sub|tt|u|q|term|tm
                 |state|data|data-about|foreign|unknown)*>
@@ -2307,7 +2307,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT xref (#PCDATA|boolean|keyword|ph|b|i|sup|sub|tt|u|q|term|tm
                 |state|data|data-about|foreign|unknown|image|desc)*>
@@ -2342,7 +2342,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT draft-comment (#PCDATA|dl|fig|imagemap|image|lines|lq|note
                          |hazardstatement|object|ol|p|pre|simpletable|sl
@@ -2378,7 +2378,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT fn (#PCDATA|dl|fig|imagemap|image|lines|lq|note
               |hazardstatement|object|ol|p|pre|sl|ul|boolean|cite
@@ -2411,7 +2411,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT indextermref EMPTY>
 <!ATTLIST indextermref
@@ -2440,7 +2440,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT indexterm (#PCDATA|data|data-about|foreign|unknown|keyword
                      |term|indexterm|index-base|index-see|index-see-also
@@ -2473,7 +2473,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT required-cleanup ANY>
 <!ATTLIST required-cleanup
@@ -2503,7 +2503,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 
 
@@ -2535,7 +2535,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT longdescref EMPTY>
 <!ATTLIST longdescref
@@ -2569,7 +2569,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT copyryear EMPTY>
 <!ATTLIST copyryear
@@ -2598,7 +2598,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT copyrholder (#PCDATA|data|data-about|foreign|unknown|keyword
                        |term)*>
@@ -2627,7 +2627,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT created EMPTY>
 <!ATTLIST created
@@ -2658,7 +2658,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT revised EMPTY>
 <!ATTLIST revised
@@ -2689,7 +2689,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lomStructure (#PCDATA)>
 <!ATTLIST lomStructure
@@ -2721,7 +2721,7 @@
          |-dita-use-conref-target) #REQUIRED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lomCoverage (#PCDATA)>
 <!ATTLIST lomCoverage
@@ -2752,7 +2752,7 @@
   value CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lomAggregationLevel (#PCDATA)>
 <!ATTLIST lomAggregationLevel
@@ -2784,7 +2784,7 @@
   value (1|2|3|4|-dita-use-conref-target) #REQUIRED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lomTechRequirement (#PCDATA)>
 <!ATTLIST lomTechRequirement
@@ -2818,7 +2818,7 @@
          |-dita-use-conref-target) #REQUIRED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lomInstallationRemarks (#PCDATA)>
 <!ATTLIST lomInstallationRemarks
@@ -2849,7 +2849,7 @@
   value CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lomOtherPlatformRequirements (#PCDATA)>
 <!ATTLIST lomOtherPlatformRequirements
@@ -2880,7 +2880,7 @@
   value CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lomInteractivityType (#PCDATA)>
 <!ATTLIST lomInteractivityType
@@ -2911,7 +2911,7 @@
   value (active|expositive|mixed|-dita-use-conref-target) #REQUIRED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lomLearningResourceType (#PCDATA)>
 <!ATTLIST lomLearningResourceType
@@ -2944,7 +2944,7 @@
          |selfassessment|lecture|-dita-use-conref-target) #REQUIRED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lomInteractivityLevel (#PCDATA)>
 <!ATTLIST lomInteractivityLevel
@@ -2976,7 +2976,7 @@
          |-dita-use-conref-target) #REQUIRED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lomSemanticDensity (#PCDATA)>
 <!ATTLIST lomSemanticDensity
@@ -3008,7 +3008,7 @@
          |-dita-use-conref-target) #REQUIRED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lomIntendedUserRole (#PCDATA)>
 <!ATTLIST lomIntendedUserRole
@@ -3040,7 +3040,7 @@
          |-dita-use-conref-target) #REQUIRED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lomContext (#PCDATA)>
 <!ATTLIST lomContext
@@ -3072,7 +3072,7 @@
          |-dita-use-conref-target) #REQUIRED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lomTypicalAgeRange (#PCDATA)>
 <!ATTLIST lomTypicalAgeRange
@@ -3103,7 +3103,7 @@
   value CDATA #REQUIRED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lomDifficulty (#PCDATA)>
 <!ATTLIST lomDifficulty
@@ -3135,7 +3135,7 @@
          |-dita-use-conref-target) #REQUIRED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lomTypicalLearningTime (#PCDATA)>
 <!ATTLIST lomTypicalLearningTime
@@ -3166,7 +3166,7 @@
   value CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT anchorid EMPTY>
 <!ATTLIST anchorid
@@ -3196,7 +3196,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT anchorkey EMPTY>
 <!ATTLIST anchorkey
@@ -3226,7 +3226,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT prodname (#PCDATA|data|data-about|foreign|unknown|keyword
                     |term)*>
@@ -3255,7 +3255,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT vrmlist (vrm)+>
 <!ATTLIST vrmlist
@@ -3283,7 +3283,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT brand (#PCDATA|data|data-about|foreign|unknown|keyword|term)*>
 <!ATTLIST brand
@@ -3311,7 +3311,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT component (#PCDATA|data|data-about|foreign|unknown|keyword
                      |term)*>
@@ -3340,7 +3340,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT featnum (#PCDATA|data|data-about|foreign|unknown|keyword
                    |term)*>
@@ -3369,7 +3369,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT platform (#PCDATA|data|data-about|foreign|unknown|keyword
                     |term)*>
@@ -3398,7 +3398,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT prognum (#PCDATA|data|data-about|foreign|unknown|keyword
                    |term)*>
@@ -3427,7 +3427,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT series (#PCDATA|data|data-about|foreign|unknown|keyword
                   |term)*>
@@ -3456,7 +3456,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT desc (#PCDATA|dl|image|lines|lq|note|hazardstatement|ol|p|pre
                 |sl|ul|boolean|cite|keyword|ph|b|i|sup|sub|tt|u|q|term
@@ -3487,7 +3487,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT param EMPTY>
 <!ATTLIST param
@@ -3519,7 +3519,7 @@
   type CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT relcolspec (title?,topicmeta?,
                       (topicref|anchorref|keydef|mapref|topicgroup
@@ -3565,7 +3565,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT relcell (topicref|anchorref|keydef|mapref|topicgroup|topichead
                    |topicset|topicsetref|learningObject|learningGroup
@@ -3610,7 +3610,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT learningContentComponentRef (topicmeta?,
                                        learningContentComponentRef*)>
@@ -3658,7 +3658,7 @@
   format CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT dl (dlhead?,dlentry+)>
 <!ATTLIST dl
@@ -3689,7 +3689,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT fig (title?,desc?,
                (figgroup|dl|image|lines|lq|note|hazardstatement|object
@@ -3727,7 +3727,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT imagemap (image,area+)>
 <!ATTLIST imagemap
@@ -3762,7 +3762,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lines (#PCDATA|boolean|cite|keyword|ph|b|i|sup|sub|tt|u|q|term
                  |tm|xref|state|data|data-about|foreign|unknown
@@ -3801,7 +3801,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lq (#PCDATA|dl|fig|imagemap|image|lines|note|hazardstatement
               |object|ol|p|pre|simpletable|sl|table|ul|boolean|cite
@@ -3840,7 +3840,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT note (#PCDATA|dl|fig|imagemap|image|lines|lq|object|ol|p|pre
                 |simpletable|sl|table|ul|boolean|cite|keyword|ph|b|i|sup
@@ -3878,7 +3878,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT hazardstatement (messagepanel+,hazardsymbol*)>
 <!ATTLIST hazardstatement
@@ -3912,7 +3912,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT ol (li)+>
 <!ATTLIST ol
@@ -3943,7 +3943,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT p (#PCDATA|dl|fig|imagemap|image|lines|lq|note|hazardstatement
              |object|ol|pre|simpletable|sl|table|ul|boolean|cite|keyword
@@ -3976,7 +3976,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT pre (#PCDATA|boolean|cite|keyword|ph|b|i|sup|sub|tt|u|q|term
                |tm|xref|state|data|data-about|foreign|unknown
@@ -4015,7 +4015,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT simpletable (sthead?,strow+)>
 <!ATTLIST simpletable
@@ -4053,7 +4053,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT sl (sli)+>
 <!ATTLIST sl
@@ -4084,7 +4084,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT table (title?,desc?,tgroup+)>
 <!ATTLIST table
@@ -4121,7 +4121,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT ul (li)+>
 <!ATTLIST ul
@@ -4152,7 +4152,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT index-base (#PCDATA|data|data-about|foreign|unknown|keyword
                       |term|indexterm)*>
@@ -4182,7 +4182,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT index-see (#PCDATA|data|data-about|foreign|unknown|keyword
                      |term|indexterm)*>
@@ -4212,7 +4212,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT index-see-also (#PCDATA|data|data-about|foreign|unknown
                           |keyword|term|indexterm)*>
@@ -4242,7 +4242,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT index-sort-as (#PCDATA|data|data-about|foreign|unknown|keyword
                          |term)*>
@@ -4272,7 +4272,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT vrm EMPTY>
 <!ATTLIST vrm
@@ -4303,7 +4303,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT dlhead (dthd?,ddhd?)>
 <!ATTLIST dlhead
@@ -4332,7 +4332,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT dlentry (dt+,dd+)>
 <!ATTLIST dlentry
@@ -4361,7 +4361,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT figgroup (title?,
                     (figgroup|dl|image|lines|lq|note|hazardstatement
@@ -4394,7 +4394,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT area (shape,coords,xref)>
 <!ATTLIST area
@@ -4423,7 +4423,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT longquoteref EMPTY>
 <!ATTLIST longquoteref
@@ -4457,7 +4457,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT messagepanel (typeofhazard,consequence*,howtoavoid+)>
 <!ATTLIST messagepanel
@@ -4487,7 +4487,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT hazardsymbol (alt?,longdescref?)>
 <!ATTLIST hazardsymbol
@@ -4526,7 +4526,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT li (#PCDATA|dl|fig|imagemap|image|lines|lq|note
               |hazardstatement|object|ol|p|pre|simpletable|sl|table|ul
@@ -4560,7 +4560,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT sthead (stentry)+>
 <!ATTLIST sthead
@@ -4589,7 +4589,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT strow (stentry)*>
 <!ATTLIST strow
@@ -4618,7 +4618,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT sli (#PCDATA|boolean|cite|keyword|ph|b|i|sup|sub|tt|u|q|term
                |tm|xref|state|data|data-about|foreign|unknown|image
@@ -4650,7 +4650,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT tgroup (colspec*,thead?,tbody)>
 <!ATTLIST tgroup
@@ -4684,7 +4684,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT dthd (#PCDATA|boolean|keyword|ph|b|i|sup|sub|tt|u|q|term|tm
                 |state|data|data-about|foreign|unknown|image)*>
@@ -4714,7 +4714,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT ddhd (#PCDATA|boolean|keyword|ph|b|i|sup|sub|tt|u|q|term|tm
                 |state|data|data-about|foreign|unknown|image)*>
@@ -4744,7 +4744,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT dt (#PCDATA|boolean|cite|keyword|ph|b|i|sup|sub|tt|u|q|term|tm
               |xref|state|data|data-about|foreign|unknown|image)*>
@@ -4775,7 +4775,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT dd (#PCDATA|dl|fig|imagemap|image|lines|lq|note
               |hazardstatement|object|ol|p|pre|simpletable|sl|table|ul
@@ -4809,7 +4809,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT shape (#PCDATA|text)*>
 <!ATTLIST shape
@@ -4839,7 +4839,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT coords (#PCDATA|data|data-about|foreign|unknown|keyword
                   |term)*>
@@ -4870,7 +4870,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT typeofhazard (#PCDATA|data|data-about|foreign|unknown|keyword
                         |term|ph|b|i|sup|sub|tt|u|tm)*>
@@ -4900,7 +4900,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT consequence (#PCDATA|data|data-about|foreign|unknown|keyword
                        |term|ph|b|i|sup|sub|tt|u|tm)*>
@@ -4930,7 +4930,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT howtoavoid (#PCDATA|boolean|cite|keyword|ph|b|i|sup|sub|tt|u|q
                       |term|tm|xref|state|sl|simpletable)*>
@@ -4960,7 +4960,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT itemgroup (#PCDATA|dl|fig|imagemap|image|lines|lq|note
                      |hazardstatement|object|ol|p|pre|simpletable|sl
@@ -4994,7 +4994,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT stentry (#PCDATA|dl|fig|imagemap|image|lines|lq|note
                    |hazardstatement|object|ol|p|pre|sl|ul|boolean|cite
@@ -5028,7 +5028,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT colspec EMPTY>
 <!ATTLIST colspec
@@ -5054,7 +5054,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT thead (row)+>
 <!ATTLIST thead
@@ -5084,7 +5084,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT tbody (row)+>
 <!ATTLIST tbody
@@ -5114,7 +5114,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT row (entry)+>
 <!ATTLIST row
@@ -5145,7 +5145,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT entry (#PCDATA|dl|fig|imagemap|image|lines|lq|note
                  |hazardstatement|object|ol|p|pre|sl|ul|boolean|cite
@@ -5179,4 +5179,159 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
+
+<!ATTLIST map domains CDATA "(map mapgroup-d)         (topic learningmeta-d) (map learningmap-d)         (topic indexing-d) (topic delay-d)         (topic hi-d) (topic ut-d) (topic hazard-d)">
+<!ATTLIST table class CDATA "- topic/table ">
+<!ATTLIST tgroup class CDATA "- topic/tgroup ">
+<!ATTLIST colspec class CDATA "- topic/colspec ">
+<!ATTLIST thead class CDATA "- topic/thead ">
+<!ATTLIST tbody class CDATA "- topic/tbody ">
+<!ATTLIST row class CDATA "- topic/row ">
+<!ATTLIST entry class CDATA "- topic/entry ">
+<!ATTLIST alt class CDATA "- topic/alt ">
+<!ATTLIST boolean class CDATA "- topic/boolean ">
+<!ATTLIST cite class CDATA "- topic/cite ">
+<!ATTLIST dd class CDATA "- topic/dd ">
+<!ATTLIST data class CDATA "- topic/data ">
+<!ATTLIST data-about class CDATA "- topic/data-about ">
+<!ATTLIST ddhd class CDATA "- topic/ddhd ">
+<!ATTLIST desc class CDATA "- topic/desc ">
+<!ATTLIST dl class CDATA "- topic/dl ">
+<!ATTLIST dlentry class CDATA "- topic/dlentry ">
+<!ATTLIST dlhead class CDATA "- topic/dlhead ">
+<!ATTLIST draft-comment class CDATA "- topic/draft-comment ">
+<!ATTLIST dt class CDATA "- topic/dt ">
+<!ATTLIST dthd class CDATA "- topic/dthd ">
+<!ATTLIST fig class CDATA "- topic/fig ">
+<!ATTLIST figgroup class CDATA "- topic/figgroup ">
+<!ATTLIST fn class CDATA "- topic/fn ">
+<!ATTLIST foreign class CDATA "- topic/foreign ">
+<!ATTLIST image class CDATA "- topic/image ">
+<!ATTLIST indexterm class CDATA "- topic/indexterm ">
+<!ATTLIST index-base class CDATA "- topic/index-base ">
+<!ATTLIST indextermref class CDATA "- topic/indextermref ">
+<!ATTLIST itemgroup class CDATA "- topic/itemgroup ">
+<!ATTLIST keyword class CDATA "- topic/keyword ">
+<!ATTLIST li class CDATA "- topic/li ">
+<!ATTLIST lines class CDATA "- topic/lines ">
+<!ATTLIST longdescref class CDATA "- topic/longdescref ">
+<!ATTLIST longquoteref class CDATA "- topic/longquoteref ">
+<!ATTLIST lq class CDATA "- topic/lq ">
+<!ATTLIST navtitle class CDATA "- topic/navtitle ">
+<!ATTLIST note class CDATA "- topic/note ">
+<!ATTLIST object class CDATA "- topic/object ">
+<!ATTLIST ol class CDATA "- topic/ol ">
+<!ATTLIST p class CDATA "- topic/p ">
+<!ATTLIST param class CDATA "- topic/param ">
+<!ATTLIST ph class CDATA "- topic/ph ">
+<!ATTLIST pre class CDATA "- topic/pre ">
+<!ATTLIST q class CDATA "- topic/q ">
+<!ATTLIST required-cleanup class CDATA "- topic/required-cleanup ">
+<!ATTLIST simpletable class CDATA "- topic/simpletable ">
+<!ATTLIST sl class CDATA "- topic/sl ">
+<!ATTLIST sli class CDATA "- topic/sli ">
+<!ATTLIST state class CDATA "- topic/state ">
+<!ATTLIST stentry class CDATA "- topic/stentry ">
+<!ATTLIST sthead class CDATA "- topic/sthead ">
+<!ATTLIST strow class CDATA "- topic/strow ">
+<!ATTLIST term class CDATA "- topic/term ">
+<!ATTLIST text class CDATA "- topic/text ">
+<!ATTLIST title class CDATA "- topic/title ">
+<!ATTLIST tm class CDATA "- topic/tm ">
+<!ATTLIST ul class CDATA "- topic/ul ">
+<!ATTLIST unknown class CDATA "- topic/unknown ">
+<!ATTLIST xref class CDATA "- topic/xref ">
+<!ATTLIST author class CDATA "- topic/author ">
+<!ATTLIST source class CDATA "- topic/source ">
+<!ATTLIST publisher class CDATA "- topic/publisher ">
+<!ATTLIST copyright class CDATA "- topic/copyright ">
+<!ATTLIST copyryear class CDATA "- topic/copyryear ">
+<!ATTLIST copyrholder class CDATA "- topic/copyrholder ">
+<!ATTLIST critdates class CDATA "- topic/critdates ">
+<!ATTLIST created class CDATA "- topic/created ">
+<!ATTLIST revised class CDATA "- topic/revised ">
+<!ATTLIST permissions class CDATA "- topic/permissions ">
+<!ATTLIST category class CDATA "- topic/category ">
+<!ATTLIST metadata class CDATA "- topic/metadata ">
+<!ATTLIST audience class CDATA "- topic/audience ">
+<!ATTLIST keywords class CDATA "- topic/keywords ">
+<!ATTLIST prodinfo class CDATA "- topic/prodinfo ">
+<!ATTLIST prodname class CDATA "- topic/prodname ">
+<!ATTLIST vrmlist class CDATA "- topic/vrmlist ">
+<!ATTLIST vrm class CDATA "- topic/vrm ">
+<!ATTLIST brand class CDATA "- topic/brand ">
+<!ATTLIST series class CDATA "- topic/series ">
+<!ATTLIST platform class CDATA "- topic/platform ">
+<!ATTLIST prognum class CDATA "- topic/prognum ">
+<!ATTLIST featnum class CDATA "- topic/featnum ">
+<!ATTLIST component class CDATA "- topic/component ">
+<!ATTLIST othermeta class CDATA "- topic/othermeta ">
+<!ATTLIST resourceid class CDATA "- topic/resourceid ">
+<!ATTLIST map class CDATA "- map/map ">
+<!ATTLIST navref class CDATA "- map/navref ">
+<!ATTLIST topicref class CDATA "- map/topicref ">
+<!ATTLIST anchor class CDATA "- map/anchor ">
+<!ATTLIST reltable class CDATA "- map/reltable ">
+<!ATTLIST relheader class CDATA "- map/relheader ">
+<!ATTLIST relcolspec class CDATA "- map/relcolspec ">
+<!ATTLIST relrow class CDATA "- map/relrow ">
+<!ATTLIST relcell class CDATA "- map/relcell ">
+<!ATTLIST topicmeta class CDATA "- map/topicmeta ">
+<!ATTLIST linktext class CDATA "- map/linktext ">
+<!ATTLIST searchtitle class CDATA "- map/searchtitle ">
+<!ATTLIST shortdesc class CDATA "- map/shortdesc ">
+<!ATTLIST anchorref class CDATA "+ map/topicref mapgroup-d/anchorref ">
+<!ATTLIST keydef class CDATA "+ map/topicref mapgroup-d/keydef ">
+<!ATTLIST mapref class CDATA "+ map/topicref mapgroup-d/mapref ">
+<!ATTLIST topicgroup class CDATA "+ map/topicref mapgroup-d/topicgroup ">
+<!ATTLIST topichead class CDATA "+ map/topicref mapgroup-d/topichead ">
+<!ATTLIST topicset class CDATA "+ map/topicref mapgroup-d/topicset ">
+<!ATTLIST topicsetref class CDATA "+ map/topicref mapgroup-d/topicsetref ">
+<!ATTLIST index-see class CDATA "+ topic/index-base indexing-d/index-see ">
+<!ATTLIST index-see-also class CDATA "+ topic/index-base indexing-d/index-see-also ">
+<!ATTLIST index-sort-as class CDATA "+ topic/index-base indexing-d/index-sort-as ">
+<!ATTLIST exportanchors class CDATA "+ topic/keywords delay-d/exportanchors ">
+<!ATTLIST anchorid class CDATA "+ topic/keyword delay-d/anchorid ">
+<!ATTLIST anchorkey class CDATA "+ topic/keyword delay-d/anchorkey ">
+<!ATTLIST learningObject class CDATA "+ map/topicref learningmap-d/learningObject ">
+<!ATTLIST learningGroup class CDATA "+ map/topicref learningmap-d/learningGroup ">
+<!ATTLIST learningPlanRef class CDATA "+ map/topicref learningmap-d/learningPlanRef ">
+<!ATTLIST learningOverviewRef class CDATA "+ map/topicref learningmap-d/learningOverviewRef ">
+<!ATTLIST learningContentRef class CDATA "+ map/topicref learningmap-d/learningContentRef ">
+<!ATTLIST learningContentComponentRef class CDATA "+ map/topicref learningmap-d/learningContentComponentRef ">
+<!ATTLIST learningSummaryRef class CDATA "+ map/topicref learningmap-d/learningSummaryRef ">
+<!ATTLIST learningPreAssessmentRef class CDATA "+ map/topicref learningmap-d/learningPreAssessmentRef ">
+<!ATTLIST learningPostAssessmentRef class CDATA "+ map/topicref learningmap-d/learningPostAssessmentRef ">
+<!ATTLIST lcLom class CDATA "+ topic/metadata learningmeta-d/lcLom ">
+<!ATTLIST lomCoverage class CDATA "+ topic/data learningmeta-d/lomCoverage ">
+<!ATTLIST lomStructure class CDATA "+ topic/data learningmeta-d/lomStructure ">
+<!ATTLIST lomAggregationLevel class CDATA "+ topic/data learningmeta-d/lomAggregationLevel ">
+<!ATTLIST lomTechRequirement class CDATA "+ topic/data learningmeta-d/lomTechRequirement ">
+<!ATTLIST lomInstallationRemarks class CDATA "+ topic/data learningmeta-d/lomInstallationRemarks ">
+<!ATTLIST lomOtherPlatformRequirements class CDATA "+ topic/data learningmeta-d/lomOtherPlatformRequirements ">
+<!ATTLIST lomInteractivityType class CDATA "+ topic/data learningmeta-d/lomInteractivityType ">
+<!ATTLIST lomLearningResourceType class CDATA "+ topic/data learningmeta-d/lomLearningResourceType ">
+<!ATTLIST lomInteractivityLevel class CDATA "+ topic/data learningmeta-d/lomInteractivityLevel ">
+<!ATTLIST lomSemanticDensity class CDATA "+ topic/data learningmeta-d/lomSemanticDensity ">
+<!ATTLIST lomIntendedUserRole class CDATA "+ topic/data learningmeta-d/lomIntendedUserRole ">
+<!ATTLIST lomContext class CDATA "+ topic/data learningmeta-d/lomContext ">
+<!ATTLIST lomTypicalAgeRange class CDATA "+ topic/data learningmeta-d/lomTypicalAgeRange ">
+<!ATTLIST lomDifficulty class CDATA "+ topic/data learningmeta-d/lomDifficulty ">
+<!ATTLIST lomTypicalLearningTime class CDATA "+ topic/data learningmeta-d/lomTypicalLearningTime ">
+<!ATTLIST b class CDATA "+ topic/ph hi-d/b ">
+<!ATTLIST i class CDATA "+ topic/ph hi-d/i ">
+<!ATTLIST sub class CDATA "+ topic/ph hi-d/sub ">
+<!ATTLIST sup class CDATA "+ topic/ph hi-d/sup ">
+<!ATTLIST tt class CDATA "+ topic/ph hi-d/tt ">
+<!ATTLIST u class CDATA "+ topic/ph hi-d/u ">
+<!ATTLIST imagemap class CDATA "+ topic/fig ut-d/imagemap ">
+<!ATTLIST area class CDATA "+ topic/figgroup ut-d/area ">
+<!ATTLIST shape class CDATA "+ topic/keyword ut-d/shape ">
+<!ATTLIST coords class CDATA "+ topic/ph ut-d/coords ">
+<!ATTLIST hazardstatement class CDATA "+ topic/note hazard-d/hazardstatement ">
+<!ATTLIST messagepanel class CDATA "+ topic/ul hazard-d/messagepanel ">
+<!ATTLIST hazardsymbol class CDATA "+ topic/image hazard-d/hazardsymbol ">
+<!ATTLIST typeofhazard class CDATA "+ topic/li hazard-d/typeofhazard ">
+<!ATTLIST consequence class CDATA "+ topic/li hazard-d/consequence ">
+<!ATTLIST howtoavoid class CDATA "+ topic/li hazard-d/howtoavoid ">

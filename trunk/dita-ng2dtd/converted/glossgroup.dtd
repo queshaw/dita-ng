@@ -27,10 +27,10 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   outputclass CDATA #IMPLIED
   ditaarch:DITAArchVersion CDATA '1.2'
-  domains CDATA #IMPLIED
+
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT title (#PCDATA|boolean|keyword|wintitle|apiname|option
                  |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -52,7 +52,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT prolog (author*,source?,publisher?,copyright*,critdates?,
                   permissions?,metadata*,resourceid*,
@@ -82,7 +82,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT glossentry (glossterm,glossdef?,prolog?,glossBody?,
                       related-links?,no-topic-nesting*)>
@@ -112,10 +112,10 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   outputclass CDATA #IMPLIED
   ditaarch:DITAArchVersion CDATA '1.2'
-  domains CDATA #IMPLIED
+
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT boolean EMPTY>
 <!ATTLIST boolean
@@ -145,7 +145,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT keyword (#PCDATA|text|tm)*>
 <!ATTLIST keyword
@@ -175,7 +175,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT wintitle (#PCDATA|text)*>
 <!ATTLIST wintitle
@@ -205,7 +205,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT apiname (#PCDATA|text)*>
 <!ATTLIST apiname
@@ -235,7 +235,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT option (#PCDATA|text)*>
 <!ATTLIST option
@@ -265,7 +265,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT parmname (#PCDATA|text)*>
 <!ATTLIST parmname
@@ -295,7 +295,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT cmdname (#PCDATA|text)*>
 <!ATTLIST cmdname
@@ -325,7 +325,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT msgnum (#PCDATA|text)*>
 <!ATTLIST msgnum
@@ -355,7 +355,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT varname (#PCDATA|text)*>
 <!ATTLIST varname
@@ -385,7 +385,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT ph (#PCDATA|boolean|cite|keyword|wintitle|apiname|option
               |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -420,7 +420,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT b (#PCDATA|boolean|cite|keyword|wintitle|apiname|option
              |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -453,7 +453,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT i (#PCDATA|boolean|cite|keyword|wintitle|apiname|option
              |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -486,7 +486,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT sup (#PCDATA|boolean|cite|keyword|wintitle|apiname|option
                |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -519,7 +519,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT sub (#PCDATA|boolean|cite|keyword|wintitle|apiname|option
                |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -552,7 +552,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT tt (#PCDATA|boolean|cite|keyword|wintitle|apiname|option
               |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -585,7 +585,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT u (#PCDATA|boolean|cite|keyword|wintitle|apiname|option
              |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -618,7 +618,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT menucascade (uicontrol)+>
 <!ATTLIST menucascade
@@ -648,7 +648,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT uicontrol (#PCDATA|data|data-about|foreign|unknown|keyword
                      |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -680,7 +680,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT codeph (#PCDATA|boolean|cite|keyword|wintitle|apiname|option
                   |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -713,7 +713,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT synph (#PCDATA|codeph|delim|kwd|oper|option|parmname|sep|synph
                  |text|var)*>
@@ -743,7 +743,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT filepath (#PCDATA|data|data-about|foreign|unknown|keyword
                     |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -774,7 +774,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT msgph (#PCDATA|data|data-about|foreign|unknown|keyword
                  |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -805,7 +805,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT systemoutput (#PCDATA|data|data-about|foreign|unknown|keyword
                         |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -836,7 +836,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT userinput (#PCDATA|data|data-about|foreign|unknown|keyword
                      |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -867,7 +867,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT q (#PCDATA|boolean|cite|keyword|wintitle|apiname|option
              |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -900,7 +900,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT term (#PCDATA|text|tm)*>
 <!ATTLIST term
@@ -930,7 +930,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT abbreviated-form EMPTY>
 <!ATTLIST abbreviated-form
@@ -960,7 +960,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT tm (#PCDATA|text|tm)*>
 <!ATTLIST tm
@@ -992,7 +992,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT state EMPTY>
 <!ATTLIST state
@@ -1023,7 +1023,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT data (#PCDATA|data|data-about|foreign|unknown|keyword|wintitle
                 |apiname|option|parmname|cmdname|msgnum|varname|term
@@ -1064,7 +1064,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT data-about (data,(data|data-about)*)>
 <!ATTLIST data-about
@@ -1098,7 +1098,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT foreign ANY>
 <!ATTLIST foreign
@@ -1127,7 +1127,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT unknown ANY>
 <!ATTLIST unknown
@@ -1156,7 +1156,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT image (alt?,longdescref?)>
 <!ATTLIST image
@@ -1196,7 +1196,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT author (#PCDATA|data|data-about|foreign|unknown|keyword
                   |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -1231,7 +1231,7 @@
   type CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT source (#PCDATA|data|data-about|foreign|unknown|keyword
                   |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -1268,7 +1268,7 @@
   keyref CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT publisher (#PCDATA|data|data-about|foreign|unknown|keyword
                      |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -1303,7 +1303,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT copyright (copyryear+,copyrholder)>
 <!ATTLIST copyright
@@ -1332,7 +1332,7 @@
   type CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT critdates (created?,revised*)>
 <!ATTLIST critdates
@@ -1360,7 +1360,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT permissions EMPTY>
 <!ATTLIST permissions
@@ -1389,7 +1389,7 @@
   view CDATA #REQUIRED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT metadata (audience*,category*,keywords*,prodinfo*,othermeta*,
                     (data|data-about|foreign|unknown)*)>
@@ -1419,7 +1419,7 @@
   mapkeyref CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT resourceid EMPTY>
 <!ATTLIST resourceid
@@ -1448,7 +1448,7 @@
   appname CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT glossterm (#PCDATA|boolean|keyword|wintitle|apiname|option
                      |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt
@@ -1471,7 +1471,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT glossdef (#PCDATA|dl|parml|fig|imagemap|syntaxdiagram|image
                     |lines|lq|note|hazardstatement|object|ol|p|pre
@@ -1509,7 +1509,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT glossBody (glossPartOfSpeech?,glossStatus?,glossProperty*,
                      glossSurfaceForm?,glossUsage?,glossScopeNote?,
@@ -1529,7 +1529,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT related-links (link|linklist|linkpool)*>
 <!ATTLIST related-links
@@ -1565,14 +1565,14 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT no-topic-nesting EMPTY>
 <!ATTLIST no-topic-nesting
   xmlns CDATA #FIXED ''
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT text (#PCDATA|text)*>
 <!ATTLIST text
@@ -1600,7 +1600,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT cite (#PCDATA|boolean|keyword|wintitle|apiname|option|parmname
                 |cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u|menucascade
@@ -1634,7 +1634,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT xref (#PCDATA|boolean|keyword|wintitle|apiname|option|parmname
                 |cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u|menucascade
@@ -1672,7 +1672,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT draft-comment (#PCDATA|dl|parml|fig|imagemap|syntaxdiagram
                          |image|lines|lq|note|hazardstatement|object|ol
@@ -1712,7 +1712,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT fn (#PCDATA|dl|parml|fig|imagemap|syntaxdiagram|image|lines|lq
               |note|hazardstatement|object|ol|p|pre|screen|codeblock
@@ -1748,7 +1748,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT indextermref EMPTY>
 <!ATTLIST indextermref
@@ -1777,7 +1777,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT indexterm (#PCDATA|data|data-about|foreign|unknown|keyword
                      |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -1811,7 +1811,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT required-cleanup ANY>
 <!ATTLIST required-cleanup
@@ -1841,7 +1841,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT shortcut (#PCDATA|text)*>
 <!ATTLIST shortcut
@@ -1871,7 +1871,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT delim (#PCDATA|data|data-about|foreign|unknown|keyword
                  |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -1900,7 +1900,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT kwd (#PCDATA|text)*>
 <!ATTLIST kwd
@@ -1929,7 +1929,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT oper (#PCDATA|data|data-about|foreign|unknown|keyword|wintitle
                 |apiname|option|parmname|cmdname|msgnum|varname|term
@@ -1959,7 +1959,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT sep (#PCDATA|data|data-about|foreign|unknown|keyword|wintitle
                |apiname|option|parmname|cmdname|msgnum|varname|term
@@ -1988,7 +1988,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT var (#PCDATA|data|data-about|foreign|unknown|keyword|wintitle
                |apiname|option|parmname|cmdname|msgnum|varname|term
@@ -2018,7 +2018,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT object (desc?,longdescref?,param*,(foreign|unknown)*)>
 <!ATTLIST object
@@ -2062,7 +2062,7 @@
   longdescre CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 
 
@@ -2097,7 +2097,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT longdescref EMPTY>
 <!ATTLIST longdescref
@@ -2131,7 +2131,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT copyryear EMPTY>
 <!ATTLIST copyryear
@@ -2160,7 +2160,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT copyrholder (#PCDATA|data|data-about|foreign|unknown|keyword
                        |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -2190,7 +2190,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT created EMPTY>
 <!ATTLIST created
@@ -2221,7 +2221,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT revised EMPTY>
 <!ATTLIST revised
@@ -2252,7 +2252,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT audience EMPTY>
 <!ATTLIST audience
@@ -2286,7 +2286,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT category (#PCDATA|data|data-about|foreign|unknown|keyword
                     |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -2316,7 +2316,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT keywords (indexterm|keyword|wintitle|apiname|option|parmname
                     |cmdname|msgnum|varname)*>
@@ -2345,7 +2345,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT prodinfo (prodname,vrmlist,
                     (brand|component|featnum|platform|prognum|series)*)>
@@ -2374,7 +2374,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT othermeta EMPTY>
 <!ATTLIST othermeta
@@ -2405,7 +2405,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT dl (dlhead?,dlentry+)>
 <!ATTLIST dl
@@ -2436,7 +2436,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT parml (plentry)+>
 <!ATTLIST parml
@@ -2467,7 +2467,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT fig (title?,desc?,
                (figgroup|dl|parml|image|lines|lq|note|hazardstatement
@@ -2505,7 +2505,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT imagemap (image,area+)>
 <!ATTLIST imagemap
@@ -2540,7 +2540,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT syntaxdiagram (title?,
                          (fragment|fragref|groupchoice|groupcomp
@@ -2576,7 +2576,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lines (#PCDATA|boolean|cite|keyword|wintitle|apiname|option
                  |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -2617,7 +2617,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT lq (#PCDATA|dl|parml|fig|imagemap|syntaxdiagram|image|lines
               |note|hazardstatement|object|ol|p|pre|screen|codeblock
@@ -2660,7 +2660,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT note (#PCDATA|dl|parml|fig|imagemap|syntaxdiagram|image|lines
                 |lq|object|ol|p|pre|screen|codeblock|msgblock
@@ -2702,7 +2702,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT hazardstatement (messagepanel+,hazardsymbol*)>
 <!ATTLIST hazardstatement
@@ -2736,7 +2736,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT ol (li)+>
 <!ATTLIST ol
@@ -2767,7 +2767,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT p (#PCDATA|dl|parml|fig|imagemap|syntaxdiagram|image|lines|lq
              |note|hazardstatement|object|ol|pre|screen|codeblock
@@ -2804,7 +2804,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT pre (#PCDATA|boolean|cite|keyword|wintitle|apiname|option
                |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -2845,7 +2845,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT screen (#PCDATA|boolean|cite|keyword|wintitle|apiname|option
                   |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -2886,7 +2886,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT codeblock (#PCDATA|boolean|cite|keyword|wintitle|apiname
                      |option|parmname|cmdname|msgnum|varname|ph|b|i|sup
@@ -2928,7 +2928,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT msgblock (#PCDATA|data|data-about|foreign|unknown|keyword
                     |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -2966,7 +2966,7 @@
   xml:space (preserve) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT simpletable (sthead?,strow+)>
 <!ATTLIST simpletable
@@ -3004,7 +3004,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT sl (sli)+>
 <!ATTLIST sl
@@ -3035,7 +3035,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT table (title?,desc?,tgroup+)>
 <!ATTLIST table
@@ -3072,7 +3072,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT ul (li)+>
 <!ATTLIST ul
@@ -3103,7 +3103,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT shortdesc (#PCDATA|boolean|keyword|wintitle|apiname|option
                      |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt
@@ -3137,7 +3137,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT glossPartOfSpeech EMPTY>
 <!ATTLIST glossPartOfSpeech
@@ -3174,7 +3174,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT glossStatus EMPTY>
 <!ATTLIST glossStatus
@@ -3211,7 +3211,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT glossProperty (#PCDATA|data|data-about|foreign|unknown|keyword
                          |wintitle|apiname|option|parmname|cmdname
@@ -3253,7 +3253,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT glossSurfaceForm (#PCDATA|keyword|wintitle|apiname|option
                             |parmname|cmdname|msgnum|varname|term
@@ -3284,7 +3284,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT glossUsage (#PCDATA|dl|parml|fig|imagemap|syntaxdiagram|image
                       |lines|lq|object|ol|p|pre|screen|codeblock
@@ -3326,7 +3326,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT glossScopeNote (#PCDATA|dl|parml|fig|imagemap|syntaxdiagram
                           |image|lines|lq|object|ol|p|pre|screen
@@ -3368,7 +3368,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT glossSymbol (alt?,longdescref?)>
 <!ATTLIST glossSymbol
@@ -3407,7 +3407,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT glossAlt ((glossAbbreviation|glossAcronym|glossShortForm
                      |glossSynonym)?,
@@ -3439,7 +3439,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT link (linktext?,desc?)>
 <!ATTLIST link
@@ -3478,7 +3478,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT linklist (title?,desc?,(linklist|link)*,linkinfo?)>
 <!ATTLIST linklist
@@ -3519,7 +3519,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT linkpool (linkpool|link)*>
 <!ATTLIST linkpool
@@ -3559,7 +3559,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT desc (#PCDATA|dl|parml|image|lines|lq|note|hazardstatement|ol
                 |p|pre|screen|codeblock|msgblock|sl|ul|boolean|cite
@@ -3594,7 +3594,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT index-base (#PCDATA|data|data-about|foreign|unknown|keyword
                       |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -3625,7 +3625,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT index-see (#PCDATA|data|data-about|foreign|unknown|keyword
                      |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -3656,7 +3656,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT index-see-also (#PCDATA|data|data-about|foreign|unknown
                           |keyword|wintitle|apiname|option|parmname
@@ -3688,7 +3688,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT index-sort-as (#PCDATA|data|data-about|foreign|unknown|keyword
                          |wintitle|apiname|option|parmname|cmdname
@@ -3719,7 +3719,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT param EMPTY>
 <!ATTLIST param
@@ -3751,7 +3751,7 @@
   type CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT prodname (#PCDATA|data|data-about|foreign|unknown|keyword
                     |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -3781,7 +3781,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT vrmlist (vrm)+>
 <!ATTLIST vrmlist
@@ -3809,7 +3809,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT brand (#PCDATA|data|data-about|foreign|unknown|keyword
                  |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -3839,7 +3839,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT component (#PCDATA|data|data-about|foreign|unknown|keyword
                      |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -3869,7 +3869,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT featnum (#PCDATA|data|data-about|foreign|unknown|keyword
                    |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -3899,7 +3899,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT platform (#PCDATA|data|data-about|foreign|unknown|keyword
                     |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -3929,7 +3929,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT prognum (#PCDATA|data|data-about|foreign|unknown|keyword
                    |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -3959,7 +3959,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT series (#PCDATA|data|data-about|foreign|unknown|keyword
                   |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -3989,7 +3989,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT dlhead (dthd?,ddhd?)>
 <!ATTLIST dlhead
@@ -4018,7 +4018,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT dlentry (dt+,dd+)>
 <!ATTLIST dlentry
@@ -4047,7 +4047,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT plentry (pt+,pd+)>
 <!ATTLIST plentry
@@ -4076,7 +4076,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT figgroup (title?,
                     (figgroup|dl|parml|image|lines|lq|note
@@ -4113,7 +4113,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT area (shape,coords,xref)>
 <!ATTLIST area
@@ -4142,7 +4142,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT fragment (title?,
                     (fragref|groupchoice|groupcomp|groupseq|synnote
@@ -4173,7 +4173,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT fragref (#PCDATA|boolean|keyword|wintitle|apiname|option
                    |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -4205,7 +4205,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT groupchoice (title?,repsep?,
                        (delim|fragref|groupchoice|groupcomp|groupseq|kwd
@@ -4235,7 +4235,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT groupcomp (title?,repsep?,
                      (delim|fragref|groupchoice|groupcomp|groupseq|kwd
@@ -4265,7 +4265,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT groupseq (title?,repsep?,
                     (delim|fragref|groupchoice|groupcomp|groupseq|kwd
@@ -4295,7 +4295,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT synblk (title?,
                   (fragment|fragref|groupchoice|groupcomp|groupseq
@@ -4326,7 +4326,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT synnote (#PCDATA|boolean|cite|keyword|wintitle|apiname|option
                    |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -4360,7 +4360,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT synnoteref EMPTY>
 <!ATTLIST synnoteref
@@ -4390,7 +4390,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT longquoteref EMPTY>
 <!ATTLIST longquoteref
@@ -4424,7 +4424,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT messagepanel (typeofhazard,consequence*,howtoavoid+)>
 <!ATTLIST messagepanel
@@ -4454,7 +4454,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT hazardsymbol (alt?,longdescref?)>
 <!ATTLIST hazardsymbol
@@ -4493,7 +4493,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT li (#PCDATA|dl|parml|fig|imagemap|syntaxdiagram|image|lines|lq
               |note|hazardstatement|object|ol|p|pre|screen|codeblock
@@ -4530,7 +4530,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT coderef EMPTY>
 <!ATTLIST coderef
@@ -4564,7 +4564,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT sthead (stentry)+>
 <!ATTLIST sthead
@@ -4593,7 +4593,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT strow (stentry)*>
 <!ATTLIST strow
@@ -4622,7 +4622,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT sli (#PCDATA|boolean|cite|keyword|wintitle|apiname|option
                |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -4657,7 +4657,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT tgroup (colspec*,thead?,tbody)>
 <!ATTLIST tgroup
@@ -4691,7 +4691,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT glossAbbreviation (#PCDATA|keyword|wintitle|apiname|option
                              |parmname|cmdname|msgnum|varname|term
@@ -4711,7 +4711,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT glossAcronym (#PCDATA|keyword|wintitle|apiname|option|parmname
                         |cmdname|msgnum|varname|term|abbreviated-form
@@ -4731,7 +4731,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT glossShortForm (#PCDATA|keyword|wintitle|apiname|option
                           |parmname|cmdname|msgnum|varname|term
@@ -4751,7 +4751,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT glossSynonym (#PCDATA|keyword|wintitle|apiname|option|parmname
                         |cmdname|msgnum|varname|term|abbreviated-form
@@ -4771,7 +4771,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT glossAlternateFor EMPTY>
 <!ATTLIST glossAlternateFor
@@ -4805,7 +4805,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT linktext (#PCDATA|data|data-about|foreign|unknown|keyword
                     |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -4837,7 +4837,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT linkinfo (#PCDATA|dl|parml|image|lines|lq|note|hazardstatement
                     |ol|p|pre|screen|codeblock|msgblock|sl|ul|boolean
@@ -4871,7 +4871,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT vrm EMPTY>
 <!ATTLIST vrm
@@ -4902,7 +4902,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT dthd (#PCDATA|boolean|keyword|wintitle|apiname|option|parmname
                 |cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u|menucascade
@@ -4935,7 +4935,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT ddhd (#PCDATA|boolean|keyword|wintitle|apiname|option|parmname
                 |cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u|menucascade
@@ -4968,7 +4968,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT dt (#PCDATA|boolean|cite|keyword|wintitle|apiname|option
               |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -5002,7 +5002,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT dd (#PCDATA|dl|parml|fig|imagemap|syntaxdiagram|image|lines|lq
               |note|hazardstatement|object|ol|p|pre|screen|codeblock
@@ -5039,7 +5039,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT pt (#PCDATA|boolean|cite|keyword|wintitle|apiname|option
               |parmname|cmdname|msgnum|varname|ph|b|i|sup|sub|tt|u
@@ -5073,7 +5073,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT pd (#PCDATA|dl|parml|fig|imagemap|syntaxdiagram|image|lines|lq
               |note|hazardstatement|object|ol|p|pre|screen|codeblock
@@ -5110,7 +5110,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT shape (#PCDATA|text)*>
 <!ATTLIST shape
@@ -5140,7 +5140,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT coords (#PCDATA|data|data-about|foreign|unknown|keyword
                   |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -5172,7 +5172,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT repsep (#PCDATA|data|data-about|foreign|unknown|keyword
                   |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -5201,7 +5201,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT typeofhazard (#PCDATA|data|data-about|foreign|unknown|keyword
                         |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -5234,7 +5234,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT consequence (#PCDATA|data|data-about|foreign|unknown|keyword
                        |wintitle|apiname|option|parmname|cmdname|msgnum
@@ -5267,7 +5267,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT howtoavoid (#PCDATA|boolean|cite|keyword|wintitle|apiname
                       |option|parmname|cmdname|msgnum|varname|ph|b|i|sup
@@ -5300,7 +5300,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT itemgroup (#PCDATA|dl|parml|fig|imagemap|syntaxdiagram|image
                      |lines|lq|note|hazardstatement|object|ol|p|pre
@@ -5338,7 +5338,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT stentry (#PCDATA|dl|parml|fig|imagemap|syntaxdiagram|image
                    |lines|lq|note|hazardstatement|object|ol|p|pre|screen
@@ -5376,7 +5376,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT colspec EMPTY>
 <!ATTLIST colspec
@@ -5402,7 +5402,7 @@
   dir (lro|ltr|rlo|rtl|-dita-use-conref-target) #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT thead (row)+>
 <!ATTLIST thead
@@ -5432,7 +5432,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT tbody (row)+>
 <!ATTLIST tbody
@@ -5462,7 +5462,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT row (entry)+>
 <!ATTLIST row
@@ -5493,7 +5493,7 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
 
 <!ELEMENT entry (#PCDATA|dl|parml|fig|imagemap|syntaxdiagram|image|lines
                  |lq|note|hazardstatement|object|ol|p|pre|screen
@@ -5531,4 +5531,190 @@
   outputclass CDATA #IMPLIED
   xtrc CDATA #IMPLIED
   xtrf CDATA #IMPLIED
-  class CDATA #IMPLIED>
+>
+
+<!ATTLIST glossgroup domains CDATA "(topic concept) (topic concept glossentry)          (topic concept glossgroup) (topic hi-d) (topic ut-d)         (topic indexing-d) (topic hazard-d) (topic abbrev-d)          (topic ui-d) (topic pr-d) (topic sw-d)">
+<!ATTLIST table class CDATA "- topic/table ">
+<!ATTLIST tgroup class CDATA "- topic/tgroup ">
+<!ATTLIST colspec class CDATA "- topic/colspec ">
+<!ATTLIST thead class CDATA "- topic/thead ">
+<!ATTLIST tbody class CDATA "- topic/tbody ">
+<!ATTLIST row class CDATA "- topic/row ">
+<!ATTLIST entry class CDATA "- topic/entry ">
+<!ATTLIST alt class CDATA "- topic/alt ">
+<!ATTLIST boolean class CDATA "- topic/boolean ">
+<!ATTLIST cite class CDATA "- topic/cite ">
+<!ATTLIST dd class CDATA "- topic/dd ">
+<!ATTLIST data class CDATA "- topic/data ">
+<!ATTLIST data-about class CDATA "- topic/data-about ">
+<!ATTLIST ddhd class CDATA "- topic/ddhd ">
+<!ATTLIST desc class CDATA "- topic/desc ">
+<!ATTLIST dl class CDATA "- topic/dl ">
+<!ATTLIST dlentry class CDATA "- topic/dlentry ">
+<!ATTLIST dlhead class CDATA "- topic/dlhead ">
+<!ATTLIST draft-comment class CDATA "- topic/draft-comment ">
+<!ATTLIST dt class CDATA "- topic/dt ">
+<!ATTLIST dthd class CDATA "- topic/dthd ">
+<!ATTLIST fig class CDATA "- topic/fig ">
+<!ATTLIST figgroup class CDATA "- topic/figgroup ">
+<!ATTLIST fn class CDATA "- topic/fn ">
+<!ATTLIST foreign class CDATA "- topic/foreign ">
+<!ATTLIST image class CDATA "- topic/image ">
+<!ATTLIST indexterm class CDATA "- topic/indexterm ">
+<!ATTLIST index-base class CDATA "- topic/index-base ">
+<!ATTLIST indextermref class CDATA "- topic/indextermref ">
+<!ATTLIST itemgroup class CDATA "- topic/itemgroup ">
+<!ATTLIST keyword class CDATA "- topic/keyword ">
+<!ATTLIST li class CDATA "- topic/li ">
+<!ATTLIST lines class CDATA "- topic/lines ">
+<!ATTLIST longdescref class CDATA "- topic/longdescref ">
+<!ATTLIST longquoteref class CDATA "- topic/longquoteref ">
+<!ATTLIST lq class CDATA "- topic/lq ">
+<!ATTLIST navtitle class CDATA "- topic/navtitle ">
+<!ATTLIST note class CDATA "- topic/note ">
+<!ATTLIST object class CDATA "- topic/object ">
+<!ATTLIST ol class CDATA "- topic/ol ">
+<!ATTLIST p class CDATA "- topic/p ">
+<!ATTLIST param class CDATA "- topic/param ">
+<!ATTLIST ph class CDATA "- topic/ph ">
+<!ATTLIST pre class CDATA "- topic/pre ">
+<!ATTLIST q class CDATA "- topic/q ">
+<!ATTLIST required-cleanup class CDATA "- topic/required-cleanup ">
+<!ATTLIST simpletable class CDATA "- topic/simpletable ">
+<!ATTLIST sl class CDATA "- topic/sl ">
+<!ATTLIST sli class CDATA "- topic/sli ">
+<!ATTLIST state class CDATA "- topic/state ">
+<!ATTLIST stentry class CDATA "- topic/stentry ">
+<!ATTLIST sthead class CDATA "- topic/sthead ">
+<!ATTLIST strow class CDATA "- topic/strow ">
+<!ATTLIST term class CDATA "- topic/term ">
+<!ATTLIST text class CDATA "- topic/text ">
+<!ATTLIST title class CDATA "- topic/title ">
+<!ATTLIST tm class CDATA "- topic/tm ">
+<!ATTLIST ul class CDATA "- topic/ul ">
+<!ATTLIST unknown class CDATA "- topic/unknown ">
+<!ATTLIST xref class CDATA "- topic/xref ">
+<!ATTLIST author class CDATA "- topic/author ">
+<!ATTLIST source class CDATA "- topic/source ">
+<!ATTLIST publisher class CDATA "- topic/publisher ">
+<!ATTLIST copyright class CDATA "- topic/copyright ">
+<!ATTLIST copyryear class CDATA "- topic/copyryear ">
+<!ATTLIST copyrholder class CDATA "- topic/copyrholder ">
+<!ATTLIST critdates class CDATA "- topic/critdates ">
+<!ATTLIST created class CDATA "- topic/created ">
+<!ATTLIST revised class CDATA "- topic/revised ">
+<!ATTLIST permissions class CDATA "- topic/permissions ">
+<!ATTLIST category class CDATA "- topic/category ">
+<!ATTLIST metadata class CDATA "- topic/metadata ">
+<!ATTLIST audience class CDATA "- topic/audience ">
+<!ATTLIST keywords class CDATA "- topic/keywords ">
+<!ATTLIST prodinfo class CDATA "- topic/prodinfo ">
+<!ATTLIST prodname class CDATA "- topic/prodname ">
+<!ATTLIST vrmlist class CDATA "- topic/vrmlist ">
+<!ATTLIST vrm class CDATA "- topic/vrm ">
+<!ATTLIST brand class CDATA "- topic/brand ">
+<!ATTLIST series class CDATA "- topic/series ">
+<!ATTLIST platform class CDATA "- topic/platform ">
+<!ATTLIST prognum class CDATA "- topic/prognum ">
+<!ATTLIST featnum class CDATA "- topic/featnum ">
+<!ATTLIST component class CDATA "- topic/component ">
+<!ATTLIST othermeta class CDATA "- topic/othermeta ">
+<!ATTLIST resourceid class CDATA "- topic/resourceid ">
+<!ATTLIST abstract class CDATA "- topic/abstract ">
+<!ATTLIST body class CDATA "- topic/body ">
+<!ATTLIST bodydiv class CDATA "- topic/bodydiv ">
+<!ATTLIST example class CDATA "- topic/example ">
+<!ATTLIST link class CDATA "- topic/link ">
+<!ATTLIST linkinfo class CDATA "- topic/linkinfo ">
+<!ATTLIST linklist class CDATA "- topic/linklist ">
+<!ATTLIST linkpool class CDATA "- topic/linkpool ">
+<!ATTLIST linktext class CDATA "- topic/linktext ">
+<!ATTLIST no-topic-nesting class CDATA "- topic/no-topic-nesting ">
+<!ATTLIST prolog class CDATA "- topic/prolog ">
+<!ATTLIST related-links class CDATA "- topic/related-links ">
+<!ATTLIST searchtitle class CDATA "- topic/searchtitle ">
+<!ATTLIST section class CDATA "- topic/section ">
+<!ATTLIST sectiondiv class CDATA "- topic/sectiondiv ">
+<!ATTLIST titlealts class CDATA "- topic/titlealts ">
+<!ATTLIST topic class CDATA "- topic/topic ">
+<!ATTLIST shortdesc class CDATA "- topic/shortdesc ">
+<!ATTLIST concept class CDATA "- topic/topic concept/concept ">
+<!ATTLIST conbody class CDATA "- topic/body  concept/conbody ">
+<!ATTLIST conbodydiv class CDATA "- topic/bodydiv concept/conbodydiv ">
+<!ATTLIST glossentry class CDATA "- topic/topic concept/concept glossentry/glossentry ">
+<!ATTLIST glossterm class CDATA "- topic/title concept/title glossentry/glossterm ">
+<!ATTLIST glossdef class CDATA "- topic/abstract concept/abstract glossentry/glossdef ">
+<!ATTLIST glossBody class CDATA "- topic/body concept/conbody glossentry/glossBody ">
+<!ATTLIST glossAbbreviation class CDATA "- topic/title concept/title glossentry/glossAbbreviation ">
+<!ATTLIST glossAcronym class CDATA "- topic/title concept/title glossentry/glossAcronym ">
+<!ATTLIST glossShortForm class CDATA "- topic/title concept/title glossentry/glossShortForm ">
+<!ATTLIST glossSynonym class CDATA "- topic/title concept/title glossentry/glossSynonym ">
+<!ATTLIST glossPartOfSpeech class CDATA "- topic/data concept/data glossentry/glossPartOfSpeech ">
+<!ATTLIST glossProperty class CDATA "- topic/data concept/data glossentry/glossProperty ">
+<!ATTLIST glossStatus class CDATA "- topic/data concept/data glossentry/glossStatus ">
+<!ATTLIST glossAlt class CDATA "- topic/section concept/section glossentry/glossAlt ">
+<!ATTLIST glossAlternateFor class CDATA "- topic/xref concept/xref glossentry/glossAlternateFor ">
+<!ATTLIST glossScopeNote class CDATA "- topic/note concept/note glossentry/glossScopeNote ">
+<!ATTLIST glossSurfaceForm class CDATA "- topic/p concept/p glossentry/glossSurfaceForm ">
+<!ATTLIST glossSymbol class CDATA "- topic/image concept/image glossentry/glossSymbol ">
+<!ATTLIST glossUsage class CDATA "- topic/note concept/note glossentry/glossUsage ">
+<!ATTLIST glossgroup class CDATA "- topic/topic concept/concept glossgroup/glossgroup ">
+<!ATTLIST b class CDATA "+ topic/ph hi-d/b ">
+<!ATTLIST i class CDATA "+ topic/ph hi-d/i ">
+<!ATTLIST sub class CDATA "+ topic/ph hi-d/sub ">
+<!ATTLIST sup class CDATA "+ topic/ph hi-d/sup ">
+<!ATTLIST tt class CDATA "+ topic/ph hi-d/tt ">
+<!ATTLIST u class CDATA "+ topic/ph hi-d/u ">
+<!ATTLIST imagemap class CDATA "+ topic/fig ut-d/imagemap ">
+<!ATTLIST area class CDATA "+ topic/figgroup ut-d/area ">
+<!ATTLIST shape class CDATA "+ topic/keyword ut-d/shape ">
+<!ATTLIST coords class CDATA "+ topic/ph ut-d/coords ">
+<!ATTLIST index-see class CDATA "+ topic/index-base indexing-d/index-see ">
+<!ATTLIST index-see-also class CDATA "+ topic/index-base indexing-d/index-see-also ">
+<!ATTLIST index-sort-as class CDATA "+ topic/index-base indexing-d/index-sort-as ">
+<!ATTLIST hazardstatement class CDATA "+ topic/note hazard-d/hazardstatement ">
+<!ATTLIST messagepanel class CDATA "+ topic/ul hazard-d/messagepanel ">
+<!ATTLIST hazardsymbol class CDATA "+ topic/image hazard-d/hazardsymbol ">
+<!ATTLIST typeofhazard class CDATA "+ topic/li hazard-d/typeofhazard ">
+<!ATTLIST consequence class CDATA "+ topic/li hazard-d/consequence ">
+<!ATTLIST howtoavoid class CDATA "+ topic/li hazard-d/howtoavoid ">
+<!ATTLIST abbreviated-form class CDATA "+ topic/term abbrev-d/abbreviated-form ">
+<!ATTLIST menucascade class CDATA "+ topic/ph ui-d/menucascade ">
+<!ATTLIST screen class CDATA "+ topic/pre ui-d/screen ">
+<!ATTLIST shortcut class CDATA "+ topic/keyword ui-d/shortcut ">
+<!ATTLIST uicontrol class CDATA "+ topic/ph ui-d/uicontrol ">
+<!ATTLIST wintitle class CDATA "+ topic/keyword ui-d/wintitle ">
+<!ATTLIST apiname class CDATA "+ topic/keyword pr-d/apiname ">
+<!ATTLIST codeblock class CDATA "+ topic/pre pr-d/codeblock ">
+<!ATTLIST codeph class CDATA "+ topic/ph pr-d/codeph ">
+<!ATTLIST coderef class CDATA "+ topic/xref pr-d/coderef ">
+<!ATTLIST delim class CDATA "+ topic/ph pr-d/delim ">
+<!ATTLIST fragment class CDATA "+ topic/figgroup pr-d/fragment ">
+<!ATTLIST fragref class CDATA "+ topic/xref pr-d/fragref ">
+<!ATTLIST groupchoice class CDATA "+ topic/figgroup pr-d/groupchoice ">
+<!ATTLIST groupcomp class CDATA "+ topic/figgroup pr-d/groupcomp ">
+<!ATTLIST groupseq class CDATA "+ topic/figgroup pr-d/groupseq ">
+<!ATTLIST kwd class CDATA "+ topic/keyword pr-d/kwd ">
+<!ATTLIST oper class CDATA "+ topic/ph pr-d/oper ">
+<!ATTLIST option class CDATA "+ topic/keyword pr-d/option ">
+<!ATTLIST parml class CDATA "+ topic/dl pr-d/parml ">
+<!ATTLIST parmname class CDATA "+ topic/keyword pr-d/parmname ">
+<!ATTLIST pd class CDATA "+ topic/dd pr-d/pd ">
+<!ATTLIST plentry class CDATA "+ topic/dlentry pr-d/plentry ">
+<!ATTLIST pt class CDATA "+ topic/dt pr-d/pt ">
+<!ATTLIST repsep class CDATA "+ topic/ph pr-d/repsep ">
+<!ATTLIST sep class CDATA "+ topic/ph pr-d/sep ">
+<!ATTLIST synblk class CDATA "+ topic/figgroup pr-d/synblk ">
+<!ATTLIST synnote class CDATA "+ topic/fn pr-d/synnote ">
+<!ATTLIST synnoteref class CDATA "+ topic/xref pr-d/synnoteref ">
+<!ATTLIST synph class CDATA "+ topic/ph pr-d/synph ">
+<!ATTLIST syntaxdiagram class CDATA "+ topic/fig pr-d/syntaxdiagram ">
+<!ATTLIST var class CDATA "+ topic/ph pr-d/var ">
+<!ATTLIST cmdname class CDATA "+ topic/keyword sw-d/cmdname ">
+<!ATTLIST filepath class CDATA "+ topic/ph sw-d/filepath ">
+<!ATTLIST msgblock class CDATA "+ topic/pre sw-d/msgblock ">
+<!ATTLIST msgnum class CDATA "+ topic/keyword sw-d/msgnum ">
+<!ATTLIST msgph class CDATA "+ topic/ph sw-d/msgph ">
+<!ATTLIST systemoutput class CDATA "+ topic/ph sw-d/systemoutput ">
+<!ATTLIST userinput class CDATA "+ topic/ph sw-d/userinput ">
+<!ATTLIST varname class CDATA "+ topic/keyword sw-d/varname ">
