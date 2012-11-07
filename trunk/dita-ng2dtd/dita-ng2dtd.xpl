@@ -84,7 +84,9 @@
                         <xsl:variable name="dtd3"
                             select="replace($dtd2, '&lt;!ELEMENT ANY \(ANY\)\*>', '')"/>
                         <xsl:variable name="dtdLast"
-                            select="replace($dtd3, '&lt;!ELEMENT (.*) \(.*\|ANY\)\*>', '&lt;!ELEMENT $1 ANY>')"/>
+                            select="replace($dtd3, 
+                            '&lt;!ELEMENT (.*?) \(.*?(\n(.*?))?(\n(.*?))?\|ANY\)\*>', 
+                            '&lt;!ELEMENT $1 ANY>')"/>
                         <dtd>
                             <xsl:value-of select="$dtdLast"/>
                         </dtd>
