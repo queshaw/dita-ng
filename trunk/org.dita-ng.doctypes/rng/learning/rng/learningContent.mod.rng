@@ -86,9 +86,7 @@
   <define name="learningContent.attlist" combine="interleave">
     <ref name="learningContent.attributes"/>
     <ref name="arch-atts"/>
-    <optional>
-      <attribute name="domains" a:defaultValue="(topic hi-d)                             (topic ut-d)                             (topic indexing-d)                            (topic concept)                             (topic reference)                             (topic task)                             (topic learningInteractionBase-d)                            (topic learningInteractionBase-d learning-d)                            (topic learningmeta-d)                             (topic learningBase+learningInteractionBase-d)                            (topic learningBase+learningInteractionBase-d learningContent)                            (topic learningBase learningSummary)                             (topic learningBase+learningInteractionBase-d learningAssessment)   "/>
-    </optional>
+    <ref name="domains-atts"/>
   </define>
   
   <define name="learningContentbody.content">

@@ -192,9 +192,7 @@
   <define name="task.attlist" combine="interleave">
     <ref name="task.attributes"/>
     <ref name="arch-atts"/>
-    <optional>
-      <attribute name="domains" a:defaultValue="(topic task)                            (topic hi-d)                             (topic ut-d)                             (topic indexing-d)                            (topic hazard-d)                            (topic abbrev-d)                            (topic pr-d)                             (topic sw-d)                            (topic ui-d)   "/>
-    </optional>
+    <ref name="domains-atts"/>
   </define>
   
   <!-- LONG NAME: Task Body -->

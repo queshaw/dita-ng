@@ -83,9 +83,7 @@
   <define name="learningAssessment.attlist" combine="interleave">
     <ref name="learningAssessment.attributes"/>
     <ref name="arch-atts"/>
-    <optional>
-      <attribute name="domains" a:defaultValue="(topic hi-d)                             (topic ut-d)                             (topic indexing-d)                            (topic learningInteractionBase-d)                            (topic learningInteractionBase-d learning-d)                            (topic learningmeta-d)                            (topic learningBase+learningInteractionBase-d)                            (topic learningBase+learningInteractionBase-d learningAssessment)   "/>
-    </optional>
+    <ref name="domains-atts"/>
   </define>
   
   <!-- LONG NAME: Learning Assessment Body -->
