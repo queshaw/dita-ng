@@ -58,14 +58,7 @@ reference.attributes =
 # Category: Reference elements
 reference.element =
   element reference { reference.attlist, reference.content }
-reference.attlist &=
-  reference.attributes,
-  arch-atts,
-  [
-    a:defaultValue =
-      "(topic reference)                            (topic hi-d)                             (topic ut-d)                             (topic indexing-d)                            (topic hazard-d)                            (topic abbrev-d)                            (topic pr-d)                             (topic sw-d)                            (topic ui-d)    "
-  ]
-  attribute domains { text }?
+reference.attlist &= reference.attributes, arch-atts, domains-atts
 # LONG NAME: Reference Body
 refbody.content =
   (data.elements.incl

@@ -103,14 +103,7 @@ learningPlan.attributes =
 # doc:A Learning Plan topic describes learning needs and goals, instructional design models, task analyses, learning taxonomies, and other information necessary to the lesson planning process.
 learningPlan.element =
   element learningPlan { learningPlan.attlist, learningPlan.content }
-learningPlan.attlist &=
-  learningPlan.attributes,
-  arch-atts,
-  [
-    a:defaultValue =
-      "(topic hi-d)                             (topic ut-d)                             (topic indexing-d)                            (topic learningInteractionBase-d)                            (topic learningInteractionBase-d learning-d)                            (topic learningmeta-d)                             (topic learningBase+learningInteractionBase-d)                            (topic learningBase learningPlan)    "
-  ]
-  attribute domains { text }?
+learningPlan.attlist &= learningPlan.attributes, arch-atts, domains-atts
 learningPlanbody.content =
   lcProject?,
   lcNeedsAnalysis?,

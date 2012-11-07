@@ -63,14 +63,7 @@ learningBase.element =
   ##         learning content types: learningOverview,learningContent, learningSummary,
   ##         learningAssessment, and learningPlan.
   element learningBase { learningBase.attlist, learningBase.content }
-learningBase.attlist &=
-  learningBase.attributes,
-  arch-atts,
-  [
-    a:defaultValue =
-      "(topic hi-d)                             (topic ut-d)                             (topic indexing-d)                            (topic learningInteractionBase-d)                            (topic learningInteractionBase-d learning-d)                            (topic learningmeta-d)                            (topic learningBase+learningInteractionBase-d)                            (topic learningBase+learningInteractionBase-d learningAssessment)   "
-  ]
-  attribute domains { text }?
+learningBase.attlist &= learningBase.attributes, arch-atts, domains-atts
 learningBasebody.content =
   (lcAudience
    | lcChallenge

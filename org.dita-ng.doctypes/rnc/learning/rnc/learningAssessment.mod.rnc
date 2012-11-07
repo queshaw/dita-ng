@@ -55,13 +55,7 @@ learningAssessment.element =
     learningAssessment.attlist, learningAssessment.content
   }
 learningAssessment.attlist &=
-  learningAssessment.attributes,
-  arch-atts,
-  [
-    a:defaultValue =
-      "(topic hi-d)                             (topic ut-d)                             (topic indexing-d)                            (topic learningInteractionBase-d)                            (topic learningInteractionBase-d learning-d)                            (topic learningmeta-d)                            (topic learningBase+learningInteractionBase-d)                            (topic learningBase+learningInteractionBase-d learningAssessment)   "
-  ]
-  attribute domains { text }?
+  learningAssessment.attributes, arch-atts, domains-atts
 # LONG NAME: Learning Assessment Body
 learningAssessmentbody.content =
   lcIntro?,

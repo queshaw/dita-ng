@@ -55,14 +55,7 @@ concept.element =
   ##         example or a graphic, but generally the structure of a concept is fairly simple. 
   ##         Category: Concept elements
   element concept { concept.attlist, concept.content }
-concept.attlist &=
-  concept.attributes,
-  arch-atts,
-  [
-    a:defaultValue =
-      "(topic concept)                            (topic hi-d)                             (topic ut-d)                             (topic indexing-d)                            (topic hazard-d)                            (topic abbrev-d)                            (topic pr-d)                             (topic sw-d)                            (topic ui-d)    "
-  ]
-  attribute domains { text }?
+concept.attlist &= concept.attributes, arch-atts, domains-atts
 # LONG NAME: Concept Body
 conbody.content = body.cnt*, (section | example | conbodydiv)*
 conbody.attributes =

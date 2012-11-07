@@ -47,13 +47,7 @@ learningOverview.element =
     learningOverview.attlist, learningOverview.content
   }
 learningOverview.attlist &=
-  learningOverview.attributes,
-  arch-atts,
-  [
-    a:defaultValue =
-      "(topic hi-d)                             (topic ut-d)                             (topic indexing-d)                            (topic learningInteractionBase-d)                            (topic learningInteractionBase-d learning-d)                            (topic learningmeta-d)                             (topic learningBase+learningInteractionBase-d)                            (topic learningBase learningOverview)    "
-  ]
-  attribute domains { text }?
+  learningOverview.attributes, arch-atts, domains-atts
 learningOverviewbody.content =
   lcIntro?,
   lcAudience*,
