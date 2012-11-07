@@ -125,9 +125,7 @@
   <define name="glossentry.attlist" combine="interleave">
     <ref name="glossentry.attributes"/>
     <ref name="arch-atts"/>
-    <optional>
-      <attribute name="domains" a:defaultValue="(topic concept)                            (topic concept glossentry)                            (topic hi-d)                             (topic ut-d)                             (topic indexing-d)                            (topic hazard-d)                            (topic abbrev-d)                            (topic pr-d)                             (topic sw-d)                            (topic ui-d)    "/>
-    </optional>
+    <ref name="domains-atts"/>
   </define>
   
   <!-- LONG NAME: Glossary Term -->

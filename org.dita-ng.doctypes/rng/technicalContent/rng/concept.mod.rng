@@ -96,9 +96,7 @@
   <define name="concept.attlist" combine="interleave">
     <ref name="concept.attributes"/>
     <ref name="arch-atts"/>
-    <optional>
-      <attribute name="domains" a:defaultValue="(topic concept)                            (topic hi-d)                             (topic ut-d)                             (topic indexing-d)                            (topic hazard-d)                            (topic abbrev-d)                            (topic pr-d)                             (topic sw-d)                            (topic ui-d)    "/>
-    </optional>
+    <ref name="domains-atts"/>
   </define>
   
   <!-- LONG NAME: Concept Body -->

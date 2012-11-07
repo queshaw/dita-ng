@@ -237,9 +237,7 @@
   <define name="subjectScheme.attlist" combine="interleave">
     <ref name="subjectScheme.attributes"/>
     <ref name="arch-atts"/>
-    <optional>
-      <attribute name="domains" a:defaultValue="(map mapgroup-d)                          "/>
-    </optional>
+    <ref name="domains-atts"/>
   </define>
  
   <!-- LONG NAME: Scheme reference -->
