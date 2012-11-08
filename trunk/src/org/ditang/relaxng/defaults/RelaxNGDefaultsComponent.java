@@ -138,7 +138,7 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
               input.setEncoding(resolved.getEncoding());
             } else {
               //Just set the URI
-              input.setUri(expanded);
+              //input.setUri(expanded);
             }
           }
         }
