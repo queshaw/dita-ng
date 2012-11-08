@@ -25,6 +25,9 @@ public class RelaxDefaultsParserConfiguration extends XIncludeAwareParserConfigu
   /** Feature identifier: validation. */
   protected static final String VALIDATION =
       Constants.SAX_FEATURE_PREFIX + Constants.VALIDATION_FEATURE;
+  /**Schema validation**/
+  protected static final String XERCES_SCHEMA_VALIDATION =
+      "http://apache.org/xml/features/validation/schema";
     
   /**
    * An XML component that adds default attribute values by looking into a Relax NG schema
@@ -90,7 +93,13 @@ public class RelaxDefaultsParserConfiguration extends XIncludeAwareParserConfigu
   @Override
   public boolean parse(boolean complete) throws XNIException, IOException {
     if (fInputSource != null) {
-      setFeature(DYNAMIC_VALIDATION, getFeature(VALIDATION));
+      try {
+        setFeature(DYNAMIC_VALIDATION, getFeature(VALIDATION) 
+            || getFeature(XERCES_SCHEMA_VALIDATION));
+      } catch(Exception ex) {
+        //Could happen if the parser is not Xerces, most probably not.
+        ex.printStackTrace();
+      }
     }
     return super.parse(complete);
   }
