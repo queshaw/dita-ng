@@ -17,10 +17,10 @@
         <xsl:result-document href="{$outputBase}/{$module}/{$infotype}.dtd" method="text">
             <xsl:call-template name="header"/>
             <xsl:call-template name="topicEntityDeclarations"/>
+            <xsl:call-template name="domainEntityDeclarations"/>
             <xsl:call-template name="includeModule"/>
-
-
-
+            
+            <xsl:call-template name="domainElements"/>
             <xsl:call-template name="footer"/>
         </xsl:result-document>
 
@@ -31,8 +31,7 @@
             <xsl:call-template name="modContent"/>
         </xsl:result-document>
 
-
-
+        
     </xsl:template>
 
     <xsl:template name="entContent">
@@ -116,6 +115,7 @@
 &lt;!-- ================== End DITA Concept DTD  ==================== -->
             </xsl:text>
     </xsl:template>
+    
     <xsl:template name="topicEntityDeclarations">
         <xsl:text>
 &lt;!-- ============================================================= -->
@@ -136,6 +136,77 @@
         <xsl:text>-dec;            
         </xsl:text>
     </xsl:template>
+    
+    <xsl:template name="domainEntityDeclarations">
+        <xsl:text>
+&lt;!-- ============================================================= -->
+&lt;!--                    DOMAIN ENTITY DECLARATIONS                 -->
+&lt;!-- ============================================================= -->
+        </xsl:text>
+        <!-- entity declarations for domains -->
+        <xsl:for-each select="//rng:include[ends-with(@href, 'Domain.mod.rng')]">
+            <xsl:variable name="domainValue" select="document(@href)/rng:grammar/rng:define[@name='domains-atts-value']/rng:value"/>
+            <xsl:variable name="domain" select="substring-before(tokenize($domainValue, ' ')[last()], ')')"/>
+            <xsl:variable name="uriTokens" select="tokenize(resolve-uri(@href, document-uri(/)), '/')"/>
+            <xsl:variable name="module" select="$uriTokens[last()-2]"/>
+            <xsl:variable name="domainFile" select="substring-before($uriTokens[last()], '.')"/>
+            
+            
+            <xsl:text>
+&lt;!ENTITY % </xsl:text>
+            <xsl:value-of select="$domain"/>
+            <xsl:text>-dec     
+  PUBLIC "</xsl:text>
+            <xsl:value-of select="$public/entities[@domain=$domain]/@public"/>
+            <xsl:text>"
+    "../../</xsl:text>
+            <xsl:value-of select="$module"/>
+            <xsl:text>/dtd/</xsl:text>
+            <xsl:value-of select="$domainFile"/>
+            <xsl:text>.ent"
+>%</xsl:text>
+            <xsl:value-of select="$domain"/>
+            <xsl:text>-dec;            
+        </xsl:text>
+        </xsl:for-each>        
+    </xsl:template>
+    
+    
+    <xsl:template name="domainElements">
+        <xsl:text>
+&lt;!-- ============================================================= -->
+&lt;!--                    DOMAIN ELEMENT INTEGRATION                 -->
+&lt;!-- ============================================================= -->
+        </xsl:text>
+        <!-- domain elements -->
+        <xsl:for-each select="//rng:include[ends-with(@href, 'Domain.mod.rng')]">
+            <xsl:variable name="domainValue" select="document(@href)/rng:grammar/rng:define[@name='domains-atts-value']/rng:value"/>
+            <xsl:variable name="domain" select="substring-before(tokenize($domainValue, ' ')[last()], ')')"/>
+            <xsl:variable name="uriTokens" select="tokenize(resolve-uri(@href, document-uri(/)), '/')"/>
+            <xsl:variable name="module" select="$uriTokens[last()-2]"/>
+            <xsl:variable name="domainFile" select="substring-before($uriTokens[last()], '.')"/>
+            
+            
+            <xsl:text>
+&lt;!ENTITY % </xsl:text>
+            <xsl:value-of select="$domain"/>
+            <xsl:text>-def     
+  PUBLIC "</xsl:text>
+            <xsl:value-of select="$public/elements[@domain=$domain]/@public"/>
+            <xsl:text>"
+    "../../</xsl:text>
+            <xsl:value-of select="$module"/>
+            <xsl:text>/dtd/</xsl:text>
+            <xsl:value-of select="$domainFile"/>
+            <xsl:text>.mod"
+>%</xsl:text>
+            <xsl:value-of select="$domain"/>
+            <xsl:text>-def;            
+        </xsl:text>
+        </xsl:for-each>        
+    </xsl:template>
+    
+    
     <xsl:template name="includeModule">
         <xsl:text>
 &lt;!--                    Embed </xsl:text>
