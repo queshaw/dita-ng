@@ -35,7 +35,7 @@
       <d:language>EN</d:language>
     </d:invocation>
     <d:system>Darwin Information Typing Architecture (DITA)</d:system>
-    <d:purpose>DTD to describe Base DITA Topics</d:purpose>
+    <d:purpose>Base DITA Topics</d:purpose>
     <d:originalCreationDate>April 2010</d:originalCreationDate>
     <d:copyright>(C) Copyright OASIS Open 2010. All Rights Reserved.</d:copyright>
     <d:updates/>
