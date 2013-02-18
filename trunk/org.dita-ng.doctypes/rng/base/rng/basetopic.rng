@@ -20,7 +20,27 @@
      All Rights Reserved.                                          
      ============================================================= -->
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
-  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:d="http://dita-ng.org/annotations/1.0">
+  <!-- Module annotations -->
+  <d:info>
+    <d:header>
+      <d:module>DITA Topic Base RNG (only base domains)</d:module>
+      <d:version>1.2</d:version>
+      <d:date>April 2010</d:date>
+    </d:header>
+    <d:invocation>
+      <d:owner>OASIS</d:owner>
+      <d:description>Base Topic</d:description>
+      <d:language>EN</d:language>
+    </d:invocation>
+    <d:system>Darwin Information Typing Architecture (DITA)</d:system>
+    <d:purpose>DTD to describe Base DITA Topics</d:purpose>
+    <d:originalCreationDate>April 2010</d:originalCreationDate>
+    <d:copyright>(C) Copyright OASIS Open 2010. All Rights Reserved.</d:copyright>
+    <d:updates/>
+  </d:info>
+
   <!-- Define the root elements -->
   <start combine="choice">
     <ref name="topic.element"/>
