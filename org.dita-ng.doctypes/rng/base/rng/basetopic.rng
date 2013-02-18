@@ -25,7 +25,7 @@
   <!-- Module annotations -->
   <d:info>
     <d:header>
-      <d:module>DITA Topic Base RNG (only base domains)</d:module>
+      <d:module>DITA Topic Base (only base domains)</d:module>
       <d:version>1.2</d:version>
       <d:date>April 2010</d:date>
     </d:header>
