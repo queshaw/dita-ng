@@ -21,7 +21,7 @@
 namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
 # Define the root elements
-start = topicsubject.element
+start = map.element
 # The DITA domains attribute
 domains-atts &=
   [
@@ -42,7 +42,8 @@ include "../../base/rnc/hazardstatementDomain.mod.rnc"
 # from the wildcard and refer them expliceitely
 any =
   (anchor.element
-   | element * - anchor {
+   | map.element
+   | element * - (anchor | map) {
        attribute * { text }*,
        any
      }
