@@ -13,26 +13,16 @@
     <xd:desc>
       <xd:p>RNG to DITA DTD Converter</xd:p>
       <xd:p><xd:b>Created on:</xd:b> Feb 16, 2013</xd:p>
-      <xd:p><xd:b>Author:</xd:b> ekimber</xd:p>
+      <xd:p><xd:b>Authors:</xd:b> ekimber, pleblanc</xd:p>
       <xd:p>This transform takes as input RNG-format DITA document type
       shells and produces from them the entity file
-      that reflect the RNG definitions and conform to the DITA 1.3 
-      DTD coding requirements.      
+        that reflect the RNG definitions and conform to the DITA 1.3
+        DTD coding requirements.
       </xd:p>
     </xd:desc>
   </xd:doc>
 
-  <xsl:output 
-    method="xml" 
-    indent="yes"
-  />
-
-  <xsl:output name="dtd"
-    method="text"
-    encoding="UTF-8"
-  />
-
-   <!-- ==============================
+  <!-- ==============================
        .ent file generation mode
        ============================== -->
 
@@ -40,18 +30,18 @@
     <xsl:apply-templates mode="#current" select="node()" />
   </xsl:template>
 
-  <xsl:template mode="entityFile" match="comment()">
-    <!-- Suppress comments in entityFile mode -->
-  </xsl:template>
-
   <xsl:template mode="entityFile" match="rng:grammar">
+    <xsl:param name="thisFile" tunnel="yes" as="xs:string" />
+    <xsl:variable name="thisDomain" select="normalize-space(substring-before(substring-after(../comment()[1],'MODULE:'),'-'))" />
+    <xsl:variable name="thisVersion" select="normalize-space(substring-before(substring-after(../comment()[1],'VERSION:'),'DATE:'))" />
+    <xsl:variable name="thisDate" select="normalize-space(substring-before(substring-after(../comment()[1],'DATE:'),'='))" />
     <xsl:text>&lt;?xml version="1.0" encoding="UTF-8"?>
 &lt;!-- ============================================================= -->
 &lt;!--                    HEADER                                     -->
 &lt;!-- ============================================================= -->
-&lt;!--  MODULE:    DITA Delayed Resolution Domain                    -->
-&lt;!--  VERSION:   1.2                                               -->
-&lt;!--  DATE:      November 2009                                     -->
+&lt;!--  MODULE:    </xsl:text><xsl:value-of select="$thisDomain" /><xsl:text> Entities                   -->
+&lt;!--  VERSION:   </xsl:text><xsl:value-of select="$thisVersion" /><xsl:text>                                               -->
+&lt;!--  DATE:      </xsl:text><xsl:value-of select="$thisDate" /><xsl:text>                                     -->
 &lt;!--                                                               -->
 &lt;!-- ============================================================= -->
 
@@ -61,15 +51,14 @@
 &lt;!--                                                               -->
 &lt;!--  Refer to this file by the following public identifier or an 
       appropriate system identifier 
-PUBLIC "-//OASIS//ENTITIES DITA Delayed Resolution Domain//EN"
-      Delivered as file "delayResolutionDomain.ent"                -->
+PUBLIC "-//OASIS//ENTITIES </xsl:text><xsl:value-of select="$thisDomain" /><xsl:text>//EN"
+      Delivered as file "</xsl:text><xsl:value-of select="relpath:getName($thisFile)" /><xsl:text>"               -->
 
 &lt;!-- ============================================================= -->
 &lt;!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
 &lt;!--                                                               -->
 &lt;!-- PURPOSE:    Declaring the substitution context and domain     -->
-&lt;!--             entity declarations for the delayed resolution    -->
-&lt;!--             domain                                            -->
+&lt;!--             entity declarations for the </xsl:text><xsl:value-of select="substring-after($thisDomain,'DITA ')" /><xsl:text>    -->
 &lt;!--                                                               -->
 &lt;!-- ORIGINAL CREATION DATE:                                       -->
 &lt;!--             February 2008                                     -->
@@ -78,19 +67,47 @@ PUBLIC "-//OASIS//ENTITIES DITA Delayed Resolution Domain//EN"
 &lt;!--             All Rights Reserved.                              -->
 &lt;!--                                                               -->
 &lt;!--  UPDATES:                                                     -->
+&lt;!--     </xsl:text><xsl:value-of select="$thisDate" /><xsl:text>: generated from Relax NG implementation      -->
 &lt;!-- ============================================================= -->
 
 
 &lt;!-- ============================================================= -->
-&lt;!--                    DELAYED RESOLUTION DOMAIN ENTITIES         -->
+&lt;!--                    DOMAIN ENTITIES                            -->
 &lt;!-- ============================================================= -->
 </xsl:text>
-    <xsl:apply-templates mode="#current" select="node()" />
-  </xsl:template>
-
-  <xsl:template mode="entityFile" match="*">
-    <!-- Most stuff we don't care about -->
     <xsl:apply-templates mode="#current" />
   </xsl:template>
+
+  <xsl:template match="rng:define" mode="entityFile" priority="10">
+    <xsl:choose>
+      <xsl:when test="(@name='domains-atts-value' or @name='domains-atts') and not(rng:value='')">
+        <xsl:text>&lt;!ENTITY % </xsl:text>
+        <xsl:value-of select="@name" />
+        <xsl:text>    &quot;</xsl:text>
+        <xsl:sequence select="rng:value" />
+        <xsl:text>&quot;&gt;&#x0a;&#x0a;</xsl:text>
+      </xsl:when>
+      <xsl:when test="rng:element">
+        <!--  element declaration -->
+      </xsl:when>
+      <xsl:when test=".//rng:attribute[@name='class']" >
+        <!-- specialization attribute declaration -->
+      </xsl:when>
+      <xsl:otherwise>
+        <!-- not in entity file -->
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="*" mode="entityFile">
+    <!-- Most stuff we don't care about -->
+  </xsl:template>
+
+  <xsl:template match="rnga:documentation" mode="entityFile" />
+
+  <xsl:template match="comment()" mode="entityFile">
+    <!-- Suppress comments in entityFile mode -->
+  </xsl:template>
+
 
 </xsl:stylesheet>
