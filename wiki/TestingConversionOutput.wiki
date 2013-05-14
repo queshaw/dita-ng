@@ -1,3 +1,4 @@
+#summary Testing the RNG to DTD conversion
 = Introduction =
 
 The DITA DTDs are modular, thus there are many file to check after conversion. Visual inspection, even assisted with a text diff is not a good option... We need to define a method for automated testing.
