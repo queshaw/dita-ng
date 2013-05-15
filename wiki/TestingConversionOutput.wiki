@@ -12,4 +12,7 @@ However, there are non-meaningful differences, such as the amount of whitespace,
 
 In addition, there are too many files to inspect.
 
-We need to define automated tests to validate the conversion, but this is not easy as DTD use special syntax, and require specific parsers (they are not XML files). The only tool I know that performs DTD comparison is dtddiff, part of dtdparse, available on SourceForge?...
+We need to define automated tests to validate the conversion, but this is not easy as DTD use special syntax, and require specific parsers (they are not XML files). The only tool I know that performs DTD comparison is dtddiff, part of dtdparse, available on SourceForge:
+
+http://sourceforge.net/projects/dtdparse/
+http://dtdparse.sourceforge.net/SGML-DTDParse/doc/html/bin/dtddiff.html
