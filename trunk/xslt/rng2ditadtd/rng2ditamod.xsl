@@ -42,6 +42,13 @@
     <xsl:variable name="thisVersion" select="normalize-space(substring-before(substring-after(../comment()[1],'VERSION:'),'DATE:'))" />
     <xsl:variable name="thisDate" select="normalize-space(substring-before(substring-after(../comment()[1],'DATE:'),'='))" />
     <xsl:variable name="thisUri" select="namespace-uri(.)" />
+    <xsl:variable name="domainValue" select="rng:define[@name='domains-atts-value']/rng:value[1]"/>
+    <xsl:variable name="domainPrefix"> 
+      <xsl:if test="$domainValue and not($domainValue='')">
+        <xsl:value-of select="concat(substring-before(tokenize($domainValue, ' ')[last()],')'),'-')" />
+      </xsl:if>  
+    </xsl:variable>
+
     <xsl:text>
 &lt;!-- ============================================================= -->
 &lt;!--                    HEADER                                     -->
@@ -93,13 +100,20 @@ PUBLIC "-//OASIS//ELEMENTS </xsl:text><xsl:value-of select="$thisDomain" /><xsl:
 %definitions;
 
 </xsl:text>
-    <xsl:apply-templates mode="#current" />
+    <xsl:apply-templates mode="#current">
+      <xsl:with-param name="domainPfx" select="$domainPrefix" tunnel="yes" as="xs:string" />
+    </xsl:apply-templates>
+
   </xsl:template>
 
   <xsl:template match="rng:define" mode="moduleFile" priority="10">
+    <xsl:param name="domainPfx" tunnel="yes" as="xs:string" />
     <xsl:choose>
       <xsl:when test="@name='domains-atts-value'">
         <!-- in the entity file -->
+      </xsl:when>
+      <xsl:when test="$domainPfx and not($domainPfx='') and starts-with(@name, $domainPfx)">
+        <!--  in the entity file -->
       </xsl:when>
       <xsl:when test="rng:element">
         <!--  element declaration -->
@@ -116,7 +130,19 @@ PUBLIC "-//OASIS//ELEMENTS </xsl:text><xsl:value-of select="$thisDomain" /><xsl:
       <xsl:when test="count(rng:*)=1 and rng:ref and key('attlistIndex',@name)" >
         <!-- .attlist pointing to .attributes, ignore -->
         <xsl:if test="$doDebug">
-          <xsl:message>Ignore <xsl:value-of select="@name"/></xsl:message>
+          <xsl:message>Ignore attlist <xsl:value-of select="@name"/></xsl:message>
+        </xsl:if>
+      </xsl:when>
+      <xsl:when test="count(rng:*)=1 and rng:ref and key('nameIndex',rng:ref/@name)/rng:element" >
+        <!-- reference to element name in this module, will be in the entity file -->
+        <xsl:if test="$doDebug">
+          <xsl:message>Ignore name in this module <xsl:value-of select="@name"/></xsl:message>
+        </xsl:if>
+      </xsl:when>
+      <xsl:when test="count(rng:*)=1 and rng:ref and not(key('nameIndex',rng:ref/@name)) and ends-with(rng:ref/@name, '.element')" >
+        <!-- reference to element name in another module, will be in entity file -->
+        <xsl:if test="$doDebug">
+          <xsl:message>Ignore name in other module <xsl:value-of select="@name"/></xsl:message>
         </xsl:if>
       </xsl:when>
       <xsl:otherwise>
