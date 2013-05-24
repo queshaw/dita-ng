@@ -142,13 +142,13 @@
       select="relpath:getRelativePath($rootDocDir,$rngModuleDir)" />
     <xsl:choose>
       <xsl:when test="not($modRelativePath='')">
-        <moduleFiles>
+        <moduleFiles xmlns="http://dita.org/rng2ditadtd">
           <inputFile><xsl:sequence select="$rngModuleUrl" /></inputFile>
           <xsl:comment> DTD generation skipped because module is in another folder.</xsl:comment>
         </moduleFiles>
       </xsl:when>
       <xsl:otherwise>
-        <moduleFiles>
+        <moduleFiles xmlns="http://dita.org/rng2ditadtd">
           <inputFile><xsl:sequence select="$rngModuleUrl" /></inputFile>
           <entityFile><xsl:sequence select="$entResultUrl" /></entityFile>
           <modFile><xsl:sequence select="$modResultUrl" /></modFile>
