@@ -49,7 +49,7 @@
       </xsl:if>  
     </xsl:variable>
 
-    <xsl:text>
+    <xsl:text>&lt;?xml version="1.0" encoding="UTF-8"?>
 &lt;!-- ============================================================= -->
 &lt;!--                    HEADER                                     -->
 &lt;!-- ============================================================= -->
@@ -184,6 +184,12 @@ PUBLIC "-//OASIS//ELEMENTS </xsl:text><xsl:value-of select="$thisDomain" /><xsl:
     <xsl:if test="not(position()=last())"><xsl:text>,</xsl:text></xsl:if>
   </xsl:template>
 
+  <xsl:template match="rng:group" mode="moduleFile">
+    <xsl:text>(</xsl:text>
+    <xsl:apply-templates mode="#current" />
+    <xsl:text>)</xsl:text>
+  </xsl:template>
+
   <xsl:template match="rng:choice" mode="moduleFile" priority="10">
     <xsl:if test="local-name(..)='attribute'">
       <xsl:text>(</xsl:text>
@@ -247,7 +253,7 @@ PUBLIC "-//OASIS//ELEMENTS </xsl:text><xsl:value-of select="$thisDomain" /><xsl:
 
   <xsl:template match="rng:optional" mode="moduleFile" priority="10">
     <xsl:choose>
-      <xsl:when test="ends-with(ancestor::rng:define/@name, '.content')">
+      <xsl:when test="ancestor::rng:element or ends-with(ancestor::rng:define/@name, '.content')">
         <!-- optional element content -->
         <xsl:text>(</xsl:text>
         <xsl:apply-templates mode="#current" />
@@ -265,8 +271,12 @@ PUBLIC "-//OASIS//ELEMENTS </xsl:text><xsl:value-of select="$thisDomain" /><xsl:
 
   <xsl:template match="rng:empty" mode="moduleFile" priority="10">
     <xsl:choose>
-      <xsl:when test="ends-with(ancestor::rng:define/@name, '.content')">
+      <xsl:when test="ancestor::rng:element">
         <!-- empty element content -->
+        <xsl:text>EMPTY</xsl:text>
+      </xsl:when>
+      <xsl:when test="ends-with(ancestor::rng:define/@name, '.content')">
+        <!-- empty element content in parameter entity -->
         <xsl:text>EMPTY</xsl:text>
       </xsl:when>
       <xsl:otherwise>
