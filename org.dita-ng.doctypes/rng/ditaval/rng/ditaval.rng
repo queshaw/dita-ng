@@ -21,12 +21,12 @@
   ============================================================= -->
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
   <start>
-    <ref name="val"/>
+    <ref name="val.element"/>
   </start>
 
-  <define name="val">
+  <define name="val.element">
     <element name="val">
-      <ref name="attlist.val"/>
+      <ref name="val.attlist"/>
       <optional>
         <ref name="style-conflict"/>
       </optional>
@@ -38,17 +38,17 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="attlist.val" combine="interleave">
+  <define name="val.attlist" combine="interleave">
     <empty/>
   </define>
 
   <define name="style-conflict">
     <element name="style-conflict">
-      <ref name="attlist.style-conflict"/>
+      <ref name="style-conflict.attlist"/>
       <empty/>
     </element>
   </define>
-  <define name="attlist.style-conflict" combine="interleave">
+  <define name="style-conflict.attlist" combine="interleave">
     <optional>
       <attribute name="foreground-conflict-color"/>
     </optional>
@@ -59,7 +59,7 @@
 
   <define name="prop">
     <element name="prop">
-      <ref name="attlist.prop"/>
+      <ref name="prop.attlist"/>
       <optional>
         <ref name="startflag"/>
       </optional>
@@ -68,7 +68,7 @@
       </optional>
     </element>
   </define>
-  <define name="attlist.prop" combine="interleave">
+  <define name="prop.attlist" combine="interleave">
     <optional>
       <attribute name="att"/>
     </optional>
@@ -104,13 +104,13 @@
 
   <define name="startflag">
     <element name="startflag">
-      <ref name="attlist.startflag"/>
+      <ref name="startflag.attlist"/>
       <optional>
-        <ref name="alt-text"/>
+        <ref name="alt-text.element"/>
       </optional>
     </element>
   </define>
-  <define name="attlist.startflag" combine="interleave">
+  <define name="startflag.attlist" combine="interleave">
     <optional>
       <attribute name="imageref"/>
     </optional>
@@ -118,25 +118,25 @@
 
   <define name="endflag">
     <element name="endflag">
-      <ref name="attlist.endflag"/>
+      <ref name="endflag.attlist"/>
       <optional>
-        <ref name="alt-text"/>
+        <ref name="alt-text.element"/>
       </optional>
     </element>
   </define>
-  <define name="attlist.endflag" combine="interleave">
+  <define name="endflag.attlist" combine="interleave">
     <optional>
       <attribute name="imageref"/>
     </optional>
   </define>
   
-  <define name="alt-text">
+  <define name="alt-text.element">
     <element name="alt-text">
-      <ref name="attlist.alt-text"/>
+      <ref name="alt-text.attlist"/>
       <text/>
     </element>
   </define>
-  <define name="attlist.alt-text" combine="interleave">
+  <define name="alt-text.attlist" combine="interleave">
     <empty/>
   </define>
   
@@ -146,7 +146,7 @@
   -->
   <define name="revprop">
     <element name="revprop">
-      <ref name="attlist.revprop"/>
+      <ref name="revprop.attlist"/>
       <optional>
         <ref name="startflag"/>
       </optional>
@@ -155,7 +155,7 @@
       </optional>
     </element>
   </define>
-  <define name="attlist.revprop" combine="interleave">
+  <define name="revprop.attlist" combine="interleave">
     <optional>
       <attribute name="val"/>
     </optional>
