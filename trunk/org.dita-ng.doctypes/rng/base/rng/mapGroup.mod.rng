@@ -29,6 +29,29 @@
     <value>(map mapgroup-d)</value>
   </define>
   
+  <define name="anchorref">
+    <ref name="anchorref.element"/>
+  </define>
+  <define name="keydef">
+    <ref name="keydef.element"/>
+  </define>
+  <define name="mapref">
+    <ref name="mapref.element"/>
+  </define>
+  <define name="topicgroup">
+    <ref name="topicgroup.element"/>
+  </define>
+  <define name="topichead">
+    <ref name="topichead.element"/>
+  </define> 
+  <define name="topicset">
+    <ref name="topicset.element"/>
+  </define>
+  <define name="topicsetref">
+    <ref name="topicsetref.element"/>
+  </define>
+  
+  
   <!-- Define domain extension patterns -->
   <define name="mapgroup-d-topicref">
     <choice>
