@@ -6,7 +6,8 @@
   xmlns:rnga="http://relaxng.org/ns/compatibility/annotations/1.0"
   xmlns:rng2ditadtd="http://dita.org/rng2ditadtd"
   xmlns:relpath="http://dita2indesign/functions/relpath"
-  exclude-result-prefixes="xs xd rng rnga relpath"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  exclude-result-prefixes="xs xd rng rnga relpath a"
   version="2.0"  >
 
   <xd:doc scope="stylesheet">
@@ -59,31 +60,8 @@
 &lt;!--                                                               -->
 &lt;!-- ============================================================= -->
 
-&lt;!-- ============================================================= -->
-&lt;!--                    PUBLIC DOCUMENT TYPE DEFINITION            -->
-&lt;!--                    TYPICAL INVOCATION                         -->
-&lt;!--                                                               -->
-&lt;!--  Refer to this file by the following public identifier or an 
-      appropriate system identifier 
-PUBLIC "-//OASIS//ELEMENTS </xsl:text><xsl:value-of select="$thisDomain" /><xsl:text>//EN"
-      Delivered as file "</xsl:text><xsl:value-of select="$thisBasename" /><xsl:text>.mod"                -->
-
-&lt;!-- ============================================================= -->
-&lt;!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
-&lt;!--                                                               -->
-&lt;!-- PURPOSE:    Define elements and specialization attributes     -->
-&lt;!--             for </xsl:text><xsl:value-of select="substring-after($thisDomain,'DITA ')" /><xsl:text>                     -->
-&lt;!--                                                               -->
-&lt;!-- ORIGINAL CREATION DATE:                                       -->
-&lt;!--             February 2008                                     -->
-&lt;!--                                                               -->
-&lt;!--             (C) Copyright OASIS Open 2008, 2009.              -->
-&lt;!--             All Rights Reserved.                              -->
-&lt;!--                                                               -->
-&lt;!--  UPDATES:                                                     -->
-&lt;!--     </xsl:text><xsl:value-of select="$thisDate" /><xsl:text>: generated from Relax NG implementation      -->
-&lt;!-- ============================================================= -->
-
+<!-- FIXME: Get the comments from the RNG file. Can't assume OASIS module.
+  -->
 &lt;!-- ============================================================= -->
 &lt;!--                   ELEMENT NAME ENTITIES                       -->
 &lt;!-- ============================================================= -->
@@ -92,15 +70,18 @@ PUBLIC "-//OASIS//ELEMENTS </xsl:text><xsl:value-of select="$thisDomain" /><xsl:
 
   <!-- @TODO: catch the ditaArch declaration if any -->
 
-<xsl:text>
-&lt;!ENTITY % definitions 
+<!-- This declaration needs to be in the shell. The entity name
+     needs to reflect the module name, e.g. xml-d-def
+      
+      <xsl:text>
+&lt;!ENTITY % </xsl:text><xsl:sequence select="concat($domainPrefix, '-def')" /><xsl:text> 
   PUBLIC "-//OASIS//ENTITIES </xsl:text><xsl:value-of select="$thisDomain" /><xsl:text>//EN" 
          "</xsl:text><xsl:value-of select="$thisBasename" /><xsl:text>.ent" 
 >
 %definitions;
 
 </xsl:text>
-    <xsl:apply-templates mode="#current">
+-->    <xsl:apply-templates mode="#current">
       <xsl:with-param name="domainPfx" select="$domainPrefix" tunnel="yes" as="xs:string" />
     </xsl:apply-templates>
 
@@ -115,6 +96,9 @@ PUBLIC "-//OASIS//ELEMENTS </xsl:text><xsl:value-of select="$thisDomain" /><xsl:
       <xsl:when test="$domainPfx and not($domainPfx='') and starts-with(@name, $domainPfx)">
         <!--  in the entity file -->
       </xsl:when>
+      <xsl:when test="@combine = 'choice'">
+        <!-- Domain integration entity. Not output in the DTD. -->
+      </xsl:when>
       <xsl:when test="rng:element">
         <!--  element declaration -->
         <xsl:apply-templates mode="#current" />
@@ -123,9 +107,9 @@ PUBLIC "-//OASIS//ELEMENTS </xsl:text><xsl:value-of select="$thisDomain" /><xsl:
         <!-- specialization attribute declaration -->
         <xsl:text>&lt;!ATTLIST  </xsl:text>
         <xsl:value-of select="key('attlistIndex',@name)/@name" />
-        <xsl:text>&#x0a;&quot;</xsl:text>
-        <xsl:apply-templates mode="#current" />
-        <xsl:text>&quot;&#x0a;&gt;&#x0a;</xsl:text>
+        <xsl:text> %global-atts;  class CDATA </xsl:text>
+        <xsl:sequence select="concat('&quot;', string(./rng:optional/rng:attribute/@a:defaultValue), '&quot;')"/>
+        <xsl:text> >&#x0a;</xsl:text>
       </xsl:when>
       <xsl:when test="count(rng:*)=1 and rng:ref and key('attlistIndex',@name)" >
         <!-- .attlist pointing to .attributes, ignore -->
@@ -354,6 +338,7 @@ PUBLIC "-//OASIS//ELEMENTS </xsl:text><xsl:value-of select="$thisDomain" /><xsl:
     <xsl:variable name="includedDoc" select="document(@href)" />
     <xsl:if test="$includedDoc/rng:grammar">
       <xsl:variable name="includedDomain" select="normalize-space(substring-before(substring-after($includedDoc/comment()[1],'MODULE:'),'VERSION:'))" />
+      <!-- FIXME: Need to parameterize the public ID. See Issue 8. -->
       <xsl:text>
   &lt;!ENTITY % </xsl:text><xsl:value-of select="substring-before(@href,'.')" /><xsl:text>
      PUBLIC "-//OASIS//ELEMENTS </xsl:text><xsl:value-of select="$includedDomain" /><xsl:text>//EN"
