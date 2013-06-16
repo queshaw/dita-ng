@@ -51,32 +51,10 @@
 &lt;!--  DATE:      </xsl:text><xsl:value-of select="$thisDate" /><xsl:text>                                     -->
 &lt;!--                                                               -->
 &lt;!-- ============================================================= -->
-
-&lt;!-- ============================================================= -->
-&lt;!--                    PUBLIC DOCUMENT TYPE DEFINITION            -->
-&lt;!--                    TYPICAL INVOCATION                         -->
-&lt;!--                                                               -->
-&lt;!--  Refer to this file by the following public identifier or an 
-      appropriate system identifier 
-PUBLIC "-//OASIS//ENTITIES </xsl:text><xsl:value-of select="$thisDomain" /><xsl:text>//EN"
-      Delivered as file "</xsl:text><xsl:value-of select="relpath:getName($thisFile)" /><xsl:text>"               -->
-
-&lt;!-- ============================================================= -->
-&lt;!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
-&lt;!--                                                               -->
-&lt;!-- PURPOSE:    Declaring the substitution context and domain     -->
-&lt;!--             entity declarations for the </xsl:text><xsl:value-of select="substring-after($thisDomain,'DITA ')" /><xsl:text>    -->
-&lt;!--                                                               -->
-&lt;!-- ORIGINAL CREATION DATE:                                       -->
-&lt;!--             February 2008                                     -->
-&lt;!--                                                               -->
-&lt;!--             (C) Copyright OASIS Open 2008, 2009.              -->
-&lt;!--             All Rights Reserved.                              -->
-&lt;!--                                                               -->
-&lt;!--  UPDATES:                                                     -->
-&lt;!--     </xsl:text><xsl:value-of select="$thisDate" /><xsl:text>: generated from Relax NG implementation      -->
-&lt;!-- ============================================================= -->
 </xsl:text>
+<!-- FIXME: Needt to get header comments from the RNG file. Can't assume the
+    input is an OASIS module.
+  -->
 
 <xsl:text>
 &lt;!-- ============================================================= -->
