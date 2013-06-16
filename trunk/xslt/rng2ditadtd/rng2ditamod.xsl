@@ -195,8 +195,8 @@ PUBLIC "-//OASIS//ELEMENTS </xsl:text><xsl:value-of select="$thisDomain" /><xsl:
       <xsl:text>(</xsl:text>
     </xsl:if>
     <xsl:for-each select="rng:*">
-        <xsl:apply-templates select="." mode="#current" />
-        <xsl:if test="not(position()=last())"><xsl:text> |&#x0a;</xsl:text></xsl:if>
+      <xsl:if test="not(position()=1)"><xsl:text> |&#x0a;</xsl:text></xsl:if>
+      <xsl:apply-templates select="." mode="#current" />
     </xsl:for-each>
     <xsl:if test="local-name(..)='attribute'">
       <xsl:text>)</xsl:text>
