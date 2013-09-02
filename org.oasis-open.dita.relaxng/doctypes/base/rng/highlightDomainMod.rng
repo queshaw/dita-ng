@@ -2,7 +2,7 @@
 <grammar xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" 
   xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" 
   xmlns="http://relaxng.org/ns/structure/1.0">
-  <a:documentation 
+  <a:documentation ditaarch:moduleTitle="DITA Highlight Domain"
                    ditaarch:dtdPublicId="-//OASIS//ELEMENTS DITA Topic//EN"
     ditaarch:dtdPublicIdSpecificVersion="-//OASIS//ELEMENTS 1.2 DITA Topic//EN"
                    ditaarch:xsdPublicUri="urn:oasis:names:tc:dita:xsd:topicMod.xsd"
