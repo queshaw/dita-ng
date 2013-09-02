@@ -43,6 +43,10 @@
     -->
   <xsl:param name="moduleOutdir" as="xs:string" select="''"/>
   
+  <!-- Set this parameter to "comment-per-line" to get the OASIS module
+       style of header comment.
+    -->
+  <xsl:param name="headerCommentStyle" select="'as-is'" as="xs:string"/>
   <!-- NOTE: The primary output of this transform is an XML 
        manifest file that lists all input files and their
        corresponding outputs.
@@ -185,13 +189,11 @@
     <!-- The RNG modules have two "extensions": .xxx.rng -->
     <xsl:variable name="rngModuleName" as="xs:string"
       select="relpath:getNamePart($rngModuleUrl)" />
-    <xsl:message> + [DEBUG] rngModuleName="<xsl:value-of select="$rngModuleName"/>"</xsl:message>
     <xsl:variable name="moduleBaseName" as="xs:string"
       select="if (ends-with($rngModuleName, 'Mod')) 
       then substring($rngModuleName, 1, string-length($rngModuleName) - 3) 
       else $rngModuleName"
     />
-    <xsl:message> + [DEBUG] moduleBaseName="<xsl:value-of select="$moduleBaseName"/>"</xsl:message>
     <xsl:variable name="entFilename" as="xs:string"
       select="concat(relpath:getNamePart($moduleBaseName), '.ent')" />
     <xsl:variable name="modFilename" as="xs:string"
