@@ -6,7 +6,9 @@
   xmlns:rnga="http://relaxng.org/ns/compatibility/annotations/1.0"
   xmlns:rng2ditadtd="http://dita.org/rng2ditadtd"
   xmlns:relpath="http://dita2indesign/functions/relpath"
-  exclude-result-prefixes="xs xd rng rnga relpath"
+  xmlns:str="http://local/stringfunctions"
+  xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/"
+  exclude-result-prefixes="xs xd rng rnga relpath str ditaarch"
   version="2.0">
 
   <xd:doc scope="stylesheet">
@@ -92,7 +94,7 @@
     <xsl:variable name="modulesToProcess" as="document-node()*">
       <xsl:apply-templates mode="gatherModules" />
     </xsl:variable>
-
+    
     <xsl:if test="$doDebug">
       <xsl:message> + [DEBUG] Initial process: Found <xsl:sequence select="count($modulesToProcess)" /> modules.</xsl:message>
     </xsl:if>
@@ -259,8 +261,34 @@
     <xsl:message> - [WARN] entityFile: Unhandled RNG element <xsl:sequence select="concat(name(..), '/', name(.))" /></xsl:message>
   </xsl:template>
 
-  <xsl:template match="rng:*" priority="-1" mode="moduleFile">
-    <xsl:message> - [WARN] module: Unhandled RNG element <xsl:sequence select="concat(name(..), '/', name(.))" /><xsl:copy-of select="." /></xsl:message>
+  <xsl:template match="rng:*" priority="-1" mode="element-decls">
+    <xsl:message> - [WARN] element-decls: Unhandled RNG element <xsl:sequence select="concat(name(..), '/', name(.))" /><xsl:copy-of select="." /></xsl:message>
   </xsl:template>
+  <xsl:template match="rng:*" priority="-1" mode="element-name-entities">
+    <xsl:message> - [WARN] element-name-entities: Unhandled RNG element <xsl:sequence select="concat(name(..), '/', name(.))" /><xsl:copy-of select="." /></xsl:message>
+  </xsl:template>
+  <xsl:template match="rng:*" priority="-1" mode="class-att-decls">
+    <xsl:message> - [WARN] class-att-decls: Unhandled RNG element <xsl:sequence select="concat(name(..), '/', name(.))" /><xsl:copy-of select="." /></xsl:message>
+  </xsl:template>
+
+ <!-- See http://markmail.org/message/fhbwfe67amcjoelm?q=xslt+printf+list:com%2Emulberrytech%2Elists%2Exsl-list&page=1 -->
+  
+ <xsl:function name="str:pad" as="xs:string">
+   <!-- Pad a string with len trailing characters -->
+   <xsl:param    name="str" as="xs:string"/>
+   <xsl:param    name="len" as="xs:integer"/>
+   <xsl:variable name="lstr" select="string-length($str)"/>
+   <xsl:variable name="pad"
+                 select="string-join((for $i in 1 to $len - $lstr return ' '),'')"/>
+   <xsl:sequence select="concat($str,$pad)"/>  
+ </xsl:function>
+
+ <xsl:function name="str:indent" as="xs:string">
+   <!-- Generate a sequence of blanks of the specified length -->
+   <xsl:param    name="len" as="xs:integer"/>
+   <xsl:variable name="indent"
+                 select="string-join((for $i in 1 to $len return ' '),'')"/>
+   <xsl:sequence select="$indent"/>  
+ </xsl:function>
 
 </xsl:stylesheet>
