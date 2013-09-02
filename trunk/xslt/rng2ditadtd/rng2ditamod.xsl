@@ -39,9 +39,6 @@
   <xsl:template match="rng:grammar" mode="moduleFile">
     <xsl:param name="thisFile" tunnel="yes" as="xs:string" />
     <xsl:variable name="thisBasename" select="relpath:getNamePart($thisFile)" />
-    <xsl:variable name="thisDomain" select="normalize-space(substring-before(substring-after(../comment()[1],'MODULE:'),'VERSION:'))" />
-    <xsl:variable name="thisVersion" select="normalize-space(substring-before(substring-after(../comment()[1],'VERSION:'),'DATE:'))" />
-    <xsl:variable name="thisDate" select="normalize-space(substring-before(substring-after(../comment()[1],'DATE:'),'='))" />
     <xsl:variable name="thisUri" select="namespace-uri(.)" />
     <xsl:variable name="domainValue" select="rng:define[@name='domains-atts-value']/rng:value[1]"/>
     <xsl:variable name="domainPrefix"> 
@@ -50,38 +47,20 @@
       </xsl:if>  
     </xsl:variable>
 
-    <xsl:text>&lt;?xml version="1.0" encoding="UTF-8"?>
-&lt;!-- ============================================================= -->
-&lt;!--                    HEADER                                     -->
-&lt;!-- ============================================================= -->
-&lt;!--  MODULE:    </xsl:text><xsl:value-of select="$thisDomain" /><xsl:text>                    -->
-&lt;!--  VERSION:   </xsl:text><xsl:value-of select="$thisVersion" /><xsl:text>                                               -->
-&lt;!--  DATE:      </xsl:text><xsl:value-of select="$thisDate" /><xsl:text>                                     -->
-&lt;!--                                                               -->
-&lt;!-- ============================================================= -->
-
-<!-- FIXME: Get the comments from the RNG file. Can't assume OASIS module.
-  -->
+    <xsl:text>&lt;?xml version="1.0" encoding="UTF-8"?>&#x0a;</xsl:text>
+    
+    <!-- Module-header comments should be in an <a:documentation> element that is the first child
+         of the <grammar> element -->
+    <xsl:apply-templates select="a:documentation[position() = 1]" mode="moduleFile"/>
+    
+<xsl:text>
 &lt;!-- ============================================================= -->
 &lt;!--                   ELEMENT NAME ENTITIES                       -->
 &lt;!-- ============================================================= -->
 
 </xsl:text>
 
-  <!-- @TODO: catch the ditaArch declaration if any -->
-
-<!-- This declaration needs to be in the shell. The entity name
-     needs to reflect the module name, e.g. xml-d-def
-      
-      <xsl:text>
-&lt;!ENTITY % </xsl:text><xsl:sequence select="concat($domainPrefix, '-def')" /><xsl:text> 
-  PUBLIC "-//OASIS//ENTITIES </xsl:text><xsl:value-of select="$thisDomain" /><xsl:text>//EN" 
-         "</xsl:text><xsl:value-of select="$thisBasename" /><xsl:text>.ent" 
->
-%definitions;
-
-</xsl:text>
--->    <xsl:apply-templates mode="#current">
+      <xsl:apply-templates mode="#current" select="* except(a:documentation)">
       <xsl:with-param name="domainPfx" select="$domainPrefix" tunnel="yes" as="xs:string" />
     </xsl:apply-templates>
 
@@ -364,7 +343,24 @@
   <xsl:template match="rng:attribute//rnga:documentation" mode="moduleFile" />
 
   <xsl:template match="rnga:documentation" mode="moduleFile">
-    <xsl:text>&lt;!-- </xsl:text><xsl:sequence select="translate(.,'&lt;&gt;','')"/><xsl:text> -->&#x0a;</xsl:text>
+    <xsl:choose>
+      <xsl:when test="$headerCommentStyle = 'comment-per-line'">
+        <xsl:analyze-string select="." regex="^.+$" flags="m">
+          <xsl:matching-substring>
+            <xsl:text>&lt;!-- </xsl:text><xsl:sequence select="."/><xsl:text>-->&#x0a;</xsl:text>
+          </xsl:matching-substring>
+          <xsl:non-matching-substring>
+            <xsl:sequence select="if (normalize-space(.) != '') then concat('&lt;-- ', ., ' -->') else ''"/>             
+          </xsl:non-matching-substring>
+        </xsl:analyze-string>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>&lt;!-- </xsl:text>
+        <!-- FIXME: Escape anything that needs escaping -->
+        <xsl:sequence select="string(.)"/>
+        <xsl:text> -->&#x0a;</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
 </xsl:stylesheet>

@@ -36,7 +36,7 @@
     <xsl:variable name="thisDate" select="normalize-space(substring-before(substring-after(../comment()[1],'DATE:'),'='))" />
     <xsl:variable name="rootElement" select="substring-before(//rng:start/rng:ref/@name,'.element')" as="xs:string" />
     
-    <xsl:message> + [INFO] === processing <xsl:value-of select="$rootElement" /> from <xsl:value-of select="$dtdFilename" /> ===</xsl:message>
+    <xsl:message> + [INFO] === Processing <xsl:value-of select="$rootElement" /> from <xsl:value-of select="$dtdFilename" /> ===</xsl:message>
     
     <xsl:variable name="rootClass"  as="xs:string">
       <xsl:choose>
@@ -267,6 +267,9 @@ PUBLIC "-//OASIS//DTD </xsl:text>
 
       </xsl:otherwise>
     </xsl:choose>
+    
+    <xsl:message> + [INFO] === Done with <xsl:value-of select="$rootElement" /> from <xsl:value-of select="$dtdFilename" /> ===</xsl:message>
+
   </xsl:template>
 
   <xsl:template match="rng:include" mode="dtdRedirect">
@@ -279,6 +282,7 @@ PUBLIC "-//OASIS//DTD </xsl:text>
     <xsl:text>"&#x0a;>&#x0a;%</xsl:text>
     <xsl:value-of select="concat($dtdRedirect,'Dtd')" /> 
     <xsl:text>;&#x0a;</xsl:text>
+    
   </xsl:template>
 
 
