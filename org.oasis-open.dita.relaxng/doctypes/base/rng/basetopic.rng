@@ -1,32 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../../checkShell.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<!-- ============================================================= 
-     MODULE:    DITA Topic Base RNG (only base domains)             
-     VERSION:   1.2                                                
-     DATE:      October 2010                                       
-     ============================================================= -->
-<!--
-     Refer to the latest version of this file by the following URI:
-     urn:dita-ng:dita:rng:basetopic.rng
-     To refer to this specific version, you may use this value:
-     urn:dita-ng:dita:rng:basetopic.rng:1.2
--->
-<!-- ============================================================= 
-     SYSTEM:     Darwin Information Typing Architecture (DITA)     
-     PURPOSE:    Relax NG schema to describe Base DITA Topics             
-     ORIGINAL CREATION DATE:                                       
-     September 2010                                                
-     (C) Copyright Syncro Soft 2010-2011                                
-     All Rights Reserved.                                          
-     ============================================================= -->
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
-  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
-  <!-- Define the root elements -->
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/"
+  >
+  <a:documentation 
+                   ditaarch:dtdPublicId="-//OASIS//DTD DITA 1.2 Base Topic//EN"
+    ditaarch:dtdPublicIdSpecificVersion="-//OASIS//DTD DITA 1.2 Base Topic//EN"
+                   ditaarch:xsdPublicUri="urn:oasis:names:tc:dita:xsd:basetopic.xsd"
+    ditaarch:xsdPublicUriSpecificVersion="urn:oasis:names:tc:dita:xsd:basetopic.xsd:1.2"
+                   ditaarch:rngPublicUri="urn:oasis:names:tc:dita:rng:basetopic.rng"
+    ditaarch:rngPublicUriSpecificVersion="urn:oasis:names:tc:dita:rng:basetopic.rng:1.2"
+                   ditaarch:rncPublicUri="urn:oasis:names:tc:dita:rnc:basetopic.rnc"
+    ditaarch:rncPublicUriSpecificVersion="urn:oasis:names:tc:dita:rnc:basetopic.rnc:1.2"
+    >
+<!-- ============================================================= -->
+<!--                    HEADER                                     -->
+<!-- ============================================================= -->
+<!--  MODULE:    DITA Topic Base DTD (only base domains)           -->
+<!--  VERSION:   1.2                                               -->
+<!--  DATE:      April 2010                                        -->
+<!--                                                               -->
+<!-- ============================================================= -->
+
+<!-- ============================================================= -->
+<!--                    PUBLIC DOCUMENT TYPE DEFINITION            -->
+<!--                    TYPICAL INVOCATION                         -->
+<!--                                                               -->
+<!--  Refer to this file by the following public identifier or an 
+      appropriate system identifier 
+PUBLIC "-//OASIS//DTD DITA Base Topic//EN"
+      Delivered as file "basetopic.dtd"                            -->
+
+<!-- The public ID above refers to the latest version of this DTD.
+     To refer to this specific version, you may use this value:
+PUBLIC "-//OASIS//DTD DITA 1.2 Base Topic//EN"                     -->
+
+<!-- ============================================================= -->
+<!-- SYSTEM:     Darwin Information Typing Architecture (DITA)     -->
+<!--                                                               -->
+<!-- PURPOSE:    DTD to describe Base DITA Topics                  -->
+<!--                                                               -->
+<!-- ORIGINAL CREATION DATE:                                       -->
+<!--             April 2010                                        -->
+<!--                                                               -->
+<!--             (C) Copyright OASIS Open 2010.                    -->
+<!--             All Rights Reserved.                              -->
+<!--                                                               -->
+<!--  UPDATES:                                                     -->
+<!-- ============================================================= -->
+  </a:documentation>
+
   <start combine="choice">
     <ref name="topic.element"/>
   </start>
   
-  <!-- The DITA domains attribute -->
   <define name="domains-atts" combine="interleave">
     <optional>
       <attribute name="domains"
@@ -35,6 +63,7 @@
   </define>
   
   <!-- Include modules -->
+
   <include href="topicMod.rng"/>
   <include href="highlightDomainMod.rng"/>
   <include href="utilitiesDomainMod.rng"/>
@@ -42,7 +71,7 @@
   <include href="hazardstatementDomainMod.rng"/>
 
   <!-- Define the any pattern to exclude elements with ID attributes
-    from the wildcard and refer them expliceitely  -->
+    from the wildcard and refer them explicitly -->
   <define name="any">
     <zeroOrMore>
       <choice>
