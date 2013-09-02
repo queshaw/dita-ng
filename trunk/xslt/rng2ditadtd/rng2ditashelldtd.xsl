@@ -15,8 +15,8 @@
       <xd:p><xd:b>Created on:</xd:b> Feb 16, 2013</xd:p>
       <xd:p><xd:b>Authors:</xd:b> ekimber, pleblanc</xd:p>
       <xd:p>This transform takes as input RNG-format DITA document type
-      shells and produces from them the DTD shell file
-        that reflect the RNG definitions and conform to the DITA 1.3
+      shells and produces from them the DTD shell that
+        that reflects the RNG definitions and conforms to the DITA 1.3
         DTD coding requirements.
       </xd:p>
     </xd:desc>
@@ -30,11 +30,14 @@
     <xsl:param name="dtdFilename" tunnel="yes" as="xs:string" />
     <xsl:param name="dtdDir" tunnel="yes" as="xs:string" />
     <xsl:param name="modulesToProcess" tunnel="yes" as="document-node()*" />
+    
     <xsl:variable name="thisDomain" select="normalize-space(substring-before(substring-after(../comment()[1],'MODULE:'),'VERSION:'))" />
     <xsl:variable name="thisVersion" select="normalize-space(substring-before(substring-after(../comment()[1],'VERSION:'),'DATE:'))" />
     <xsl:variable name="thisDate" select="normalize-space(substring-before(substring-after(../comment()[1],'DATE:'),'='))" />
     <xsl:variable name="rootElement" select="substring-before(//rng:start/rng:ref/@name,'.element')" as="xs:string" />
-    <xsl:message> === processing <xsl:value-of select="$rootElement" /> from <xsl:value-of select="$dtdFilename" /> ===</xsl:message>
+    
+    <xsl:message> + [INFO] === processing <xsl:value-of select="$rootElement" /> from <xsl:value-of select="$dtdFilename" /> ===</xsl:message>
+    
     <xsl:variable name="rootClass"  as="xs:string">
       <xsl:choose>
         <xsl:when test="count(*)=1 and rng:include">
