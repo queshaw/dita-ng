@@ -96,7 +96,7 @@
       <xsl:when test="$domainPfx and not($domainPfx='') and starts-with(@name, $domainPfx)">
         <!--  already processed as extension, ignore -->
       </xsl:when>
-      <xsl:when test="count(rng:*)=1 and rng:ref and key('nameIndex',rng:ref/@name)/rng:element" >
+      <xsl:when test="count(rng:*)=1 and rng:ref and key('definesByName',rng:ref/@name)/rng:element" >
         <!-- reference to element name in this module -->
         <xsl:text>&lt;!ENTITY % </xsl:text>
         <xsl:sequence select="string(@name)" />
@@ -104,7 +104,7 @@
         <xsl:apply-templates mode="moduleFile" />
         <xsl:text>&quot; &gt;&#x0a;&#x0a;</xsl:text>
       </xsl:when>
-      <xsl:when test="count(rng:*)=1 and rng:ref and not(key('nameIndex',rng:ref/@name)) and ends-with(rng:ref/@name, '.element')" >
+      <xsl:when test="count(rng:*)=1 and rng:ref and not(key('definesByName',rng:ref/@name)) and ends-with(rng:ref/@name, '.element')" >
         <!-- reference to element name in another module -->
         <xsl:text>&lt;!ENTITY % </xsl:text>
         <xsl:sequence select="string(@name)" />

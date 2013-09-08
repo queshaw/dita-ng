@@ -490,7 +490,7 @@ PUBLIC "-//OASIS//DTD </xsl:text>
   </xsl:template>
 
   <xsl:template match="rng:ref[@name='info-types']" mode="nestingOverride">
-    <xsl:variable name="refTarget" select="key('nameIndex',@name)" />
+    <xsl:variable name="refTarget" select="key('definesByName',@name)" />
     <xsl:if test="$refTarget">
        <xsl:apply-templates select="$refTarget/rng:*" mode="#current" />
     </xsl:if>
@@ -556,7 +556,7 @@ PUBLIC "-//OASIS//DTD </xsl:text>
 
     <xsl:if test="rng:ref[ends-with(@name, '.attlist')]">
       <xsl:variable name="refPointer" select="rng:ref[ends-with(@name, '.attlist')]" />
-      <xsl:variable name="refTarget" select="key('nameIndex',$refPointer/@name)" />
+      <xsl:variable name="refTarget" select="key('definesByName',$refPointer/@name)" />
       <xsl:choose>
         <xsl:when test="not($refTarget)">
           <xsl:text>&lt;!ATTLIST  </xsl:text>
