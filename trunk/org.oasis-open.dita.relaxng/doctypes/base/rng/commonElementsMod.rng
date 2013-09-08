@@ -20,7 +20,8 @@
      (C) Copyright Syncro Soft 2010-2011                                
      All Rights Reserved.                                          
      ============================================================= -->
-<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" 
+<grammar xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" 
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" 
   xmlns="http://relaxng.org/ns/structure/1.0" 
   datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
   xmlns:sch="http://purl.oclc.org/dsdl/schematron">
@@ -932,7 +933,7 @@
     </optional>
   </define>
   <define name="data-about.element">
-    <element name="data-about">
+    <element name="data-about" ditaarch:longName="Data About">
       <a:documentation>The &lt;data-about> element identifies the subject of a property when the
         subject isn't associated with the context in which the property is specified. The property
         itself is expressed by the &lt;data> element. The &lt;data-about> element handles exception
@@ -995,7 +996,7 @@
     <ref name="data-element-atts"/>
   </define>
   <define name="data.element">
-    <element name="data">
+    <element name="data" ditaarch:longName="Data">
       <a:documentation>The &lt;data> element represents a property within a DITA topic or map. While
         the &lt;data> element can be used directly to capture properties, it is particularly useful
         as a basis for specialization. Default processing treats the property values as an unknown
