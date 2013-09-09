@@ -195,13 +195,16 @@
     <xsl:text>&#x0a;</xsl:text>
     <xsl:sequence select="str:indent(14)"/>        
     <xsl:text>&quot;</xsl:text>
-    <xsl:if test="count(rng:*) &gt; 1 and (rng:zeroOrMore or rng:oneOrMore)">
+    <xsl:variable name="addparen" as="xs:boolean"
+      select="count(rng:*) &gt; 1 and not(ends-with(@name, '.attributes'))"/>
+    <xsl:if test="$addparen">
       <xsl:text>(</xsl:text>
     </xsl:if>
     <xsl:apply-templates mode="element-decls">
-      <xsl:with-param name="indent" select="15" as="xs:integer" tunnel="yes"/>
+      <xsl:with-param name="indent" 
+        select="if ($addparen) then 16 else 15" as="xs:integer" tunnel="yes"/>
     </xsl:apply-templates>
-    <xsl:if test="count(rng:*) &gt; 1 and (rng:zeroOrMore or rng:oneOrMore)">
+    <xsl:if test="$addparen">
       <xsl:text>)</xsl:text>
     </xsl:if>
     <xsl:text>&quot; </xsl:text>
@@ -211,7 +214,7 @@
   
   <xsl:template match="rng:zeroOrMore" mode="element-decls" priority="10">
     <xsl:param name="indent" as="xs:integer" tunnel="yes"/>
-    <xsl:if test="not(parent::rng:define)">
+    <xsl:if test="not(parent::rng:define) or preceding-sibling::rng:*">
       <xsl:sequence select="str:indent($indent)"/>
     </xsl:if>
     <xsl:text>(</xsl:text>
@@ -227,6 +230,9 @@
 
   <xsl:template match="rng:oneOrMore" mode="element-decls" priority="10">
     <xsl:param name="indent" as="xs:integer" tunnel="yes"/>
+    <xsl:if test="preceding-sibling::rng:*">
+      <xsl:sequence select="str:indent($indent)"/>
+    </xsl:if>
     <xsl:text>(</xsl:text>
     <xsl:apply-templates mode="#current" >
       <xsl:with-param name="indent" as="xs:integer" tunnel="yes" 
@@ -251,27 +257,34 @@
     <xsl:text>)</xsl:text>
   </xsl:template>
 
-  <xsl:template match="rng:choice" mode="element-decls" priority="10">
+  <xsl:template match="rng:attribute/rng:choice" mode="element-decls" priority="15">
     <xsl:param name="indent" as="xs:integer" tunnel="yes"/>
-    <xsl:if test="local-name(..)='attribute'">
-      <xsl:if test="preceding-sibling::rng:*">
-        <xsl:sequence select="str:indent($indent)"/>
-      </xsl:if>
-      <xsl:text>(</xsl:text>
+    <xsl:if test="preceding-sibling::rng:* or 
+      parent::rng:*[not(self::rng:define)]/preceding-sibling::rng:*">
+      <xsl:sequence select="str:indent($indent)"/>
     </xsl:if>
+    <xsl:text>(</xsl:text>
     <xsl:for-each select="rng:*">
       <xsl:if test="not(position()=1)">
         <xsl:text> |&#x0a;</xsl:text>
-        <xsl:sequence select="str:indent($indent)"/>
       </xsl:if>
       <xsl:apply-templates select="." mode="#current" >
         <xsl:with-param name="indent" as="xs:integer" tunnel="yes" 
-          select="$indent + 1"/>
+          select="$indent"/>
       </xsl:apply-templates>
     </xsl:for-each>
-    <xsl:if test="local-name(..)='attribute'">
-      <xsl:text>)</xsl:text>
-    </xsl:if>
+    <xsl:text>)</xsl:text>
+  </xsl:template>
+  
+  <!-- Choice for content models, not attribute decls -->
+  <xsl:template match="rng:choice" mode="element-decls" priority="10">
+    <xsl:param name="indent" as="xs:integer" tunnel="yes"/>
+    <xsl:for-each select="rng:*">
+      <xsl:if test="not(position()=1)">
+        <xsl:text> |&#x0a;</xsl:text>
+      </xsl:if>
+      <xsl:apply-templates select="." mode="#current" />      
+    </xsl:for-each>
   </xsl:template>
 
   <xsl:template match="rng:ref" mode="element-decls" priority="10">
@@ -296,16 +309,7 @@
         <xsl:value-of select="substring-before(@name,'.element')" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:if test="count(../rng:*) &gt; 1 and (../rng:zeroOrMore or ../rng:oneOrMore)">
-          <xsl:text>(</xsl:text>
-        </xsl:if>
         <xsl:text>%</xsl:text><xsl:value-of select="@name" /><xsl:text>;</xsl:text>
-        <xsl:if test="count(../rng:*) &gt; 1 and (../rng:zeroOrMore or ../rng:oneOrMore)">
-          <xsl:text>)</xsl:text>
-          <xsl:if test="not(position()=last())">
-            <xsl:text>,</xsl:text>
-          </xsl:if>
-        </xsl:if>
       </xsl:otherwise>
     </xsl:choose>
     <xsl:if test="not(position() = last())">
@@ -320,6 +324,10 @@
   </xsl:template>
 
   <xsl:template match="rng:value" mode="element-decls" priority="10">
+    <xsl:param name="indent" as="xs:integer" tunnel="yes"/>
+    <xsl:if test="preceding-sibling::rng:*">
+      <xsl:sequence select="str:indent($indent)"/>
+    </xsl:if>
     <xsl:value-of select="." />
   </xsl:template>
 
@@ -339,6 +347,9 @@
     <xsl:choose>
       <xsl:when test="ancestor::rng:element or ends-with(ancestor::rng:define/@name, '.content')">
         <!-- optional element content -->
+        <xsl:if test="preceding-sibling::rng:*">
+          <xsl:sequence select="str:indent($indent)"/>
+        </xsl:if>
         <xsl:text>(</xsl:text>
         <xsl:apply-templates mode="#current" >
           <xsl:with-param name="indent" select="$indent + 1" as="xs:integer" tunnel="yes"/>
@@ -357,7 +368,6 @@
   </xsl:template>
 
   <xsl:template match="rng:empty" mode="element-decls" priority="10">
-    <xsl:param name="indent" as="xs:integer" tunnel="yes"/>
     <xsl:choose>
       <xsl:when test="ancestor::rng:element">
         <!-- empty element content -->
@@ -445,6 +455,9 @@
         <xsl:text>#REQUIRED</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
+    <xsl:if test="position() != last()">
+      <xsl:text>&#x0a;</xsl:text>
+    </xsl:if>
   </xsl:template>
 
   <!-- ================================
