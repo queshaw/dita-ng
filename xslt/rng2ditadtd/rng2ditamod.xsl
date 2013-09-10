@@ -196,7 +196,7 @@
     <xsl:sequence select="str:indent(14)"/>        
     <xsl:text>&quot;</xsl:text>
     <xsl:variable name="addparen" as="xs:boolean"
-      select="count(rng:*) &gt; 1 and not(ends-with(@name, '.attributes'))"/>
+      select="count(rng:*) &gt; 1 and not(ends-with(@name, '.attributes')) and not(.//rng:attribute)"/>
     <xsl:if test="$addparen">
       <xsl:text>(</xsl:text>
     </xsl:if>
