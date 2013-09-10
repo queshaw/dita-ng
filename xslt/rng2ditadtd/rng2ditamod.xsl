@@ -25,9 +25,6 @@
     </xd:desc>
   </xd:doc>
 
-<xsl:key name="definesByName" match="rng:define" use="@name" />
-<xsl:key name="attlistIndex" match="rng:element" use="rng:ref[ends-with(@name, '.attlist')]/@name" />
-
 
   <!-- ==============================
        .mod file generation mode
@@ -190,10 +187,11 @@
   </xsl:template>
   
   <xsl:template mode="generate-parment-decl-from-define" match="rng:define">
+    <xsl:param name="indent" as="xs:integer" select="14"/>
     <xsl:text>&lt;!ENTITY % </xsl:text>
     <xsl:sequence select="string(@name)" />
     <xsl:text>&#x0a;</xsl:text>
-    <xsl:sequence select="str:indent(14)"/>        
+    <xsl:sequence select="str:indent($indent)"/>        
     <xsl:text>&quot;</xsl:text>
     <xsl:variable name="addparen" as="xs:boolean"
       select="count(rng:*) &gt; 1 and not(ends-with(@name, '.attributes')) and not(.//rng:attribute)"/>
@@ -202,7 +200,9 @@
     </xsl:if>
     <xsl:apply-templates mode="element-decls">
       <xsl:with-param name="indent" 
-        select="if ($addparen) then 16 else 15" as="xs:integer" tunnel="yes"/>
+        select="if ($addparen) then $indent + 2 else $indent + 1" 
+        as="xs:integer" 
+        tunnel="yes"/>
     </xsl:apply-templates>
     <xsl:if test="$addparen">
       <xsl:text>)</xsl:text>

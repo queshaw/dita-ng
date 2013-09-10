@@ -68,6 +68,9 @@
   <xsl:variable name="doDebug" as="xs:boolean" select="$debug = 'true'" />
 
   <xsl:strip-space elements="*"/>
+  
+  <xsl:key name="definesByName" match="rng:define" use="@name" />
+  <xsl:key name="attlistIndex" match="rng:element" use="rng:ref[ends-with(@name, '.attlist')]/@name" />
 
   <xsl:template match="/">
     <!-- Construct a sequence of all the input modules so we can
