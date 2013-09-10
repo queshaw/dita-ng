@@ -55,7 +55,7 @@ PUBLIC "-//OASIS//DTD DITA 1.2 Base Topic//EN"                     -->
     <ref name="topic.element"/>
   </start>
   
-  <define name="domains-atts" combine="interleave">
+  <define name="domains-att" combine="interleave">
     <optional>
       <attribute name="domains"
         a:defaultValue="(topic hi-d) (topic ut-d) (topic indexing-d) (topic hazard-d)"/>

@@ -53,7 +53,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Highlight Domain//EN"
 </a:documentation>
   
   <!-- Define the domain values of this module -->
-  <define name="domains-atts-value" combine="choice">
+  <define name="domains-att-contribution" combine="choice">
     <value>(topic hi-d)</value>
   </define>
   

@@ -76,8 +76,8 @@ PUBLIC "-//OASIS//ELEMENTS DITA Topic//EN"
     2008.05.06 RDA: Moved sectiondiv to section.cnt; created   
                     example.cnt for use by example element     
  =============================================================     </a:documentation>  
-  <!-- Define the domain values of this module -->
-  <define name="domains-atts-value" combine="choice">
+  <!-- Define the domains attribute value contribution of this module -->
+  <define name="domains-att-contribution" combine="choice">
     <value></value>
   </define>
   
@@ -321,7 +321,7 @@ PUBLIC "-//OASIS//ELEMENTS DITA Topic//EN"
   <define name="topic.attlist" combine="interleave">
     <ref name="topic.attributes"/>
     <ref name="arch-atts"/>
-    <ref name="domains-atts"/>
+    <ref name="domains-att"/>
   </define>
   
   
