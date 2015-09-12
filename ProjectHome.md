@@ -1,0 +1,1 @@
+DITA has implementations in only XML Schema and DTD. This project provides a Relax NG implementation of DITA 1.2.
