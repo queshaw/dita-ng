@@ -1,6 +1,8 @@
 package org.ditang.relaxng.defaults;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
 import java.util.List;
 
@@ -280,7 +282,11 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
         } else {
         String expanded = schema;
         try {
-          expanded  = new URL(new URL(baseSystemId), schema).toString();
+            URI uri = new URI(expanded);
+            if (!uri.isAbsolute() && !uri.isOpaque() && baseSystemId == null)
+                expanded = new File(expanded).toURI().toString();
+            else
+                expanded  = new URL(new URL(baseSystemId), schema).toString();
         } catch (Exception e) {
         }        
           in = new InputSource(expanded);
