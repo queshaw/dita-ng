@@ -258,6 +258,7 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
         defaults = new RNCDefaultValues(resolver, eh);
     }
     if (defaults != null) {
+        defaults.setDocumentSource(this);
         Identifier id = new Identifier(schema, baseSystemId);
         Input input = new Input();
         try {

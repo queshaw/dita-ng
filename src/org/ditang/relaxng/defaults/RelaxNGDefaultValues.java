@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.xerces.xni.parser.XMLDocumentSource;
+import org.ditang.relaxng.SaxDocumentHandler;
 import org.ditang.relaxng.defaults.OxygenRelaxNGSchemaReader.SchemaWrapper;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
@@ -12,19 +14,23 @@ import org.xml.sax.SAXParseException;
 
 import com.thaiopensource.relaxng.pattern.DefaultValuesExtractor;
 import com.thaiopensource.relaxng.pattern.Pattern;
+import com.thaiopensource.relaxng.pattern.SchemaPatternBuilder;
+import com.thaiopensource.relaxng.pattern.ValidatorPatternBuilder;
+import com.thaiopensource.relaxng.sax.PatternValidator;
 import com.thaiopensource.resolver.Resolver;
 import com.thaiopensource.util.PropertyMap;
 import com.thaiopensource.util.PropertyMapBuilder;
 import com.thaiopensource.validate.IncorrectSchemaException;
 import com.thaiopensource.validate.SchemaReader;
 import com.thaiopensource.validate.ValidateProperty;
+import com.thaiopensource.xml.sax.DraconianErrorHandler;
 
 /**
  * Relax NG default values gatherer.
  * 
  * @author george@oxygenxml.com
  */
-public abstract class RelaxNGDefaultValues {
+public abstract class RelaxNGDefaultValues implements DefaultsConstants {
   /**
    * Error handler
    */
@@ -34,6 +40,15 @@ public abstract class RelaxNGDefaultValues {
    */
   private final Resolver resolver;
   
+  /**
+   * XNI document source.
+   */
+  private XMLDocumentSource documentSource;
+
+  /**
+   * Flag indicating whether or not validation should be performed.
+   */
+  private Boolean validating = null;
 
   /**
    * Constructor.
@@ -43,6 +58,50 @@ public abstract class RelaxNGDefaultValues {
   public RelaxNGDefaultValues(Resolver resolver, ErrorHandler eh) {
     this.resolver = resolver;
     this.eh = eh;
+  }
+
+  /**
+   * Returns the XNI document source.
+   *
+   * @return the document source.
+   */
+  public XMLDocumentSource getDocumentSource() {
+    return documentSource;
+  }
+
+  /**
+   * Sets the XNI document source.
+   *
+   * @param source the document source.
+   */
+  public void setDocumentSource(XMLDocumentSource source) {
+    this.documentSource = source;
+  }
+
+  /**
+   * Determines whether the XML parser validates documents against the schema.
+   *
+   * @return true if the parser is validating; false otherwise.
+   */
+  public boolean isValidating() {
+      if (validating == null) {
+          String validatingProperty =
+              System.getProperty(VALIDATION_PROPERTY, "false");
+          if ("yes".equalsIgnoreCase(validatingProperty))
+              validatingProperty = "true";
+          setValidating(Boolean.valueOf(validatingProperty));
+      }
+    return validating;
+  }
+
+  /**
+   * Sets whether or not the XML parser validates documents against the schema.
+   *
+   * @param validating true if the parser should validate documents; false
+   * otherwise.
+   */
+  public void setValidating(boolean validating) {
+    this.validating = validating;
   }
 
   /**
@@ -163,6 +222,7 @@ public abstract class RelaxNGDefaultValues {
           properties);
       Pattern start = sw.getStart();
       defaultValuesCollector = new DefaultValuesCollector(start);
+      validate(start);
     } catch (IncorrectSchemaException e) {
       eh.warning(new SAXParseException("Error loading defaults: " + e.getMessage(), null, e));
     } catch (Exception e) {
@@ -171,6 +231,23 @@ public abstract class RelaxNGDefaultValues {
       //EXM-24759 Also catch stackoverflow
       eh.warning(new SAXParseException("Error loading defaults: " + e.getMessage(), null, null));
     }
+  }
+
+  /*
+   * Validates the parsed document against the schema.
+   *
+   * @param start the start pattern.
+   */
+  protected void validate(Pattern start) {
+      XMLDocumentSource source = getDocumentSource();
+      if (isValidating() && source != null) {
+          ValidatorPatternBuilder vpb =
+              new ValidatorPatternBuilder(new SchemaPatternBuilder());
+          ErrorHandler eh = new DraconianErrorHandler();
+          PatternValidator vp = new PatternValidator(start, vpb, eh);
+          SaxDocumentHandler dh = new SaxDocumentHandler(source);
+          dh.setContentHandler(vp);
+      }
   }
 
   /**
