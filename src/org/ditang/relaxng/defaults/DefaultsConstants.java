@@ -11,5 +11,10 @@ public interface DefaultsConstants {
      *
      * <p>Values "true" and "yes" indicate validation, anything else does not.</p>
      */
-    final static String VALIDATION_PROPERTY = "dita-ng.validation";
+    String VALIDATION_PROPERTY = "dita-ng.validation";
+
+    String PROPERTIES_FILE = "dita-ng.properties";
+
+    String PROPERTIES_FILE_VALIDATION_PROPERTY = "validation";
+
 }

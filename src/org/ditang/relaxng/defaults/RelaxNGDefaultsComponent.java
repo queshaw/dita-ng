@@ -89,6 +89,7 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
     
   private XMLDocumentHandler documentHandler;
   private XMLDocumentSource documentSource;
+  private XMLLocator locator;
 
   private boolean detecting = false;
   private String schema = null;
@@ -144,6 +145,7 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
             }
           }
         }
+
         /**
          * Delegate to usual open mechanism.
          * 
@@ -157,6 +159,9 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
     }
   }
 
+  XMLLocator getLocator() {
+      return locator;
+  }
 
   /**
    * @see org.apache.xerces.xni.parser.XMLComponent#reset(org.apache.xerces.xni.parser.XMLComponentManager)
@@ -180,6 +185,7 @@ public class RelaxNGDefaultsComponent implements XMLDocumentHandler,
    */
   public void startDocument(XMLLocator locator, String enc,
       NamespaceContext nc, Augmentations aug) throws XNIException {
+    this.locator = locator;
     context = nc;
     baseSystemId = locator.getBaseSystemId();
     detecting = true;

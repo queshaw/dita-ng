@@ -1,10 +1,17 @@
 package org.ditang.relaxng.defaults;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Properties;
 
+import org.apache.xerces.util.LocatorProxy;
+import org.apache.xerces.xni.XMLLocator;
 import org.apache.xerces.xni.parser.XMLDocumentSource;
+import org.ditang.relaxng.LocatingErrorHandler;
 import org.ditang.relaxng.SaxDocumentHandler;
 import org.ditang.relaxng.defaults.OxygenRelaxNGSchemaReader.SchemaWrapper;
 import org.xml.sax.ErrorHandler;
@@ -23,7 +30,6 @@ import com.thaiopensource.util.PropertyMapBuilder;
 import com.thaiopensource.validate.IncorrectSchemaException;
 import com.thaiopensource.validate.SchemaReader;
 import com.thaiopensource.validate.ValidateProperty;
-import com.thaiopensource.xml.sax.DraconianErrorHandler;
 
 /**
  * Relax NG default values gatherer.
@@ -85,8 +91,9 @@ public abstract class RelaxNGDefaultValues implements DefaultsConstants {
    */
   public boolean isValidating() {
       if (validating == null) {
+          Boolean propDefault = readPropertiesFile();
           String validatingProperty =
-              System.getProperty(VALIDATION_PROPERTY, "false");
+              System.getProperty(VALIDATION_PROPERTY, propDefault.toString());
           if ("yes".equalsIgnoreCase(validatingProperty))
               validatingProperty = "true";
           setValidating(Boolean.valueOf(validatingProperty));
@@ -243,9 +250,14 @@ public abstract class RelaxNGDefaultValues implements DefaultsConstants {
       if (isValidating() && source != null) {
           ValidatorPatternBuilder vpb =
               new ValidatorPatternBuilder(new SchemaPatternBuilder());
-          ErrorHandler eh = new DraconianErrorHandler();
+          ErrorHandler eh = new LocatingErrorHandler();
           PatternValidator vp = new PatternValidator(start, vpb, eh);
           SaxDocumentHandler dh = new SaxDocumentHandler(source);
+          if (source instanceof RelaxNGDefaultsComponent) {
+              XMLLocator loc = ((RelaxNGDefaultsComponent) source).getLocator();
+              vp.setDocumentLocator(new LocatorProxy(loc));
+              dh.setLocator(loc);
+          }
           dh.setContentHandler(vp);
       }
   }
@@ -264,5 +276,24 @@ public abstract class RelaxNGDefaultValues implements DefaultsConstants {
       return defaultValuesCollector.getDefaultAttributes(localName, namespace);
     }
     return null;
+  }
+
+  protected boolean readPropertiesFile() {
+    boolean f = false;
+    try {
+        Properties props = new Properties();
+        Enumeration<URL> res =
+            getClass().getClassLoader().getResources(PROPERTIES_FILE);
+        if (res.hasMoreElements()) {
+            URL url = res.nextElement();
+            props.load(url.openStream());
+            String v =
+              props.getProperty(PROPERTIES_FILE_VALIDATION_PROPERTY, "false");
+            f = Boolean.parseBoolean(v);
+        }
+    } catch (IOException e) {
+        // ignored
+    }
+    return f;
   }
 }

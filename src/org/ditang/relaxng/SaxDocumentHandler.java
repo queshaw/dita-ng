@@ -14,6 +14,7 @@ import org.apache.xerces.xni.parser.XMLParseException;
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.AttributesImpl;
 
 /**
@@ -84,7 +85,7 @@ public class SaxDocumentHandler implements XMLDocumentHandler {
      *
      * @return the locator.
      */
-    protected XMLLocator getLocator() {
+    public XMLLocator getLocator() {
         return locator;
     }
 
@@ -93,7 +94,7 @@ public class SaxDocumentHandler implements XMLDocumentHandler {
      *
      * @param the locator.
      */
-    protected void setLocator(XMLLocator locator) {
+    public void setLocator(XMLLocator locator) {
         this.locator = locator;
     }
 
@@ -109,16 +110,16 @@ public class SaxDocumentHandler implements XMLDocumentHandler {
     @Override
     public void processingInstruction(String target, XMLString data,
                                       Augmentations augs) throws XNIException {
-        if (previous != null)
-            previous.processingInstruction(target, data, augs);
         ContentHandler ch = getContentHandler();
         if (ch != null) {
             try {
                 ch.processingInstruction(target, data.toString());
             } catch (SAXException e) {
-                throw new XMLParseException(getLocator(), "", e);
+                throw new XNIException(e);
             }
         }
+        if (previous != null)
+            previous.processingInstruction(target, data, augs);
     }
 
     /** @inheritDoc */
@@ -148,10 +149,6 @@ public class SaxDocumentHandler implements XMLDocumentHandler {
         throws XNIException
     {
         setLocator(locator);
-        if (previous != null) {
-            previous.startDocument(locator, encoding,
-                                   namespaceContext, augs);
-        }
         ContentHandler ch = getContentHandler();
         if (ch != null) {
             try {
@@ -160,21 +157,25 @@ public class SaxDocumentHandler implements XMLDocumentHandler {
                 throw new XMLParseException(locator, "", e);
             }
         }
+        if (previous != null) {
+            previous.startDocument(locator, encoding,
+                                   namespaceContext, augs);
+        }
     }
 
     /** @inheritDoc */
     @Override
     public void endDocument(Augmentations augs) throws XNIException {
-        if (previous != null)
-            previous.endDocument(augs);
         ContentHandler ch = getContentHandler();
         if (ch != null) {
             try {
                 ch.endDocument();
             } catch (SAXException e) {
-                throw new XMLParseException(getLocator(), "", e);
+                throw new XNIException(e);
             }
         }
+        if (previous != null)
+            previous.endDocument(augs);
     }
 
     /** @inheritDoc */
@@ -183,8 +184,6 @@ public class SaxDocumentHandler implements XMLDocumentHandler {
                              Augmentations augs)
         throws XNIException
     {
-        if (previous != null)
-            previous.startElement(element, attributes, augs);
         ContentHandler ch = getContentHandler();
         if (ch != null) {
             try {
@@ -192,9 +191,11 @@ public class SaxDocumentHandler implements XMLDocumentHandler {
                                 element.localpart,
                                 prefixed(element), saxAttributes(attributes));
             } catch (SAXException e) {
-                throw new XMLParseException(getLocator(), "", e);
+                throw new XNIException(e);
             }
         }
+        if (previous != null)
+            previous.startElement(element, attributes, augs);
     }
 
     /** @inheritDoc */
@@ -202,18 +203,17 @@ public class SaxDocumentHandler implements XMLDocumentHandler {
     public void endElement(QName element, Augmentations augs)
         throws XNIException
     {
-        if (previous != null)
-            previous.endElement(element, augs);
         ContentHandler ch = getContentHandler();
         if (ch != null) {
             try {
                 ch.endElement(notNull(element.uri), element.localpart,
                               prefixed(element));
             } catch (SAXException e) {
-                throw new XMLParseException(getLocator(), "", e);
+                throw new XNIException(e);
             }
         }
-
+        if (previous != null)
+            previous.endElement(element, augs);
     }
 
     /** @inheritDoc */
@@ -222,18 +222,20 @@ public class SaxDocumentHandler implements XMLDocumentHandler {
                              Augmentations augs)
         throws XNIException
     {
-        if (previous != null)
-            previous.emptyElement(element, attributes, augs);
         ContentHandler ch = getContentHandler();
         if (ch != null) {
             try {
-                ch.startElement(notNull(element.uri), element.localpart,
-                                prefixed(element),
-                                saxAttributes(attributes));
+                String uri = notNull(element.uri);
+                String qName = prefixed(element);
+                Attributes atts = saxAttributes(attributes);
+                ch.startElement(uri, element.localpart, qName, atts);
+                ch.endElement(uri, element.localpart, qName);
             } catch (SAXException e) {
-                throw new XMLParseException(getLocator(), "", e);
+                throw new XNIException(e);
             }
         }
+        if (previous != null)
+            previous.emptyElement(element, attributes, augs);
     }
 
     /** @inheritDoc */
@@ -270,14 +272,14 @@ public class SaxDocumentHandler implements XMLDocumentHandler {
     public void characters(XMLString text, Augmentations augs)
         throws XNIException
     {
-        if (previous != null)
-            previous.characters(text, augs);
         ContentHandler ch = getContentHandler();
         try {
             ch.characters(text.ch, text.offset, text.length);
         } catch (SAXException e) {
-            throw new XMLParseException(getLocator(), "", e);
+            throw new XNIException(e);
         }
+        if (previous != null)
+            previous.characters(text, augs);
     }
 
     /** @inheritDoc */
@@ -285,16 +287,16 @@ public class SaxDocumentHandler implements XMLDocumentHandler {
     public void ignorableWhitespace(XMLString text, Augmentations augs)
         throws XNIException
     {
-        if (previous != null)
-            previous.ignorableWhitespace(text, augs);
         ContentHandler ch = getContentHandler();
         if (ch != null) {
             try {
                 ch.ignorableWhitespace(text.ch, text.offset, text.length);
             } catch (SAXException e) {
-                throw new XMLParseException(getLocator(), "", e);
+                throw new XNIException(e);
             }
         }
+        if (previous != null)
+            previous.ignorableWhitespace(text, augs);
     }
 
     /** @inheritDoc */
@@ -314,11 +316,17 @@ public class SaxDocumentHandler implements XMLDocumentHandler {
     private Attributes saxAttributes(XMLAttributes attributes) {
         AttributesImpl atts = new AttributesImpl();
         for (int i = 0, e = attributes.getLength(); i < e; ++i) {
+            // Regardless of SAX feature flags:
+            // present no namespace declaration attributes to Jing
+            if (notNull(attributes.getLocalName(i)).equals("xmlns"))
+                continue;
+            if (notNull(attributes.getPrefix(i)).equals("xmlns"))
+                continue;
             atts.addAttribute(notNull(attributes.getURI(i)),
-                    attributes.getLocalName(i),
-                    notNull(attributes.getQName(i)),
-                    attributes.getType(i),
-                    attributes.getValue(i));
+                              notNull(attributes.getLocalName(i)),
+                              notNull(attributes.getQName(i)),
+                              notNull(attributes.getType(i)),
+                              notNull(attributes.getValue(i)));
         }
         return atts;
     }
