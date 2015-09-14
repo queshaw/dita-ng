@@ -7,6 +7,11 @@
     <property name="lib" location="lib"/>
     <property name="target" value="org.dita-ng.doctypes/rnc"/>
     <property name="src" value="org.dita-ng.doctypes/rng"/>
+    <property name="build.dir" value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="test.resources.dir" value="test"/>
+    <property name="test.src.dir" value="test/java"/>
+    <property name="test.log.dir" value="${build.dir}/test-results"/>
     <property name="tmp" value="tmp"/>
     <property name="trang" value="lib/trang.jar"/>
     <property name="dist" value="dist"/>
@@ -14,24 +19,39 @@
     <property name="ant.build.javac.source" value="1.5"/>
     <property name="ant.build.javac.target" value="1.5"/>
     
+    <path id="cp">
+      <fileset dir="${lib}">
+        <include name="*.jar"/>
+        <exclude name="junit*.jar"/>
+        <exclude name="hamcrest*.jar"/>
+      </fileset>
+    </path>
+
+    <path id="test.cp">
+      <path refid="cp"/>
+      <pathelement path="${test.resources.dir}"/>
+      <fileset dir="${lib}">
+        <include name="junit*.jar"/>
+        <include name="hamcrest*.jar"/>
+      </fileset>
+    </path>
+
     <!-- Java code -->
     
     <!-- Compile java sources. -->
     <target name="compile">
-        <delete dir="classes" />
-        <mkdir dir="classes"/>
-        <javac srcdir="src" destdir="classes">
-            <classpath>
-                <fileset dir="${lib}">
-                    <include name="*.jar" />
-                </fileset>
-            </classpath>
-        </javac>
+      <delete dir="${classes.dir}"/>
+      <mkdir dir="${classes.dir}"/>
+      <javac srcdir="src" destdir="${classes.dir}" classpathref="cp"/>
+    </target>
+    
+    <target name="compile.tests" depends="compile">
+        <javac srcdir="${test.src.dir}" destdir="${classes.dir}" classpathref="test.cp"/>
     </target>
     
     <!-- Build the classes in a jar and put it inside the tei folder -->
     <target name="jar" depends="compile">
-        <jar basedir="classes" jarfile="dita-ng.jar">
+        <jar basedir="${classes.dir}" jarfile="dita-ng.jar">
             <!--We may want to add a reference to jing directly in the jar classpath -->
             <!--<manifest>
                 <attribute name="Class-Path" value="jing.jar"/>
@@ -324,12 +344,30 @@
         </zip>
         <delete dir="${dist}/dita-ng"/>
     </target>
-    
+
+    <target name="test" depends="compile.tests">
+      <delete dir="${test.log.dir}"/>
+      <mkdir dir="${test.log.dir}"/>
+      <junit printsummary="yes" haltonfailure="yes" showoutput="false">
+        <classpath>
+          <path refid="test.cp"/>
+          <pathelement path="${classes.dir}"/>
+        </classpath>
+        <formatter type="plain"/>
+        <batchtest fork="yes" todir="${test.log.dir}">
+          <fileset dir="${test.src.dir}">
+            <include name="**/Test*.java"/>
+            <exclude name="**/TestValidation.java"/>
+          </fileset>
+        </batchtest>
+      </junit>
+    </target>
+
     <target name="clean">
         <delete dir="${tmp}"/>
         <delete dir="${dist}"/>
-    <delete dir="classes"/>
+        <delete dir="${classes.dir}"/>
         <delete file="dita-ng.jar"/>
     </target>
-    <target name="test" depends="dist"/>
+
 </project>
