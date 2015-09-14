@@ -1,0 +1,6 @@
+<!-- -*-mode: nxml -*- -->
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  <start>
+    <element name="doc"><empty/></element>
+  </start>
+</grammar>

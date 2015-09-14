@@ -1,0 +1,12 @@
+<!-- -*-mode: nxml -*- -->
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+  <start>
+    <element name="doc">
+      <attribute name="some" a:defaultValue="value">
+        <text/>
+      </attribute>
+      <empty/>
+    </element>
+  </start>
+</grammar>

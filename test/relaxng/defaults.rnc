@@ -1,0 +1,7 @@
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+
+start =
+  element doc {
+    [ a:defaultValue = "value" ] attribute some { text },
+    empty
+  }
