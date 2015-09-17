@@ -279,21 +279,21 @@ public abstract class RelaxNGDefaultValues implements DefaultsConstants {
   }
 
   protected boolean readPropertiesFile() {
-    boolean f = false;
-    try {
-        Properties props = new Properties();
-        Enumeration<URL> res =
-            getClass().getClassLoader().getResources(PROPERTIES_FILE);
-        if (res.hasMoreElements()) {
-            URL url = res.nextElement();
-            props.load(url.openStream());
-            String v =
-              props.getProperty(PROPERTIES_FILE_VALIDATION_PROPERTY, "false");
-            f = Boolean.parseBoolean(v);
-        }
-    } catch (IOException e) {
-        // ignored
-    }
-    return f;
+      boolean f = true;
+      try {
+          Properties props = new Properties();
+          Enumeration<URL> res =
+              getClass().getClassLoader().getResources(PROPERTIES_FILE);
+          if (res.hasMoreElements()) {
+              URL url = res.nextElement();
+              props.load(url.openStream());
+              String v =
+                  props.getProperty(PROPERTIES_FILE_VALIDATION_PROPERTY, "true");
+              f = Boolean.parseBoolean(v);
+          }
+      } catch (IOException e) {
+          // ignored
+      }
+      return f;
   }
 }
