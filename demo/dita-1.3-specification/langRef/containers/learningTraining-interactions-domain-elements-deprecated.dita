@@ -1,0 +1,12 @@
+<?xml-model href="urn:oasis:names:tc:dita:rng:reference.rng"?>
+<reference id="dita_learning_specialization_elements_deprecated" xml:lang="en-us">
+  <title>Learning and training: interactions domain elements (DEPRECATED)</title>
+  <shortdesc>Use the learning interactions to construct a basic set of question and response
+    interaction. The domain also provides an <xmlelement>lcInstructornote</xmlelement> element,
+    which you can use to provide instructor-specific information in the learning topics.</shortdesc>
+  <refbody>
+    <section id="section-1">
+      <note conref="../../common/conref-file.dita#reuse_file/learning1learning2"/>
+    </section>
+  </refbody>
+</reference>

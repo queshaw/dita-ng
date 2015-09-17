@@ -1,0 +1,7 @@
+The groovy script replaces DOCTYPE statments with the xml-model PIs, if there is a mapping from Formal Public Identifier to URI in fpi2uri.config.
+
+The command below updates files in the directory tree "somewhere".
+
+groovy fpi2uri.groovy fpi2uri.config somewhere
+
+Copies of each modified file are kept with '.bak' appended to their name.

@@ -1,0 +1,7 @@
+<?xml-model href="urn:oasis:names:tc:dita:rng:concept.rng"?>
+<concept id="metadata-attributes" xml:lang="en-us">
+ <title>Metadata attributes</title>
+ <shortdesc>Certain attributes are common across most DITA elements. These attributes support
+  content referencing, conditional processing, application of metadata, and globalization and
+  localization.</shortdesc>
+</concept>

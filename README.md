@@ -1,42 +1,65 @@
 # DITA-NG Relax NG support for DITA-OT
 
-## Installation
+## Included plugins
 
-A plugin archive can be created using the ant dist target, e.g.:
+There are currently 3 separate plugins which can be built:
+
+* **org.dita-ng.library** | Adds Relax NG support to DITA-OT.
+* **org.not-oasis-open.dita.v1_3-cs01** | Adds DITA 1.3 CS01 grammars to the DITA-OT catalog.
+* **org.dita-ng.doctypes** | Adds Relax NG support and non-oasis DITA grammars as one plugin.
+
+These plugins have associated ant targets:
 
 ```
 ant dist
 ```
 
-Commands for invoking DITA-OT with relaxng support are provided:
-
-**Unix**:
-
-```
-dita-ng
-```
-
-**Windows**:
+Runs conversion scripts to convert between grammar syntaxes, then
+compiles the Relax NG support library and creates a zip archive
+from the result, containing the plugin.
 
 ```
-dita-ng.cmd
+ant dist.minimal
 ```
 
-The commands are wrappers around the "dita" command in DITA-OT 2.x.
+Runs the following to ant targets.
 
-If the command is installed in the DITA-OT bin directory, it can be used to install the plugin, e.g.:
+```
+ant dist.library
+```
+
+Creates a zip archive containing the Relax NG support library as a plugin.
+
+```
+ant dist.catalog
+```
+
+Creates a zip archive containing the DITA 1.3 CS01 grammars an catalogs as a plugin.
+
+## Installation
+
+The *dita* command included in DITA-OT versions 2.0 or greater can be used to install the generated plugins, e.g.:
 
 
 ```
-/opt/dita-ot/bin/dita-ng -install dist/dita-ng20150914.zip -v
+cd x:\src\dita-ng
+ant dist.minimal
+x:\dita-ot\bin\dita -install dist\org.dita-ng.library-20150916.zip -v
+x:\dita-ot\bin\dita -install dist\org.not-oasis-open.dita.v1_3-cs01-20150916.zip -v
 ```
 
-or
+## Testing the installation
+
+Processing the DITA specification is one way to test the installation:
 
 ```
-x:\dita-ot\bin\dita-ng -install dist\dita-ng20150914.zip -v
+cd x:\dita-ot
+set demo_dir=x:\dita-ot\plugins\org.not-oasis-open.dita.v1_3-cs01\demo\dita-1.3-specification
+set ditamap=%demo_dir%\dita-1.3-specification-learningTraining.ditamap
+set ditaval=%demo_dir%\resources\DITA1.3-spec-learningTraining.ditaval
+bin\dita -v -f xhtml -i %ditamap% -f %ditaval -o out
+out\index.html
 ```
-
 
 ## Schema validation
 
@@ -45,7 +68,7 @@ The Relax NG support provided by DITA-NG includes adding attribute default value
 **Properties file**:
 
 ```
-$DITA_HOME/plugins/org.dita-ng.doctypes/dita-ng.properties
+x:\dita-ot\plugins\org.dita-ng.library\dita-ng.properties
 ```
 
 **Validation property**:
@@ -53,6 +76,8 @@ $DITA_HOME/plugins/org.dita-ng.doctypes/dita-ng.properties
 ```
 validation=yes
 ```
+
+The default value is yes, if no configuration file is found. Any value other than "yes" or "true" is treated as "false".
 
 ### Why one would want to validate their documents
 

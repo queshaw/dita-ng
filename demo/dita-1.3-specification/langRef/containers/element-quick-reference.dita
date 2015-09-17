@@ -1,0 +1,5 @@
+<?xml-model href="urn:oasis:names:tc:dita:rng:reference.rng"?>
+<reference xml:lang="en-us" id="element-quick-reference">
+    <title>Element quick reference</title>
+    <shortdesc>This section contains a listing of DITA elements.</shortdesc>
+</reference>

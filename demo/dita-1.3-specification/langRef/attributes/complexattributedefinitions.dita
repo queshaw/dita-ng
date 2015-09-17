@@ -1,0 +1,6 @@
+<?xml-model href="urn:oasis:names:tc:dita:rng:reference.rng"?>
+<reference id="complexattributedefinitions" xml:lang="en-us">
+<title>Complex attribute definitions</title>
+<shortdesc>Several DITA attributes require more explanation than can fit in
+a single table cell. Those attributes are collected here.</shortdesc>
+</reference>

@@ -1,0 +1,12 @@
+<?xml-model href="urn:oasis:names:tc:dita:rng:reference.rng"?>
+<reference id="highld" xml:lang="en-us">
+<title><ph >Highlighting</ph> elements</title>
+<shortdesc>The <ph >highlighting</ph> elements are used to highlight text with
+styles (such as bold, italic, and monospace). Never use these elements when a semantically specific
+element is available. These elements are not intended for use by specializers, and are intended
+solely for use by authors when no semantically appropriate element is available and a formatting
+effect is required.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm>domains<indexterm>highlighting domain</indexterm></indexterm></keywords>
+</metadata></prolog>
+</reference>

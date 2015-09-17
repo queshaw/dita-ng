@@ -1,0 +1,8 @@
+<?xml-model href="urn:oasis:names:tc:dita:rng:reference.rng"?>
+<reference id="attributes" xml:lang="en-us">
+<title>Attributes</title>
+<shortdesc>This section collects commonly used attributes, with common definitions. If an element
+  uses a different definition, or narrows the scope of, an otherwise common attribute, it will be
+  called out in the topic that defines the element.</shortdesc>
+</reference>
+

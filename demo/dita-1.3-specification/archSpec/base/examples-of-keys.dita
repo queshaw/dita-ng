@@ -1,0 +1,6 @@
+<?xml-model href="urn:oasis:names:tc:dita:rng:concept.rng"?>
+<concept xml:lang="en-us" id="examples_of_keys">
+    <title>Examples of keys</title>
+    <shortdesc>This section of the specification contains examples and scenarios. They illustrate a
+        wide variety of ways that keys can be used.</shortdesc>
+</concept>

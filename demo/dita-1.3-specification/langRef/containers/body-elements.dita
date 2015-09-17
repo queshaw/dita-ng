@@ -1,0 +1,12 @@
+<?xml-model href="urn:oasis:names:tc:dita:rng:reference.rng"?>
+<reference id="body2" xml:lang="en-us">
+<title>Body elements</title>
+<shortdesc>The body elements support the most common types of content
+authoring for topics: paragraphs, lists, phrases, figures, and other
+common types of exhibits in a document.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm>body elements</indexterm>
+    <indexterm>element groups<indexterm>body</indexterm></indexterm></keywords>
+</metadata></prolog>
+</reference>
+

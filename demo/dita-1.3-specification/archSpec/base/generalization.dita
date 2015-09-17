@@ -1,0 +1,7 @@
+<?xml-model href="urn:oasis:names:tc:dita:rng:concept.rng"?>
+<concept id="generalization" xml:lang="en-us">
+  <title>Generalization</title>
+  <shortdesc>Generalization is the process of reversing a specialization. It converts specialized
+    elements or attributes into the original types from which they were derived.</shortdesc>
+</concept>
+

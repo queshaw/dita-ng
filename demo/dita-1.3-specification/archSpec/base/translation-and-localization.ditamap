@@ -1,0 +1,8 @@
+<?xml-model href="urn:oasis:names:tc:dita:spec:learning:rng:learningBookmap.rng"?>
+<map>
+ <title>Translation and localization</title>
+ <topicref href="translation.dita" navtitle="Translation">
+  <topicref href="xmllang.dita" navtitle="The xml:lang attribute"/>
+  <topicref href="diratt.dita" navtitle="The dir attribute"/>
+ </topicref>
+</map>

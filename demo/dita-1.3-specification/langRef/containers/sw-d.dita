@@ -1,0 +1,10 @@
+<?xml-model href="urn:oasis:names:tc:dita:rng:reference.rng"?>
+<reference id="softwd" xml:lang="en-us">
+<title>Software elements</title>
+<shortdesc>The software domain elements are used to describe the operation
+of a software program.</shortdesc>
+<prolog><metadata>
+<keywords><indexterm>domain elements<indexterm>software domain</indexterm></indexterm>
+<indexterm>software elements</indexterm></keywords>
+</metadata></prolog>
+</reference>

@@ -1,0 +1,3 @@
+<?xml-model href="urn:oasis:names:tc:dita:rng:reference.rng"?>
+<reference id="cmlt" xml:lang="en-us"><title>Content models: All-inclusive edition</title><shortdesc>For each element in the all-inclusive edition, this section presents the content model
+    and a list of parent elements that can contain that element.</shortdesc></reference>

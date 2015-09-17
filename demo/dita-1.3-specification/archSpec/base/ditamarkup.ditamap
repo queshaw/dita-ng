@@ -1,0 +1,10 @@
+<?xml-model href="urn:oasis:names:tc:dita:spec:learning:rng:learningBookmap.rng"?>
+<map xml:lang="en-us" collection-type="sequence">
+    <title>DITA markup</title>
+    <topicref href="ditamarkup.dita" navtitle="DITA markup">
+        <mapref format="ditamap" href="topics.ditamap" navtitle="DITA topics"/>
+        <mapref format="ditamap" href="maps.ditamap" navtitle="DITA maps"/>
+        <mapref href="subject-scheme-maps.ditamap" format="ditamap"/>
+        <mapref format="ditamap" href="metadata.ditamap" navtitle="DITA metadata"/>
+    </topicref>
+</map>

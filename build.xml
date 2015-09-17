@@ -6,8 +6,7 @@
     <property name="version" value="${DSTAMP}"/>
     <property name="plugins.dir" value="plugins"/>
     <property name="library.plugin.id" value="org.dita-ng.library"/>
-    <property name="catalog.plugin.id" value="org.not-oasis-open.dita.v1_3-cs01"/>
-
+    <property name="catalog.plugin.id" value="org.not-oasis-open.dita.v1.3-cs01"/>
     <property name="ant.build.javac.source" value="1.6"/>
     <property name="ant.build.javac.target" value="1.6"/>
 
@@ -23,6 +22,8 @@
     <property name="test.log.dir" value="${build.dir}/test-results"/>
 
     <property name="dist.dir" value="dist"/>
+
+    <property name="demo.dir" value="demo"/>
 
     <property name="conversion.dir" value="util/convert"/>
 
@@ -120,13 +121,26 @@
     <target name="dist.catalog"
             description="Creates a zip archive of the example catalog and DITA files."
             depends="-clean.dist">
+
       <mkdir dir="${build.dist.dir}"/>
-      <zip destfile="${dist.dir}/${catalog.plugin.id}-${version}.zip"
-           duplicate="fail"
-           encoding="UTF-8">
+      <copy todir="${build.dist.dir}">
         <fileset dir="${plugins.dir}">
           <include name="**/*"/>
           <exclude name="${library.plugin.id}/"/>
+        </fileset>
+      </copy>
+      <mkdir dir="${build.dist.dir}/${catalog.plugin.id}/demo"/>
+      <copy todir="${build.dist.dir}/${catalog.plugin.id}/demo">
+        <fileset dir="${demo.dir}">
+          <include name="**/*"/>
+          <exclude name="flowers/"/>
+        </fileset>
+      </copy>
+      <zip destfile="${dist.dir}/${catalog.plugin.id}-${version}.zip"
+           duplicate="fail"
+           encoding="UTF-8">
+        <fileset dir="${build.dist.dir}">
+          <include name="**/*"/>
         </fileset>
       </zip>
     </target>
@@ -157,6 +171,7 @@
 
     <target name="-clean.dist" unless="dist.cleaned">
         <delete dir="${dist.dir}"/>
+        <delete dir="${build.dist.dir}"/>
         <property name="dist.cleaned" value="true"/>
     </target>
 

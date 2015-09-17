@@ -1,0 +1,8 @@
+<?xml-model href="urn:oasis:names:tc:dita:rng:concept.rng"?>
+<concept
+  id="specialize" xml:lang="en-us">
+  <title>Specialization</title>
+  <shortdesc>
+    <ph conref="../../common/conref-file.dita#reuse_file/specialization-shortdesc"/></shortdesc>
+</concept>
+

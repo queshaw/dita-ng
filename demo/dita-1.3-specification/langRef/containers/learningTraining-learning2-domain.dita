@@ -1,0 +1,7 @@
+<?xml-model href="urn:oasis:names:tc:dita:rng:reference.rng"?>
+<reference xml:lang="en-us" id="learning2-domain">
+  <title>Top level interactions elements</title>
+  <shortdesc>Top level interactions elements provide the primary question types available in the
+    learning interactions domains.</shortdesc>
+  <refbody/>
+</reference>
