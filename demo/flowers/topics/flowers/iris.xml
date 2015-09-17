@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<?xml-model href="urn:dita-ng:dita:rng:topic.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="urn:dita-ng:dita:rng:topic.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="urn:oasis:names:tc:dita:rng:topic.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="urn:oasis:names:tc:dita:rng:topic.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <topic id="topic-1">
  <title>Iris</title>
  <body>
@@ -13,7 +13,7 @@
    it refers to all <b>Iris</b> species, but some plants called thus belong to closely related
    genera. In North America, a common name for irises is <b>flags</b>, while the subgenus
     <b>Scorpiris</b> is widely known as <b>junos</b>, particularly in horticulture.</p>
-  <p><image href="../../images/Iris_sanguinea.jpg" scale="50"/></p>
+  <p><image href="../../images/Iris_sanguinea.jpg" scale="50"></image></p>
   <p>The <xref href="../../concepts/glossary.xml#genus" format="dita">genus</xref> is widely
    distributed throughout the north temperate zone. Their habitats are considerably varied, ranging
    from cold and mountain regions to the grassy slopes, meadowlands and riverbanks of Europe, the

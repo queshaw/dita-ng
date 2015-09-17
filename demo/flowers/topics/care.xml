@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="urn:dita-ng:dita:rng:topic.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="urn:dita-ng:dita:rng:topic.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="urn:oasis:names:tc:dita:rng:topic.rng"?>
 <topic id="care">
     <title>Care and Preparation</title>
     <body>
@@ -9,6 +8,7 @@
             flowers. You have to balance the soil structure with nutrients and regulate the pH to
             cover your plants' needs. And above all, remember that many flower gardens fail because
             they just don't get enough of your attention.</p>
+        <p conref="introduction.xml#p1" conrefend="introduction.xml#p3"/>
         <p>
             <table frame="none">
                 <title>Flowers</title>

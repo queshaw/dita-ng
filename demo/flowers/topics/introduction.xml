@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<?xml-model href="urn:dita-ng:dita:rng:topic.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="urn:dita-ng:dita:rng:topic.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="urn:oasis:names:tc:dita:rng:topic.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="urn:oasis:names:tc:dita:rng:topic.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <topic id="introduction">
     <title>Introduction</title>
     <body>
@@ -9,5 +9,15 @@
             shapes. Both annual and <xref href="../concepts/glossary.xml#perennial" format="dita"
                 >perennial</xref> flower gardens can be planted depending on climate and specific
             needs.</p>
+      <p id="p1">Paragraph 1</p>
+      <p id="p2">Paragraph 2</p>
+      <p id="p3">Paragraph 3</p>
+<!--
+        <dl>
+          <dlentry>
+            <dd>Blah</dd>
+          </dlentry>
+        </dl>
+-->
     </body>
 </topic>

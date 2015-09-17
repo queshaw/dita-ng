@@ -61,6 +61,12 @@ bin\dita -v -f xhtml -i %ditamap% -f %ditaval -o out
 out\index.html
 ```
 
+There is also a smaller DITA document to use as an example in:
+
+```
+demo\flowers
+```
+
 ## Schema validation
 
 The Relax NG support provided by DITA-NG includes adding attribute default values to the parsed result. In addition, the DITA documents can be validated against the schema by adding a properties file to the plugin directory.

@@ -133,7 +133,6 @@
       <copy todir="${build.dist.dir}/${catalog.plugin.id}/demo">
         <fileset dir="${demo.dir}">
           <include name="**/*"/>
-          <exclude name="flowers/"/>
         </fileset>
       </copy>
       <zip destfile="${dist.dir}/${catalog.plugin.id}-${version}.zip"
