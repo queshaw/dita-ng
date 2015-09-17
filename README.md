@@ -5,30 +5,25 @@
 There are currently 3 separate plugins which can be built:
 
 <table>
-<tr><td><strong>org.dita-ng.library</strong></td><td>Adds Relax NG support to DITA-OT.</td></tr>
+<tr><td><strong>org.dita-ng.library</strong>></td><td>Adds Relax NG support to DITA-OT.</td></tr>
 <tr><td><strong>org.not-oasis-open.dita.v1_3-cs01</strong></td><td>Adds DITA 1.3 CS01 grammars to the DITA-OT catalog.</td></tr>
 <tr><td><strong>org.dita-ng.doctypes</strong></td><td>Adds Relax NG support and non-oasis DITA grammars as one plugin.</td></tr>
 </table>
 
 These plugins have associated ant targets:
 
-**```ant dist```**
-
-> Runs conversion scripts to convert between grammar syntaxes, then
-> compiles the Relax NG support library and creates a zip archive
-> from the result, containing the plugin.
-
-**```ant dist.minimal```**
-
-> Runs the following two ant targets.
-
-**```ant dist.library```**
-
-> Creates a zip archive containing the Relax NG support library as a plugin.
-
-**```ant dist.catalog```**
-
-> Creates a zip archive containing the DITA 1.3 CS01 grammars an catalogs as a plugin.
+<dl>
+<dt><b><code>ant dist</code></b></dt>
+<dd>Runs conversion scripts to convert between grammar syntaxes, then
+compiles the Relax NG support library and creates a zip archive
+from the result, containing the plugin.</dd>
+<dt><strong><code>ant dist.minimal</code></strong></dt>
+<dd>Runs the following two ant targets.</dd>
+<dt><strong><code>ant dist.library</code></strong></dt>
+<dd>Creates a zip archive containing the Relax NG support library as a plugin.</dd>
+<dt><strong><code>ant dist.catalog</code></strong></dt>
+<dd>Creates a zip archive containing the DITA 1.3 CS01 grammars an catalogs as a plugin.</dd>
+</dl>
 
 ## Installation
 
