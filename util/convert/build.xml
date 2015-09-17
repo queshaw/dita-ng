@@ -5,7 +5,87 @@
 
     <!-- Relax NG Schemas -->
     
-    <target name="copyToTmp">
+    <target name="convert"
+            description="Converts sample schema files from XML syntax to compact syntax."
+            depends="-convertToTmp">
+        <copy todir="${convert.rnc.target}/base/rnc">
+            <fileset dir="${tmp.dir}/rnc/base/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <copy todir="${convert.rnc.target}/bookmap/rnc">
+            <fileset dir="${tmp.dir}/rnc/bookmap/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <copy todir="${convert.rnc.target}/ditaval/rnc">
+            <fileset dir="${tmp.dir}/rnc/ditaval/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <copy todir="${convert.rnc.target}/learning/rnc">
+            <fileset dir="${tmp.dir}/rnc/learning/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <copy todir="${convert.rnc.target}/machineryIndustry/rnc">
+            <fileset dir="${tmp.dir}/rnc/machineryIndustry/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <copy todir="${convert.rnc.target}/subjectScheme/rnc">
+            <fileset dir="${tmp.dir}/rnc/subjectScheme/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <copy todir="${convert.rnc.target}/technicalContent/rnc">
+            <fileset dir="${tmp.dir}/rnc/technicalContent/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <copy todir="${convert.rnc.target}/xhtml/rnc">
+            <fileset dir="${tmp.dir}/rnc/xhtml/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <copy todir="${convert.rnc.target}/xnal/rnc">
+            <fileset dir="${tmp.dir}/rnc/xnal/rnc">
+                <include name="*.rnc"/>
+            </fileset>
+        </copy>
+        <delete dir="${tmp.dir}"/>
+    </target>
+    
+    <target name="dist"
+            description="Creates a zip archive containing one plugin with both library and catalog."
+            depends="convert, jar">
+        <mkdir dir="${dist.dir}/dita-ng"/>
+        <copy todir="${dist.dir}/dita-ng">
+            <fileset dir="." >
+                <include name="org.dita-ng.doctypes/**/*"/>
+                </fileset>
+        </copy>
+        <copy todir="${dist.dir}/dita-ng/org.dita-ng.doctypes">
+            <fileset dir=".">
+                <include name="LICENSE.txt"/>
+                <include name="README.txt"/>
+                <include name="demo/**/*"/>
+            </fileset>
+        </copy>
+        <copy todir="${dist.dir}/dita-ng/org.dita-ng.doctypes/lib">
+            <fileset dir=".">
+                <include name="dita-ng.jar"/>
+            </fileset>
+            <fileset dir="lib">
+                <include name="jing.jar"/>
+            </fileset>
+        </copy>
+        <zip basedir="${dist.dir}/dita-ng" zipfile="${dist.dir}/dita-ng${version}.zip">
+            <include name="**/*"/>
+        </zip>
+        <delete dir="${dist.dir}/dita-ng"/>
+    </target>
+    <target name="-copyToTmp">
         <copy todir="${tmp.dir}/rng">
             <fileset dir="${conversion.rng.src}">
                 <include name="**/*.rng"/>
@@ -13,14 +93,14 @@
         </copy>
     </target>
     
-    <target name="convertBase" depends="copyToTmp">
+    <target name="-convertBase" depends="-copyToTmp">
         <trang_rng2rnc dir-element1="base" dir-element2="basemap" make-this-dir="true"/>
         <trang_rng2rnc dir-element1="base" dir-element2="basetopic"/>
         <!-- fix comments -->
         <fixcomments dir-element="base"/>
     </target>
 
-    <target name="convertBookmap" depends="copyToTmp, convertBase, convertTechnicalContent">
+    <target name="-convertBookmap" depends="-copyToTmp, -convertBase, -convertTechnicalContent">
         <trang_rng2rnc dir-element1="bookmap" make-this-dir="true"/>
         <delete dir="${tmp.dir}/rnc/bookmap/rnc">
             <present targetdir="${tmp.dir}/rnc/base/rnc"/>
@@ -62,7 +142,7 @@
         </replaceregexp>
     </target>
 
-    <target name="convertTechnicalContent" depends="copyToTmp, convertBase">
+    <target name="-convertTechnicalContent" depends="-copyToTmp, -convertBase">
         <trang_rng2rnc dir-element1="technicalContent" dir-element2="map" make-this-dir="true"/>
         <trang_rng2rnc dir-element1="technicalContent" dir-element2="topic"/>
         <trang_rng2rnc dir-element1="technicalContent" dir-element2="concept"/>
@@ -83,13 +163,13 @@
         <fix_base_includes dir-element="technicalContent"/>
     </target>
 
-    <target name="convertDitaval" depends="copyToTmp">
+    <target name="-convertDitaval" depends="-copyToTmp">
         <trang_rng2rnc dir-element1="ditaval" make-this-dir="true"/>
         <!-- fix comments -->
         <fixcomments dir-element="ditaval"/>
     </target>
 
-    <target name="convertLearning" depends="copyToTmp, convertBase, convertBookmap, convertTechnicalContent, convertXnal">
+    <target name="-convertLearning" depends="-copyToTmp, -convertBase, -convertBookmap, -convertTechnicalContent, -convertXnal">
         <trang_rng2rnc dir-element1="learning" dir-element2="learningAssessment" make-this-dir="true"/>
         <trang_rng2rnc dir-element1="learning" dir-element2="learningBookmap"/>
         <trang_rng2rnc dir-element1="learning" dir-element2="learningContent"/>
@@ -145,7 +225,7 @@
         </replaceregexp>
     </target>
 
-    <target name="convertMachineryIndustry" depends="copyToTmp, convertBase, convertTechnicalContent">
+    <target name="-convertMachineryIndustry" depends="-copyToTmp, -convertBase, -convertTechnicalContent">
         <trang_rng2rnc dir-element1="machineryIndustry" dir-element2="machineryTask" make-this-dir="true"/>
 
         <delete dir="${tmp.dir}/rnc/machineryIndustry/rnc">
@@ -179,7 +259,7 @@
         </replaceregexp>
     </target>
 
-    <target name="convertSubjectScheme" depends="copyToTmp, convertBase">
+    <target name="-convertSubjectScheme" depends="-copyToTmp, -convertBase">
         <trang_rng2rnc dir-element1="subjectScheme" make-this-dir="true"/>
         <trang_rng2rnc dir-element1="subjectScheme" dir-element2="classifyMap"/>
 
@@ -193,95 +273,19 @@
 
     </target>
 
-    <target name="convertXhtml" depends="copyToTmp">
+    <target name="-convertXhtml" depends="-copyToTmp">
         <trang_rng2rnc dir-element1="xhtml" dir-element2="xhtml1-transitional" make-this-dir="true"/>
         <!-- fix comments -->
         <fixcomments dir-element="xhtml"/>
 
     </target>
 
-    <target name="convertXnal" depends="convertBookmap"/>
+    <target name="-convertXnal" depends="-convertBookmap"/>
         
-    <target name="convertToTmp" 
-        depends="convertBase, convertBookmap, convertDitaval, 
-        convertLearning, convertMachineryIndustry, convertSubjectScheme, 
-        convertTechnicalContent, convertXhtml, convertXnal">
-    </target>
-    <target name="convert"  depends="convertToTmp">
-        <copy todir="${rnc.target}/base/rnc">
-            <fileset dir="${tmp.dir}/rnc/base/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <copy todir="${rnc.target}/bookmap/rnc">
-            <fileset dir="${tmp.dir}/rnc/bookmap/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <copy todir="${rnc.target}/ditaval/rnc">
-            <fileset dir="${tmp.dir}/rnc/ditaval/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <copy todir="${rnc.target}/learning/rnc">
-            <fileset dir="${tmp.dir}/rnc/learning/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <copy todir="${rnc.target}/machineryIndustry/rnc">
-            <fileset dir="${tmp.dir}/rnc/machineryIndustry/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <copy todir="${rnc.target}/subjectScheme/rnc">
-            <fileset dir="${tmp.dir}/rnc/subjectScheme/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <copy todir="${rnc.target}/technicalContent/rnc">
-            <fileset dir="${tmp.dir}/rnc/technicalContent/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <copy todir="${rnc.target}/xhtml/rnc">
-            <fileset dir="${tmp.dir}/rnc/xhtml/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <copy todir="${rnc.target}/xnal/rnc">
-            <fileset dir="${tmp.dir}/rnc/xnal/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <delete dir="${tmp.dir}"/>
-    </target>
-    
-    <target name="dist" depends="convert, jar">
-        <mkdir dir="${dist.dir}/dita-ng"/>
-        <copy todir="${dist.dir}/dita-ng">
-            <fileset dir="." >
-                <include name="org.dita-ng.doctypes/**/*"/>
-                </fileset>
-        </copy>
-        <copy todir="${dist.dir}/dita-ng/org.dita-ng.doctypes">
-            <fileset dir=".">
-                <include name="LICENSE.txt"/>
-                <include name="README.txt"/>
-                <include name="demo/**/*"/>
-            </fileset>
-        </copy>
-        <copy todir="${dist.dir}/dita-ng/org.dita-ng.doctypes/lib">
-            <fileset dir=".">
-                <include name="dita-ng.jar"/>
-            </fileset>
-            <fileset dir="lib">
-                <include name="jing.jar"/>
-            </fileset>
-        </copy>
-        <zip basedir="${dist.dir}/dita-ng" zipfile="${dist.dir}/dita-ng${version}.zip">
-            <include name="**/*"/>
-        </zip>
-        <delete dir="${dist.dir}/dita-ng"/>
+    <target name="-convertToTmp" 
+        depends="-convertBase, -convertBookmap, -convertDitaval, 
+        -convertLearning, -convertMachineryIndustry, -convertSubjectScheme, 
+        -convertTechnicalContent, -convertXhtml, -convertXnal">
     </target>
 
 </project>

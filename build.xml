@@ -4,18 +4,18 @@
     <tstamp/>
 
     <property name="version" value="${DSTAMP}"/>
-    <property name="plugins.dir" location="plugins"/>
-    <property name="library.plugin" location="${plugins.dir}/org.dita-ng.library"/>
-    <property name="catalog.plugin" location="${plugins.dir}/org.not-oasis-open.dita.v1_3-cs01"/>
+    <property name="plugins.dir" value="plugins"/>
+    <property name="library.plugin.id" value="org.dita-ng.library"/>
+    <property name="catalog.plugin.id" value="org.not-oasis-open.dita.v1_3-cs01"/>
 
     <property name="ant.build.javac.source" value="1.6"/>
     <property name="ant.build.javac.target" value="1.6"/>
 
     <property name="src.dir" value="src/main/java"/>
     <property name="test.src.dir" value="src/test/java"/>
-    <property name="test.resources.dir" value="test/resources"/>
+    <property name="test.resources.dir" value="src/test/resources"/>
 
-    <property name="lib.dir" location="lib"/>
+    <property name="lib.dir" value="lib"/>
 
     <property name="build.dir" value="build"/>
     <property name="build.classes.dir" value="${build.dir}/classes"/>
@@ -26,13 +26,13 @@
 
     <property name="conversion.dir" value="util/convert"/>
 
-    <property name="tmp.dir" value="tmp"/>
+    <property name="tmp.dir" value="${build.dir}/tmp"/>
     <property name="trang" value="${conversion.dir}/lib/trang.jar"/>
 
     <property name="conversion.rnc.target" value="${conversion.dir}/org.dita-ng.doctypes/rnc"/>
     <property name="conversion.rng.src" value="${conversion.dir}/org.dita-ng.doctypes/rng"/>
     
-    <import href="${conversion.dir}/build.xml"/>
+    <import file="${conversion.dir}/build.xml"/>
 
     <path id="cp">
       <fileset dir="${lib.dir}">
@@ -53,17 +53,22 @@
 
     <!-- Java code -->
     
-    <target name="compile">
+    <target name="compile"
+            description="Builds the java library.">
       <delete dir="${build.classes.dir}"/>
       <mkdir dir="${build.classes.dir}"/>
       <javac srcdir="${src.dir}" destdir="${build.classes.dir}" classpathref="cp"/>
     </target>
     
-    <target name="compile.tests" depends="compile">
+    <target name="compile.tests"
+            description="Builds java library tests."
+            depends="compile">
         <javac srcdir="${test.src.dir}" destdir="${build.classes.dir}" classpathref="test.cp"/>
     </target>
     
-    <target name="jar" depends="compile">
+    <target name="jar"
+            description="Creates the java library jar file."
+            depends="compile">
         <jar basedir="${build.classes.dir}" jarfile="${build.dir}/dita-ng.jar">
             <service type="org.apache.xerces.xni.parser.XMLParserConfiguration">
                 <provider classname="org.ditang.relaxng.defaults.RelaxDefaultsParserConfiguration"/>
@@ -74,38 +79,59 @@
         </jar>
     </target>
     
-    <!-- Creates a zip file of the library plugin -->
-    <target name="dist.library" depends="jar">
+    <target name="dist.minimal"
+            description="Creates separate catalog and library plugin zip archives."
+            depends="clean, jar, dist.library, dist.catalog"/>
 
-      <delete dir="${build.dist.dir}"/>
+    <target name="dist.library"
+            description="Creates a zip archive of the dita-ng library plugin."
+            depends="-clean.dist">
+
       <mkdir dir="${build.dist.dir}"/>
-      <copy todir="${build.dist.dir}/${library.plugin}">
-        <fileset dir="${library.plugin}"/ >
+      <copy todir="${build.dist.dir}/${library.plugin.id}">
+        <fileset dir="${plugins.dir}/${library.plugin.id}"/>
         <filelist>
           <file name="LICENSE.txt"/>
         </filelist>
       </copy>
 
-      <mkdir dir="${build.dist.dir}/${library.plugin}/lib"/>
-      <copy todir="${build.dist.dir}/${library.plugin}/lib">
-        <filelist>
-          <file name="${build.dir}/dita-ng.jar"/>
-          <file name="${lib.dir}/jing.jar"/>
-          <file name="${lib.dir}/LICENSE-jing.txt"/>
-        </filelist>
+      <mkdir dir="${build.dist.dir}/${library.plugin.id}/lib"/>
+      <copy todir="${build.dist.dir}/${library.plugin.id}/lib">
+        <fileset dir="${build.dir}">
+          <include name="dita-ng.jar"/>
+        </fileset>
+        <fileset dir="${lib.dir}">
+          <include name="jing.jar"/>
+          <include name="jing.LICENSE.txt"/>
+        </fileset>
       </copy>
 
-      <delete dir="${dist.dir}"/>
       <mkdir dir="${dist.dir}"/>
 
-      <zip destfile="${dist.dir}/${library.plugin}-${version}.zip"
-           basedir="${build.dir}/${library.plugin}">
+      <zip destfile="${dist.dir}/${library.plugin.id}-${version}.zip"
+           basedir="${build.dist.dir}"
+           duplicate="fail"
+           encoding="UTF-8">
         <include name="**/*"/>
       </zip>
+
     </target>
  
+    <target name="dist.catalog"
+            description="Creates a zip archive of the example catalog and DITA files."
+            depends="-clean.dist">
+      <mkdir dir="${build.dist.dir}"/>
+      <zip destfile="${dist.dir}/${catalog.plugin.id}-${version}.zip"
+           duplicate="fail"
+           encoding="UTF-8">
+        <fileset dir="${plugins.dir}">
+          <include name="**/*"/>
+          <exclude name="${library.plugin.id}/"/>
+        </fileset>
+      </zip>
+    </target>
 
-    <target name="test" depends="compile.tests">
+    <target name="test" depends="compile.tests" description="Runs tests of the java library.">
       <delete dir="${test.log.dir}"/>
       <mkdir dir="${test.log.dir}"/>
       <junit printsummary="yes" haltonfailure="yes" showoutput="false">
@@ -123,10 +149,15 @@
       </junit>
     </target>
 
-    <target name="clean">
+    <target name="clean" description="Removes built files and directories.">
         <delete dir="${tmp.dir}"/>
         <delete dir="${dist.dir}"/>
         <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="-clean.dist" unless="dist.cleaned">
+        <delete dir="${dist.dir}"/>
+        <property name="dist.cleaned" value="true"/>
     </target>
 
 </project>
