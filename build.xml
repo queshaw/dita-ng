@@ -1,26 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="dist">
 
-    <import file="./buildmacros.xml"/>
     <tstamp/>
-    <!-- Jars location -->
-    <property name="lib" location="lib"/>
-    <property name="target" value="org.dita-ng.doctypes/rnc"/>
-    <property name="src" value="org.dita-ng.doctypes/rng"/>
-    <property name="build.dir" value="build"/>
-    <property name="classes.dir" value="${build.dir}/classes"/>
-    <property name="test.resources.dir" value="test"/>
-    <property name="test.src.dir" value="test/java"/>
-    <property name="test.log.dir" value="${build.dir}/test-results"/>
-    <property name="tmp" value="tmp"/>
-    <property name="trang" value="lib/trang.jar"/>
-    <property name="dist" value="dist"/>
+
     <property name="version" value="${DSTAMP}"/>
-    <property name="ant.build.javac.source" value="1.5"/>
-    <property name="ant.build.javac.target" value="1.5"/>
+    <property name="plugins.dir" location="plugins"/>
+    <property name="library.plugin" location="${plugins.dir}/org.dita-ng.library"/>
+    <property name="catalog.plugin" location="${plugins.dir}/org.not-oasis-open.dita.v1_3-cs01"/>
+
+    <property name="ant.build.javac.source" value="1.6"/>
+    <property name="ant.build.javac.target" value="1.6"/>
+
+    <property name="src.dir" value="src/main/java"/>
+    <property name="test.src.dir" value="src/test/java"/>
+    <property name="test.resources.dir" value="test/resources"/>
+
+    <property name="lib.dir" location="lib"/>
+
+    <property name="build.dir" value="build"/>
+    <property name="build.classes.dir" value="${build.dir}/classes"/>
+    <property name="build.dist.dir" value="${build.dir}/dist"/>
+    <property name="test.log.dir" value="${build.dir}/test-results"/>
+
+    <property name="dist.dir" value="dist"/>
+
+    <property name="conversion.dir" value="util/convert"/>
+
+    <property name="tmp.dir" value="tmp"/>
+    <property name="trang" value="${conversion.dir}/lib/trang.jar"/>
+
+    <property name="conversion.rnc.target" value="${conversion.dir}/org.dita-ng.doctypes/rnc"/>
+    <property name="conversion.rng.src" value="${conversion.dir}/org.dita-ng.doctypes/rng"/>
     
+    <import href="${conversion.dir}/build.xml"/>
+
     <path id="cp">
-      <fileset dir="${lib}">
+      <fileset dir="${lib.dir}">
         <include name="*.jar"/>
         <exclude name="junit*.jar"/>
         <exclude name="hamcrest*.jar"/>
@@ -30,7 +45,7 @@
     <path id="test.cp">
       <path refid="cp"/>
       <pathelement path="${test.resources.dir}"/>
-      <fileset dir="${lib}">
+      <fileset dir="${lib.dir}">
         <include name="junit*.jar"/>
         <include name="hamcrest*.jar"/>
       </fileset>
@@ -38,312 +53,57 @@
 
     <!-- Java code -->
     
-    <!-- Compile java sources. -->
     <target name="compile">
-      <delete dir="${classes.dir}"/>
-      <mkdir dir="${classes.dir}"/>
-      <javac srcdir="src" destdir="${classes.dir}" classpathref="cp"/>
+      <delete dir="${build.classes.dir}"/>
+      <mkdir dir="${build.classes.dir}"/>
+      <javac srcdir="${src.dir}" destdir="${build.classes.dir}" classpathref="cp"/>
     </target>
     
     <target name="compile.tests" depends="compile">
-        <javac srcdir="${test.src.dir}" destdir="${classes.dir}" classpathref="test.cp"/>
+        <javac srcdir="${test.src.dir}" destdir="${build.classes.dir}" classpathref="test.cp"/>
     </target>
     
-    <!-- Build the classes in a jar and put it inside the tei folder -->
     <target name="jar" depends="compile">
-        <jar basedir="${classes.dir}" jarfile="dita-ng.jar">
-            <!--We may want to add a reference to jing directly in the jar classpath -->
-            <!--<manifest>
-                <attribute name="Class-Path" value="jing.jar"/>
-            </manifest>-->
+        <jar basedir="${build.classes.dir}" jarfile="${build.dir}/dita-ng.jar">
             <service type="org.apache.xerces.xni.parser.XMLParserConfiguration">
                 <provider classname="org.ditang.relaxng.defaults.RelaxDefaultsParserConfiguration"/>
             </service>
             <include name="**/*"/>
             <exclude name="**/*Test*"/>
+            <exclude name="**/ParserConfigurationMixin*"/>
         </jar>
     </target>
     
-    <!-- Relax NG Schemas -->
-    
-    <target name="copyToTmp">
-        <copy todir="${tmp}/rng">
-            <fileset dir="${src}">
-                <include name="**/*.rng"/>
-            </fileset>
-        </copy>
+    <!-- Creates a zip file of the library plugin -->
+    <target name="dist.library" depends="jar">
+
+      <delete dir="${build.dist.dir}"/>
+      <mkdir dir="${build.dist.dir}"/>
+      <copy todir="${build.dist.dir}/${library.plugin}">
+        <fileset dir="${library.plugin}"/ >
+        <filelist>
+          <file name="LICENSE.txt"/>
+        </filelist>
+      </copy>
+
+      <mkdir dir="${build.dist.dir}/${library.plugin}/lib"/>
+      <copy todir="${build.dist.dir}/${library.plugin}/lib">
+        <filelist>
+          <file name="${build.dir}/dita-ng.jar"/>
+          <file name="${lib.dir}/jing.jar"/>
+          <file name="${lib.dir}/LICENSE-jing.txt"/>
+        </filelist>
+      </copy>
+
+      <delete dir="${dist.dir}"/>
+      <mkdir dir="${dist.dir}"/>
+
+      <zip destfile="${dist.dir}/${library.plugin}-${version}.zip"
+           basedir="${build.dir}/${library.plugin}">
+        <include name="**/*"/>
+      </zip>
     </target>
-    
-    <target name="convertBase" depends="copyToTmp">
-        <trang_rng2rnc dir-element1="base" dir-element2="basemap" make-this-dir="true"/>
-        <trang_rng2rnc dir-element1="base" dir-element2="basetopic"/>
-        <!-- fix comments -->
-        <fixcomments dir-element="base"/>
-    </target>
-
-    <target name="convertBookmap" depends="copyToTmp, convertBase, convertTechnicalContent">
-        <trang_rng2rnc dir-element1="bookmap" make-this-dir="true"/>
-        <delete dir="${tmp}/rnc/bookmap/rnc">
-            <present targetdir="${tmp}/rnc/base/rnc"/>
-        </delete>
-        <delete dir="${tmp}/rnc/bookmap/rnc">
-            <present targetdir="${tmp}/rnc/technicalContent/rnc"/>
-        </delete>
-        <!-- fix comments -->
-        <fixcomments dir-element="bookmap"/>
-        <!-- fix includes from base -->
-        <fix_base_includes dir-element="bookmap"/>
-        <!-- fix includes from technical content -->
-        <replaceregexp match="abbreviateDomain.mod.rnc" replace="../../technicalContent/rnc/abbreviateDomain.mod.rnc" flags="g">
-            <fileset dir="${tmp}/rnc/bookmap/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </replaceregexp>
-        <replaceregexp match="uiDomain.mod.rnc" replace="../../technicalContent/rnc/uiDomain.mod.rnc" flags="g">
-            <fileset dir="${tmp}/rnc/bookmap/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </replaceregexp>
-        <replaceregexp match="programmingDomain.mod.rnc" replace="../../technicalContent/rnc/programmingDomain.mod.rnc" flags="g">
-            <fileset dir="${tmp}/rnc/bookmap/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </replaceregexp>
-        <replaceregexp match="softwareDomain.mod.rnc" replace="../../technicalContent/rnc/softwareDomain.mod.rnc" flags="g">
-            <fileset dir="${tmp}/rnc/bookmap/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </replaceregexp>
-        <mkdir dir="${tmp}/rnc/xnal/rnc"/>
-        <move file="${tmp}/rnc/bookmap/rnc/xnalDomain.mod.rnc" tofile="${tmp}/rnc/xnal/rnc/xnalDomain.mod.rnc"/>
-        <replaceregexp match="xnalDomain.mod.rnc" replace="../../xnal/rnc/xnalDomain.mod.rnc" flags="g">
-            <fileset dir="${tmp}/rnc/bookmap/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </replaceregexp>
-    </target>
-
-    <target name="convertTechnicalContent" depends="copyToTmp, convertBase">
-        <trang_rng2rnc dir-element1="technicalContent" dir-element2="map" make-this-dir="true"/>
-        <trang_rng2rnc dir-element1="technicalContent" dir-element2="topic"/>
-        <trang_rng2rnc dir-element1="technicalContent" dir-element2="concept"/>
-        <trang_rng2rnc dir-element1="technicalContent" dir-element2="ditabase"/>
-        <trang_rng2rnc dir-element1="technicalContent" dir-element2="generalTask"/>
-        <trang_rng2rnc dir-element1="technicalContent" dir-element2="glossary"/>
-        <trang_rng2rnc dir-element1="technicalContent" dir-element2="glossentry"/>
-        <trang_rng2rnc dir-element1="technicalContent" dir-element2="glossgroup"/>
-        <trang_rng2rnc dir-element1="technicalContent" dir-element2="reference"/>
-        <trang_rng2rnc dir-element1="technicalContent" dir-element2="task"/>
-
-        <delete dir="${tmp}/rnc/technicalContent/rnc">
-            <present targetdir="${tmp}/rnc/base/rnc"/>
-        </delete>
-        <!-- fix comments -->
-        <fixcomments dir-element="technicalContent"/>
-        <!-- fix includes from base -->
-        <fix_base_includes dir-element="technicalContent"/>
-    </target>
-
-    <target name="convertDitaval" depends="copyToTmp">
-        <trang_rng2rnc dir-element1="ditaval" make-this-dir="true"/>
-        <!-- fix comments -->
-        <fixcomments dir-element="ditaval"/>
-    </target>
-
-    <target name="convertLearning" depends="copyToTmp, convertBase, convertBookmap, convertTechnicalContent, convertXnal">
-        <trang_rng2rnc dir-element1="learning" dir-element2="learningAssessment" make-this-dir="true"/>
-        <trang_rng2rnc dir-element1="learning" dir-element2="learningBookmap"/>
-        <trang_rng2rnc dir-element1="learning" dir-element2="learningContent"/>
-        <trang_rng2rnc dir-element1="learning" dir-element2="learningMap"/>
-        <trang_rng2rnc dir-element1="learning" dir-element2="learningOverview"/>
-        <trang_rng2rnc dir-element1="learning" dir-element2="learningPlan"/>
-        <trang_rng2rnc dir-element1="learning" dir-element2="learningSummary"/>
-        <delete dir="${tmp}/rnc/learning/rnc">
-            <present targetdir="${tmp}/rnc/base/rnc"/>
-        </delete>
-        <delete dir="${tmp}/rnc/learning/rnc">
-            <present targetdir="${tmp}/rnc/technicalContent/rnc"/>
-        </delete>
-        <delete dir="${tmp}/rnc/learning/rnc">
-            <present targetdir="${tmp}/rnc/bookmap/rnc"/>
-        </delete>
-        <delete dir="${tmp}/rnc/learning/rnc">
-            <present targetdir="${tmp}/rnc/xnal/rnc"/>
-        </delete>
-        
-        <!-- fix comments -->
-        <fixcomments dir-element="learning"/>
-        <!-- fix includes from base -->
-        <fix_base_includes dir-element="learning"/>
-        <!-- fix includes from bookmap -->
-        <replaceregexp match="bookmap.mod.rnc" replace="../../bookmap/rnc/bookmap.mod.rnc" flags="g">
-            <fileset dir="${tmp}/rnc/learning/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </replaceregexp>
-        <!-- fix includes from technical content -->
-        <replaceregexp match="task.mod.rnc" replace="../../technicalContent/rnc/task.mod.rnc" flags="g">
-            <fileset dir="${tmp}/rnc/learning/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </replaceregexp>
-        <replaceregexp match="concept.mod.rnc" replace="../../technicalContent/rnc/concept.mod.rnc" flags="g">
-            <fileset dir="${tmp}/rnc/learning/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </replaceregexp>
-        <replaceregexp match="reference.mod.rnc" replace="../../technicalContent/rnc/reference.mod.rnc" flags="g">
-            <fileset dir="${tmp}/rnc/learning/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </replaceregexp>
-        
-        <!-- fix includes from xnal -->        
-        <replaceregexp match="xnalDomain.mod.rnc" replace="../../xnal/rnc/xnalDomain.mod.rnc" flags="g">
-            <fileset dir="${tmp}/rnc/learning/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </replaceregexp>
-    </target>
-
-    <target name="convertMachineryIndustry" depends="copyToTmp, convertBase, convertTechnicalContent">
-        <trang_rng2rnc dir-element1="machineryIndustry" dir-element2="machineryTask" make-this-dir="true"/>
-
-        <delete dir="${tmp}/rnc/machineryIndustry/rnc">
-            <present targetdir="${tmp}/rnc/base/rnc"/>
-        </delete>
-        <delete dir="${tmp}/rnc/machineryIndustry/rnc">
-            <include name="task.mod.rnc"/>
-            <include name="uiDomain.mod.rnc"/>
-        </delete>
-        
-        <!-- fix comments -->
-        <fixcomments dir-element="machineryIndustry"/>
-        <!-- fix includes from base -->
-        <fix_base_includes dir-element="machineryIndustry"/>
-
-        <move file="${tmp}/rnc/machineryIndustry/rnc/taskreqDomain.mod.rnc" tofile="${tmp}/rnc/technicalContent/rnc/taskreqDomain.mod.rnc"/>
-        <replaceregexp match="taskreqDomain.mod.rnc" replace="../../technicalContent/rnc/taskreqDomain.mod.rnc" flags="g">
-            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </replaceregexp>  
-        <replaceregexp match="uiDomain.mod.rnc" replace="../../technicalContent/rnc/uiDomain.mod.rnc" flags="g">
-            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </replaceregexp>
-        <replaceregexp match="task.mod.rnc" replace="../../technicalContent/rnc/task.mod.rnc" flags="g">
-            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </replaceregexp>
-    </target>
-
-    <target name="convertSubjectScheme" depends="copyToTmp, convertBase">
-        <trang_rng2rnc dir-element1="subjectScheme" make-this-dir="true"/>
-        <trang_rng2rnc dir-element1="subjectScheme" dir-element2="classifyMap"/>
-
-        <delete dir="${tmp}/rnc/subjectScheme/rnc">
-            <present targetdir="${tmp}/rnc/base/rnc"/>
-        </delete>
-        <!-- fix comments -->
-        <fixcomments dir-element="subjectScheme"/>
-        <!-- fix includes from base -->
-        <fix_base_includes dir-element="subjectScheme"/>
-
-    </target>
-
-    <target name="convertXhtml" depends="copyToTmp">
-        <trang_rng2rnc dir-element1="xhtml" dir-element2="xhtml1-transitional" make-this-dir="true"/>
-        <!-- fix comments -->
-        <fixcomments dir-element="xhtml"/>
-
-    </target>
-
-    <target name="convertXnal" depends="convertBookmap"/>
-        
-    <target name="convertToTmp" 
-        depends="convertBase, convertBookmap, convertDitaval, 
-        convertLearning, convertMachineryIndustry, convertSubjectScheme, 
-        convertTechnicalContent, convertXhtml, convertXnal">
-    </target>
-    <target name="convert"  depends="convertToTmp">
-        <copy todir="${target}/base/rnc">
-            <fileset dir="${tmp}/rnc/base/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <copy todir="${target}/bookmap/rnc">
-            <fileset dir="${tmp}/rnc/bookmap/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <copy todir="${target}/ditaval/rnc">
-            <fileset dir="${tmp}/rnc/ditaval/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <copy todir="${target}/learning/rnc">
-            <fileset dir="${tmp}/rnc/learning/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <copy todir="${target}/machineryIndustry/rnc">
-            <fileset dir="${tmp}/rnc/machineryIndustry/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <copy todir="${target}/subjectScheme/rnc">
-            <fileset dir="${tmp}/rnc/subjectScheme/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <copy todir="${target}/technicalContent/rnc">
-            <fileset dir="${tmp}/rnc/technicalContent/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <copy todir="${target}/xhtml/rnc">
-            <fileset dir="${tmp}/rnc/xhtml/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <copy todir="${target}/xnal/rnc">
-            <fileset dir="${tmp}/rnc/xnal/rnc">
-                <include name="*.rnc"/>
-            </fileset>
-        </copy>
-        <delete dir="${tmp}"/>
-    </target>
-    
-    <target name="dist" depends="convert, jar">
-        <mkdir dir="${dist}/dita-ng"/>
-        <copy todir="${dist}/dita-ng">
-            <fileset dir="." >
-                <include name="org.dita-ng.doctypes/**/*"/>
-                </fileset>
-        </copy>
-        <copy todir="${dist}/dita-ng/org.dita-ng.doctypes">
-            <fileset dir=".">
-                <include name="LICENSE.txt"/>
-                <include name="README.txt"/>
-                <include name="demo/**/*"/>
-            </fileset>
-        </copy>
-        <copy todir="${dist}/dita-ng/org.dita-ng.doctypes/lib">
-            <fileset dir=".">
-                <include name="dita-ng.jar"/>
-            </fileset>
-            <fileset dir="lib">
-                <include name="jing.jar"/>
-            </fileset>
-        </copy>
-        <zip basedir="${dist}/dita-ng" zipfile="${dist}/dita-ng${version}.zip">
-            <include name="**/*"/>
-        </zip>
-        <delete dir="${dist}/dita-ng"/>
-    </target>
+ 
 
     <target name="test" depends="compile.tests">
       <delete dir="${test.log.dir}"/>
@@ -351,7 +111,7 @@
       <junit printsummary="yes" haltonfailure="yes" showoutput="false">
         <classpath>
           <path refid="test.cp"/>
-          <pathelement path="${classes.dir}"/>
+          <pathelement path="${build.classes.dir}"/>
         </classpath>
         <formatter type="plain"/>
         <batchtest fork="yes" todir="${test.log.dir}">
@@ -364,10 +124,9 @@
     </target>
 
     <target name="clean">
-        <delete dir="${tmp}"/>
-        <delete dir="${dist}"/>
-        <delete dir="${classes.dir}"/>
-        <delete file="dita-ng.jar"/>
+        <delete dir="${tmp.dir}"/>
+        <delete dir="${dist.dir}"/>
+        <delete dir="${build.dir}"/>
     </target>
 
 </project>

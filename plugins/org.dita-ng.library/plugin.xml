@@ -1,0 +1,5 @@
+<plugin id="org.dita-ng.library">
+  <feature extension="dita.conductor.lib.import" file="lib/dita-ng.jar"/>
+  <feature extension="dita.conductor.lib.import" file="lib/jing.jar"/>
+  <feature extension="dita.conductor.lib.import" file="lib"/>
+</plugin>
